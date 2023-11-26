@@ -15,5 +15,5 @@ namespace GlobalVars
         string courseName;
         // more things
     }
-    public enum Location { in_class, belltower, hub, wilcoxs_office, et_cetera }; // naming conventions not final
+    public enum Location {in_class, belltower, hub, wilcoxs_office, et_cetera}; // naming conventions not final
 }
