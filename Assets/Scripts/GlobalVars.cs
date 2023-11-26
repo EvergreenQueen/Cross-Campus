@@ -7,13 +7,17 @@ namespace GlobalVars
 {
     public struct Club
     {
-        string clubName;
-        // more things
+        public string name;
+        public int clubLevel;
+        public int[] dates;
+        public int[] times;
     }
     public struct Course
     {
-        string courseName;
-        // more things
+        public string name;
+        public int[] dates;
+        public int[] times;
+        public int grade;
     }
     public enum Location {in_class, belltower, hub, wilcoxs_office, et_cetera}; // naming conventions not final
 }

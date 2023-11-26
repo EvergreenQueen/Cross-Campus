@@ -1,6 +1,6 @@
 using UnityEngine;
 
-struct Course : ScriptableObject {
+public struct Course{
     public string name;
     public int[] dates;
     public int[] times;

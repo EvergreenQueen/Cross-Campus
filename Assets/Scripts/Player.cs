@@ -7,7 +7,7 @@ using GlobalVars;
 public class Player
 {
     private string name;
-    private Calendar playerCalendar;
+    private PlayerCalendar playerCalendar;
     private Course[] courses;
 
     public string getName()
