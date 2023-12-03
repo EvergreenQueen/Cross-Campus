@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: CS111Course
   m_EditorClassIdentifier: Assembly-CSharp:GlobalVars:Course
-  name: 
-  dates: 
-  times: 
+  name: CS111
+  dates: 0200000004000000
+  times: 84030000e8030000
   grade: 0
