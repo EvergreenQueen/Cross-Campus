@@ -72,16 +72,4 @@ public class Mascot : MonoBehaviour
     {
         return courses;
     }
-    
-    // takes an array of courses and updates Mascot's schedule accordingly
-    // TODO add warning for overwriting courses?
-    // can use this function to initialize Mascot's courses using their courses property as the argument
-    // otherwise use to update their schedule
-    public void UpdateScheduleWithCourses(Course[] newCourses)
-    {
-        for (var i = 0; i < newCourses.Length; i++)
-        {
-            // calendar.AddLocation(newCourses[i].time, newCourses[i].day, newCourses[i].location);
-        }
-    }
 }

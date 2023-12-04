@@ -7,10 +7,10 @@ using GlobalVars;
 public class Player
 {
     private string name;
-    private PlayerCalendar playerCalendar;
+    private Calendar calendar; // previously was PlayerCalendar, but they have been merged into the same class, because it's not necessary (at this time) to differentiate them
     private Course[] courses;
 
-    public string getName()
+    public string GetName()
     {
         return name;
     }
