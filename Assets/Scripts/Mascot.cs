@@ -15,12 +15,10 @@ public class Mascot : MonoBehaviour
         2. able to get and update information about the characters
     */
 
-    private string name;
-    private int affectionMeter; // int 0-100 to indicate affection level?
+    private string mascotName;
+    private float affectionMeter; 
     private Calendar calendar; // contains schedule (location at each time and day)
     private Location currentLocation; 
-    private Course[] courses; 
-    private Club club; 
 
     // Start is called before the first frame update
     void Start()
@@ -40,36 +38,26 @@ public class Mascot : MonoBehaviour
     }
     // change location according to inputted time and day
     // called in LocationManager every time time/day changes
-    public void UpdateLocation(int time, int day) 
-    {
-        currentLocation = calendar.GetLocation(time, day); 
-    }
+    // public void UpdateLocation(int time, int day) 
+    // {
+    //     currentLocation = calendar.GetLocation(time, day); 
+    //     Debug.Log("mascot " + name + " location changed to " + currentLocation);
+    // }
     
     public string GetName()
     {
-        return name;
+        return mascotName;
     }
 
-    public int GetAffection()
+    public float GetAffection()
     {
         return affectionMeter;
     }
     
     // increases/decreases affectionMeter by amount (use negative values to decrease)
     //  * affectionMeter stays in the range [0, 100]
-    public void IncreaseAffection(int amount)
+    public void IncreaseAffection(float amount)
     {
         affectionMeter = math.clamp(affectionMeter + amount, 0, 100);
-    }
-
-    public Club GetClub() 
-    {
-        return club;
-    }
-    
-    // returns array of courses
-    public Course[] GetCourses()
-    {
-        return courses;
     }
 }
