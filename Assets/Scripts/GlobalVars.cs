@@ -31,10 +31,10 @@ namespace GlobalVars
         public string name;
         public int clubLevel;
         public List<Day> days;
-        public List<GlobalVars.Time> times;
+        public List<TimeSlot> times;
         public Location location;
 
-        public Club(string name, List<GlobalVars.Time> times, List<Day> days, Location location) {
+        public Club(string name, List<TimeSlot> times, List<Day> days, Location location) {
             this.name = name;
             this.days = days;
             this.times = times;
@@ -46,11 +46,11 @@ namespace GlobalVars
     {
         public string name;
         public List<Day> days;
-        public List<GlobalVars.Time> times;
+        public List<TimeSlot> times;
         public int grade;
         public Location location;
 
-        public Course(string name, List<GlobalVars.Time> times, List<Day> days, Location location) {
+        public Course(string name, List<TimeSlot> times, List<Day> days, Location location) {
             this.name = name;
             this.days = days;
             this.times = times;
@@ -58,7 +58,8 @@ namespace GlobalVars
         }
     }
 
-    public enum Location {none, belltower, hub, wilcoxs_office, phys2000, et_cetera}; // naming conventions not final
-    public enum Time {midday, afternoon, evening};
+    public enum Location {none, belltower, hub, wilcoxs_office, physics_2000, et_cetera}; // naming conventions not final
+    public enum TimeSlot {midday, afternoon, evening};
     public enum Day {Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday};
+    
 }

@@ -29,7 +29,9 @@ public class CalendarDisplay : MonoBehaviour
         var courseStr = "courses: \n";
 
         for (var j = Day.Sunday; j <= Day.Saturday; j++) {
-            courseStr += calendar.DayToString(j) + "\t\t: ";
+            courseStr += calendar.DayToString(j) + "\t\t";
+            if (j == Day.Friday) courseStr += "\t"; // add extra tab to friday to align it better
+            courseStr += ": ";      
             var courses = calendar.GetCoursesOnDay(j);
             for (int i = 0; i < courses.Count; i++) {
                 if (courses[i] != null) {
@@ -45,7 +47,9 @@ public class CalendarDisplay : MonoBehaviour
 
         var clubStr = "clubs: \n";
         for (var j = Day.Sunday; j <= Day.Saturday; j++) {
-            clubStr += calendar.DayToString(j) + "\t\t: ";
+            clubStr += calendar.DayToString(j) + "\t\t";
+            if (j == Day.Friday) clubStr += "\t"; // add extra tab to friday to align it better
+            clubStr += ": ";            
             var clubs = calendar.GetClubsOnDay(j);
             for (int i = 0; i < clubs.Count; i++) {
                 if (clubs[i] != null) {

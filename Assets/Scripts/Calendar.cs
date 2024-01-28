@@ -9,13 +9,17 @@ using System.ComponentModel;
 using System.Collections.Generic;
 
 // data structure for keeping track of a mascot/player's Clubs and Courses
-// 
+// use AddCourse(course)/AddClub(club) to add courses/clubs to this calendar
+// automatically assigns the course/club's times to the correct time/day slot in this calendar
+// currently cannot add multiple courses/clubs at the same time
 
 public class Calendar : MonoBehaviour
 {
-    // struct which holds the timeslot essentially for the time of day. can have a course or a club
-    // perhaps make club and course subclasses of an activity superclass. so that each schedule slot can just have an activity. idk
-    // and/or mascot events/dates are also things that can be in the activity struct
+    // struct which holds the timeslot essentially for the time of day. can have a course, a club, and a location.
+    // currently the same time and day can have a course and a club, this is easily changeable if this isn't desired behavior
+
+    // * perhaps make club and course subclasses of an activity superclass. so that each schedule slot can just have an activity. idk
+    // * and/or mascot events/dates are also things that can be in the activity struct
     public struct Activity
     {
         public Course course;
@@ -23,6 +27,8 @@ public class Calendar : MonoBehaviour
         public Location location;
     }
 
+    // 2d array holding activities for each time/day combination
+    // indexed using ints instead of [time, day] because it's an array. the time/day are casted to ints to retrieve the value at the indices
     public Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
@@ -32,11 +38,12 @@ public class Calendar : MonoBehaviour
     
     // member functions
 
-    // UnEncode time and day integers to the strings they correspond to. this doesn't have to be in this class.. probably..
-    public string TimeToString(GlobalVars.Time time) {
-        if (time == GlobalVars.Time.midday) return "midday";
-        if (time == GlobalVars.Time.afternoon) return "afternoon";
-        if (time == GlobalVars.Time.evening) return "evening";
+    // UnEncode time and day integers to the strings they correspond to. this doesn't have to be in this class.. probably.. (can't put it in GlobalVars because you can't put functions in namespaces)
+    // * the solution is to probably make time, day, and location into their own classes
+    public string TimeToString(TimeSlot time) {
+        if (time == TimeSlot.midday) return "midday";
+        if (time == TimeSlot.afternoon) return "afternoon";
+        if (time == TimeSlot.evening) return "evening";
         return "invalid input!";
     }
 
@@ -55,21 +62,24 @@ public class Calendar : MonoBehaviour
         if (location == Location.none) return "none";
         if (location == Location.belltower) return "belltower";
         if (location == Location.wilcoxs_office) return "wilcox's office";
-        if (location == Location.phys2000) return "phys2000";
+        if (location == Location.physics_2000) return "physics 2000";
         if (location == Location.et_cetera) return "et cetera";
         return "invalid input!";
     }
 
+    // return List of Courses this Calendar has
     public List<Course> GetCourses() 
     {
         return courses;
     }
 
+    // return List of Clubs this Calendar has
     public List<Club> GetClubs() 
     {
         return clubs;
     }
 
+    // add Course course to this Calendar
     public void AddCourse(Course course) 
     {
         // set activity's course and location to that of the course
@@ -84,6 +94,7 @@ public class Calendar : MonoBehaviour
         courses.Add(course);
     }
     
+    // remove Course course to this Calendar
     public void RemoveCourse(Course course)
     {
         // remove time slots in every day that the course is in
@@ -99,6 +110,7 @@ public class Calendar : MonoBehaviour
         courses.Remove(course);
     }
 
+    // add Club club to this Calendar
     public void AddClub(Club club) 
     {
         // set activity's club and location to that of the club
@@ -114,6 +126,7 @@ public class Calendar : MonoBehaviour
         clubs.Add(club);
     }
 
+    // remove Club club from this Calendar
     public void RemoveClub(Club club)
     {
         // remove time slots in every day that the club is in
@@ -130,19 +143,35 @@ public class Calendar : MonoBehaviour
         clubs.Remove(club);
     }
 
-    public Location GetLocation(GlobalVars.Time time, GlobalVars.Day day)
+    // returns true if this Calendar contains designated Course
+    public bool HasCourse(Course course)
+    {
+        return courses.Contains(course);
+    }
+
+    // returns true if this Calendar contains designated Club
+    public bool HasClub(Club club) 
+    {
+        return clubs.Contains(club);
+    }
+
+    // returns Location enum of the Activity (Club or Course) at Time time and Day day for this Calendar
+    // if there is no Activity for that time/day combination, this returns Location.none
+    public Location GetLocation(TimeSlot time, Day day)
     {
         return schedule[(int)time, (int)day].location;
     }
 
-    
+    // returns Course at Time time and Day day for this Calendar
     // NOTE: returns null if there is no course at that time and day
-    public Course GetCourseAtTime(GlobalVars.Time time, GlobalVars.Day day) 
+    public Course GetCourseAtTime(TimeSlot time, Day day) 
     {
         return schedule[(int)time, (int)day].course;
     }
 
-    public List<Course> GetCoursesOnDay(GlobalVars.Day day)
+    // returns List of Courses on Day day (Course at each time slot in the day) in order of time
+    // NOTE: elements of the List will be *null* if there is no Course at that time slot
+    public List<Course> GetCoursesOnDay(Day day)
     {
         List<Course> courseList = new List<Course>();
         for (int i = 0; i < 3; i++) {
@@ -151,13 +180,16 @@ public class Calendar : MonoBehaviour
         return courseList;
     }
 
+    // returns Club at Time time and Day day for this calendar
     // NOTE: returns null if there is no club at that time and day
-    public Club GetClubAtTime(GlobalVars.Time time, GlobalVars.Day day)
+    public Club GetClubAtTime(TimeSlot time, Day day)
     {
         return schedule[(int)time, (int)day].club;
     }
 
-    public List<Club> GetClubsOnDay(GlobalVars.Day day)
+    // returns List of Clubs on Day day (Club at each time slot in the day) in order of time
+    // NOTE: elements of the List will be *null* if there is no Course at that time slot
+    public List<Club> GetClubsOnDay(Day day)
     {
         List<Club> clubList = new List<Club>();
         for (int i = 0; i < 3; i++) {
@@ -172,15 +204,15 @@ public class Calendar : MonoBehaviour
         for (int i = 0; i < courses.Count; i++) {
             string times = "";
             for (int j = 0; j < courses[i].times.Count - 1; j++) {
-                times += TimeToString((GlobalVars.Time)courses[i].times[j]) + ", ";
+                times += TimeToString(courses[i].times[j]) + ", ";
             }
-            times += TimeToString((GlobalVars.Time)courses[i].times[courses[i].times.Count - 1]);
+            times += TimeToString(courses[i].times[courses[i].times.Count - 1]);
 
             string days = "";
             for (int j = 0; j < courses[i].days.Count; j++) {
-                days += DayToString((GlobalVars.Day)courses[i].days[j]) + ", ";
+                days += DayToString(courses[i].days[j]) + ", ";
             }
-            days += DayToString((GlobalVars.Day)courses[i].days[courses[i].days.Count - 1]);
+            days += DayToString(courses[i].days[courses[i].days.Count - 1]);
 
             string location = LocationToString(courses[i].location);
 
@@ -210,6 +242,6 @@ public class Calendar : MonoBehaviour
 
     void Update()
     {
-        
+        // data structure moment
     }
 }
