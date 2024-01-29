@@ -606,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -105.2, y: -114.7}
+  m_AnchoredPosition: {x: -139.1, y: -120.2}
   m_SizeDelta: {x: 78.1262, y: 30}
   m_Pivot: {x: 0.4999999, y: 0.5}
 --- !u!114 &219998049
@@ -1609,7 +1609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51.413, y: -114.7}
+  m_AnchoredPosition: {x: 25.55, y: -124.7}
   m_SizeDelta: {x: 235.1, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919407754
@@ -2420,8 +2420,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25.9, y: 94.9}
-  m_SizeDelta: {x: 251.7747, y: 50}
+  m_AnchoredPosition: {x: -0.000014305, y: 108.7}
+  m_SizeDelta: {x: 410.044, y: 49.1073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436414020
 MonoBehaviour:
@@ -2443,12 +2443,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "testing courses/clubs guide: \r\n            cs141: times: TR afternoons,
-    location: wilcox's office\r\n            phys040B: times: W middays, location:
-    physics 2000\r\n            math031: times; MWF evenings, location: belltower\r\n\r\n           
-    Gamespawn: times: W afternoons, location: hub\r\n            HLG: times: sat/sun
-    middays and evenings, location: et cetera\r\n            ACM: times: MWF afternoons
-    and evenings, location: wilcox's office"
+  m_text: "testing courses/clubs guide: (YOU MIGHT HAVE TO CHANGE IT TO FREE ASPECT
+    TO SEE EVERYTHING)\n            cs141: times: TR afternoons, location: wilcox's
+    office\r\n            phys040B: times: TWR middays, location: physics 2000\r\n           
+    math031: times; MWF evenings, location: belltower\r\n\r\n            Gamespawn:
+    times: W afternoons, location: hub\r\n            HLG: times: sat/sun middays
+    and evenings, location: et cetera\r\n            ACM: times: MWF afternoons and
+    evenings, location: wilcox's office"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2475,8 +2476,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2511,7 +2512,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -132.11475, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.8926697, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3214,9 +3215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj_progressTime: {fileID: 219998047}
   obj_currentTimeDisplay: {fileID: 919407752}
+  calendar: {fileID: 2070853246}
   tmp_currentTimeDisplay: {fileID: 0}
   btn_progressTime: {fileID: 0}
-  calendar: {fileID: 2070853246}
 --- !u!4 &1640280163
 Transform:
   m_ObjectHideFlags: 0
@@ -4047,8 +4048,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.5824, y: 89.005646}
-  m_SizeDelta: {x: 229.0406, y: 136.5887}
+  m_AnchoredPosition: {x: 32.492382, y: 87.2}
+  m_SizeDelta: {x: 267.4253, y: 136.5887}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874239508
 MonoBehaviour:
@@ -4667,7 +4668,7 @@ GameObject:
   - component: {fileID: 2137639306}
   - component: {fileID: 2137639305}
   m_Layer: 0
-  m_Name: CalendarTester
+  m_Name: CalendarTestManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

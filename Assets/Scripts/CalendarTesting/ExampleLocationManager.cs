@@ -7,7 +7,7 @@ using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LocationManager : MonoBehaviour
+public class ExampleLocationManager : MonoBehaviour
 {
     // example location manager for testing purposes (stub stub stub stub stub)
     // "progress time" button increments the time, then retrieves the club and course at that time/day from Calendar
@@ -15,9 +15,10 @@ public class LocationManager : MonoBehaviour
     // set ye olde fields in inspector
     public GameObject obj_progressTime;
     public GameObject obj_currentTimeDisplay;
+    public Calendar calendar;
+
     public TextMeshProUGUI tmp_currentTimeDisplay;
     public Button btn_progressTime;
-    public Calendar calendar;
 
     private Day currentDay;
     private TimeSlot currentTimeSlot;
@@ -46,23 +47,29 @@ public class LocationManager : MonoBehaviour
         var clubAtTime = calendar.GetClubAtTime(currentTimeSlot, currentDay);
         var courseName = "";
         var clubName = "";
-        var locationName = "";
-        
+        var locationName = "none";
+
+        bool clubWasNull = false;
+
         // check club first so that course overwrites club information if there's a conflict (don't skip class kids)
         if (clubAtTime != null) {
             clubName = clubAtTime.name;
             locationName = calendar.LocationToString(clubAtTime.location);
         }
+        else clubWasNull = true;
 
         if (courseAtTime != null) {
             courseName = courseAtTime.name;
             locationName = calendar.LocationToString(courseAtTime.location);
         }
-        
+        else if (clubWasNull == true) {
+            clubName = "";
+            courseName = "free time!";
+        }
 
-        displayText += courseName + clubName;
-
-        displayText += string.Format($"\ncurrent location: {locationName}");
+        displayText += courseName + " " + clubName;
+           
+        displayText += string.Format($"\ncurrent location: {locationName} ");
 
         tmp_currentTimeDisplay.text = displayText;
     }

@@ -9,8 +9,10 @@ using System.ComponentModel;
 using System.Collections.Generic;
 
 // data structure for keeping track of a mascot/player's Clubs and Courses
-// use AddCourse(course)/AddClub(club) to add courses/clubs to this calendar
+// use AddCourse(course) / AddClub(club) to add courses/clubs to this calendar
 // automatically assigns the course/club's times to the correct time/day slot in this calendar
+// use GetCourseAtTime(timeSlot, day) / GetClubAtTime(timeSlot, day) to get the course/club stored at that time and day
+// use GetCoursesOnDay(day) / GetClubsOnDay(day) to get a list of the courses/clubs stored on that day, in order of time
 // currently cannot add multiple courses/clubs at the same time
 
 public class Calendar : MonoBehaviour
@@ -28,7 +30,7 @@ public class Calendar : MonoBehaviour
     }
 
     // 2d array holding activities for each time/day combination
-    // indexed using ints instead of [time, day] because it's an array. the time/day are casted to ints to retrieve the value at the indices
+    // indexed using ints instead of [Time, Day] because it's an array. the time/day are casted to ints to retrieve the value at the indices
     public Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
@@ -38,7 +40,7 @@ public class Calendar : MonoBehaviour
     
     // member functions
 
-    // UnEncode time and day integers to the strings they correspond to. this doesn't have to be in this class.. probably.. (can't put it in GlobalVars because you can't put functions in namespaces)
+    // UnEncode time/day/location enums to the strings they correspond to. this doesn't have to be in this class.. probably.. (can't put it in GlobalVars because you can't put functions in namespaces)
     // * the solution is to probably make time, day, and location into their own classes
     public string TimeToString(TimeSlot time) {
         if (time == TimeSlot.midday) return "midday";
@@ -198,33 +200,6 @@ public class Calendar : MonoBehaviour
         return clubList;
     }
 
-    // format course to a string (with multiple lines!)
-    public string GetCoursesToString() {
-        string str = "";
-        for (int i = 0; i < courses.Count; i++) {
-            string times = "";
-            for (int j = 0; j < courses[i].times.Count - 1; j++) {
-                times += TimeToString(courses[i].times[j]) + ", ";
-            }
-            times += TimeToString(courses[i].times[courses[i].times.Count - 1]);
-
-            string days = "";
-            for (int j = 0; j < courses[i].days.Count; j++) {
-                days += DayToString(courses[i].days[j]) + ", ";
-            }
-            days += DayToString(courses[i].days[courses[i].days.Count - 1]);
-
-            string location = LocationToString(courses[i].location);
-
-            str += "course: " + courses[i].name +
-                   "\ntimes: " + times + 
-                   "\ndays: " + days + 
-                   "\nlocation: " + location + 
-                   "\n";
-        }
-        return str;
-    }
-
     void Start() 
     {
         // clear schedule
@@ -238,10 +213,5 @@ public class Calendar : MonoBehaviour
 
         courses = new List<Course>();
         clubs = new List<Club>();
-    }
-
-    void Update()
-    {
-        // data structure moment
     }
 }

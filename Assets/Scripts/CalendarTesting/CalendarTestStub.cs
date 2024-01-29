@@ -9,22 +9,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CalendarTest : MonoBehaviour
+public class CalendarTestStub : MonoBehaviour
 {
     /*
         testing courses/clubs guide: 
             cs141: times: TR afternoons, location: wilcox's office
-            phys040B: times: W middays, location: physics 2000
+            phys040B: times: TWR middays, location: physics 2000
             math031: times; MWF evenings, location: belltower
 
             Gamespawn: times: W afternoons, location: hub
             HLG: times: sat/sun middays and evenings, location: et cetera
             ACM: times: MWF afternoons and evenings, location: wilcox's office
     */
-
-
-
-
 
     public Button b_cs141Add; // SET IN I N S P E C T O R 
     public Button b_cs141Remove; // SET IN I N S P E C T O R 
@@ -95,35 +91,35 @@ public class CalendarTest : MonoBehaviour
         b_acmRemove.onClick.AddListener(delegate { CalendarRemoveClub(club_acm); });
 
         // define stubs
-        course_cs141 = new Course("cs141", 
-                                  new List<TimeSlot> {TimeSlot.afternoon},
-                                  new List<Day> {Day.Tuesday, Day.Thursday},
-                                  Location.wilcoxs_office); 
+        course_cs141    = new Course("cs141", 
+                                    new List<TimeSlot> {TimeSlot.afternoon},
+                                    new List<Day> {Day.Tuesday, Day.Thursday},
+                                    Location.wilcoxs_office); 
 
         course_phys040b = new Course("phys040b", 
                                     new List<TimeSlot> {TimeSlot.midday},
-                                    new List<Day> {Day.Wednesday},
+                                    new List<Day> {Day.Tuesday, Day.Wednesday, Day.Thursday},
                                     Location.physics_2000);
 
-        course_math031 = new Course("math031", 
+        course_math031  = new Course("math031", 
                                     new List<TimeSlot> {TimeSlot.evening}, 
                                     new List<Day> {Day.Monday, Day.Wednesday, Day.Friday}, 
                                     Location.belltower);
         
-        club_gamespawn = new Club("Gamespawn",
-                                  new List<TimeSlot> {TimeSlot.afternoon},
-                                  new List<Day> {Day.Wednesday},
-                                  Location.hub);
+        club_gamespawn  = new Club("Gamespawn",
+                                    new List<TimeSlot> {TimeSlot.afternoon},
+                                    new List<Day> {Day.Wednesday},
+                                    Location.hub);
         
-        club_hlg = new Club("HLG",
-                                  new List<TimeSlot> {TimeSlot.midday, TimeSlot.evening},
-                                  new List<Day> {Day.Sunday, Day.Saturday},
-                                  Location.et_cetera);
+        club_hlg        = new Club("HLG",
+                                    new List<TimeSlot> {TimeSlot.midday, TimeSlot.evening},
+                                    new List<Day> {Day.Sunday, Day.Saturday},
+                                    Location.et_cetera);
         
-        club_acm = new Club("ACM",
-                                  new List<TimeSlot> {TimeSlot.afternoon, TimeSlot.evening},
-                                  new List<Day> {Day.Monday, Day.Wednesday, Day.Friday},
-                                  Location.wilcoxs_office);
+        club_acm        = new Club("ACM",
+                                    new List<TimeSlot> {TimeSlot.afternoon, TimeSlot.evening},
+                                    new List<Day> {Day.Monday, Day.Wednesday, Day.Friday},
+                                    Location.wilcoxs_office);
     }
 
 
