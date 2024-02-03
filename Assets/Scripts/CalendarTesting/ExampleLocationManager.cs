@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using GlobalVars;
 using TMPro;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,8 +34,8 @@ public class ExampleLocationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var dayString = calendar.DayToString(currentDay);
-        var timeString = calendar.TimeToString(currentTimeSlot);
+        var dayString = Calendar.DayToString(currentDay);
+        var timeString = Calendar.TimeToString(currentTimeSlot);
         var displayText = string.Format($"current time: {timeString} on {dayString}\n");
 
         displayText += "current activity: ";
@@ -54,13 +50,13 @@ public class ExampleLocationManager : MonoBehaviour
         // check club first so that course overwrites club information if there's a conflict (don't skip class kids)
         if (clubAtTime != null) {
             clubName = clubAtTime.name;
-            locationName = calendar.LocationToString(clubAtTime.location);
+            locationName = Calendar.LocationToString(clubAtTime.location);
         }
         else clubWasNull = true;
 
         if (courseAtTime != null) {
             courseName = courseAtTime.name;
-            locationName = calendar.LocationToString(courseAtTime.location);
+            locationName = Calendar.LocationToString(courseAtTime.location);
         }
         else if (clubWasNull == true) {
             clubName = "";

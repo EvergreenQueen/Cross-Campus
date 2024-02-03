@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using GlobalVars;
 using TMPro;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class CalendarDisplay : MonoBehaviour
@@ -29,13 +25,13 @@ public class CalendarDisplay : MonoBehaviour
         var courseStr = "courses: \n";
 
         for (var j = Day.Sunday; j <= Day.Saturday; j++) {
-            courseStr += calendar.DayToString(j) + "\t\t";
+            courseStr += Calendar.DayToString(j) + "\t\t";
             if (j == Day.Friday) courseStr += "\t"; // add extra tab to friday to align it better
             courseStr += ": ";      
             var courses = calendar.GetCoursesOnDay(j);
-            for (int i = 0; i < courses.Count; i++) {
-                if (courses[i] != null) {
-                    courseStr += courses[i].name + " ";
+            foreach (var course in courses) {
+                if (course != null) {
+                    courseStr += course.name + " ";
                 }
                 else courseStr += "none ";
             }
@@ -47,13 +43,13 @@ public class CalendarDisplay : MonoBehaviour
 
         var clubStr = "clubs: \n";
         for (var j = Day.Sunday; j <= Day.Saturday; j++) {
-            clubStr += calendar.DayToString(j) + "\t\t";
+            clubStr += Calendar.DayToString(j) + "\t\t";
             if (j == Day.Friday) clubStr += "\t"; // add extra tab to friday to align it better
             clubStr += ": ";            
             var clubs = calendar.GetClubsOnDay(j);
-            for (int i = 0; i < clubs.Count; i++) {
-                if (clubs[i] != null) {
-                    clubStr += clubs[i].name + " ";
+            foreach (var club in clubs) {
+                if (club != null) {
+                    clubStr += club.name + " ";
                 }
                 else clubStr += "none ";
             }

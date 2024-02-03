@@ -1,11 +1,5 @@
-using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
 using GlobalVars;
-using System.Linq;
-using UnityEditor.Rendering.Universal;
-using System.Globalization;
-using System.Diagnostics.Tracing;
-using System.ComponentModel;
 using System.Collections.Generic;
 
 // data structure for keeping track of a mascot/player's Clubs and Courses
@@ -31,7 +25,7 @@ public class Calendar : MonoBehaviour
 
     // 2d array holding activities for each time/day combination
     // indexed using ints instead of [Time, Day] because it's an array. the time/day are casted to ints to retrieve the value at the indices
-    public Activity[,] schedule = new Activity[3, 7];
+    private Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
     private List<Course> courses;
@@ -42,14 +36,14 @@ public class Calendar : MonoBehaviour
 
     // UnEncode time/day/location enums to the strings they correspond to. this doesn't have to be in this class.. probably.. (can't put it in GlobalVars because you can't put functions in namespaces)
     // * the solution is to probably make time, day, and location into their own classes
-    public string TimeToString(TimeSlot time) {
+    public static string TimeToString(TimeSlot time) {
         if (time == TimeSlot.midday) return "midday";
         if (time == TimeSlot.afternoon) return "afternoon";
         if (time == TimeSlot.evening) return "evening";
         return "invalid input!";
     }
 
-    public string DayToString(Day day) {
+    public static string DayToString(Day day) {
         if (day == Day.Sunday) return "Sunday";
         if (day == Day.Monday) return "Monday";
         if (day == Day.Tuesday) return "Tuesday";
@@ -60,7 +54,7 @@ public class Calendar : MonoBehaviour
         return "invalid input!";
     }
 
-    public string LocationToString(Location location) {
+    public static string LocationToString(Location location) {
         if (location == Location.none) return "none";
         if (location == Location.belltower) return "belltower";
         if (location == Location.wilcoxs_office) return "wilcox's office";
@@ -82,14 +76,13 @@ public class Calendar : MonoBehaviour
     }
 
     // add Course course to this Calendar
-    public void AddCourse(Course course) 
-    {
+    public void AddCourse(Course course) {
         // set activity's course and location to that of the course
         // add all course times and days
-        for (int i = 0; i < course.times.Count; i++) {
-            for (int j = 0; j < course.days.Count; j++) {
-                schedule[(int)course.times[i], (int)course.days[j]].course = course;
-                schedule[(int)course.times[i], (int)course.days[j]].location = course.location;
+        foreach (var timeSlot in course.times) {
+            foreach (var day in course.days) {
+                schedule[(int)timeSlot, (int)day].course = course;
+                schedule[(int)timeSlot, (int)day].location = course.location;
             }
         }
 
@@ -97,15 +90,14 @@ public class Calendar : MonoBehaviour
     }
     
     // remove Course course to this Calendar
-    public void RemoveCourse(Course course)
-    {
+    public void RemoveCourse(Course course) {
         // remove time slots in every day that the course is in
-        for (int i = 0; i < course.times.Count; i++) {
-            for (int j = 0; j < course.days.Count; j++) {
-                var tempCourse = schedule[(int)course.times[i], (int)course.days[j]].course;
-                if (tempCourse == course) schedule[(int)course.times[i], (int)course.days[j]].course = null;
-                var tempLocation = schedule[(int)course.times[i], (int)course.days[j]].location;
-                if (tempCourse == course) schedule[(int)course.times[i], (int)course.days[j]].location = Location.none;
+        foreach (var timeSlot in course.times) {
+            foreach (var day in course.days) {
+                var tempCourse = schedule[(int)timeSlot, (int)day].course;
+                if (tempCourse == course) schedule[(int)timeSlot, (int)day].course = null;
+                var tempLocation = schedule[(int)timeSlot, (int)day].location;
+                if (tempCourse == course) schedule[(int)timeSlot, (int)day].location = Location.none;
             }
         }
 
@@ -113,15 +105,14 @@ public class Calendar : MonoBehaviour
     }
 
     // add Club club to this Calendar
-    public void AddClub(Club club) 
-    {
+    public void AddClub(Club club) {
         // set activity's club and location to that of the club
         // add all club times and days
         // does overwrite club that was there before
-        for (int i = 0; i < club.times.Count; i++) {
-            for (int j = 0; j < club.days.Count; j++) {
-                schedule[(int)club.times[i], (int)club.days[j]].club = club;
-                schedule[(int)club.times[i], (int)club.days[j]].location = club.location;
+        foreach (var timeSlot in club.times) {
+            foreach (var day in club.days) {
+                schedule[(int)timeSlot, (int)day].club = club;
+                schedule[(int)timeSlot, (int)day].location = club.location;
             }
         }
 
@@ -129,16 +120,15 @@ public class Calendar : MonoBehaviour
     }
 
     // remove Club club from this Calendar
-    public void RemoveClub(Club club)
-    {
+    public void RemoveClub(Club club) {
         // remove time slots in every day that the club is in
-        for (int i = 0; i < club.times.Count; i++) {
-            for (int j = 0; j < club.days.Count; j++) {
+        foreach (var timeSlot in club.times) {
+            foreach (var day in club.days) {
                 // don't overwrite something that overwrote the timeslot previously
-                var tempClub = schedule[(int)club.times[i], (int)club.days[j]].club;
-                if (tempClub == club) schedule[(int)club.times[i], (int)club.days[j]].club = null;
-                var tempLocation = schedule[(int)club.times[i], (int)club.days[j]].location;
-                if (tempClub == club) schedule[(int)club.times[i], (int)club.days[j]].location = Location.none;
+                var tempClub = schedule[(int)timeSlot, (int)day].club;
+                if (tempClub == club) schedule[(int)timeSlot, (int)day].club = null;
+                var tempLocation = schedule[(int)timeSlot, (int)day].location;
+                if (tempClub == club) schedule[(int)timeSlot, (int)day].location = Location.none;
             }
         }
 
