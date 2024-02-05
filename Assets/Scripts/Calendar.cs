@@ -7,16 +7,15 @@ using System.Collections.Generic;
 // automatically assigns the course/club's times to the correct time/day slot in this calendar
 // use GetCourseAtTime(timeSlot, day) / GetClubAtTime(timeSlot, day) to get the course/club stored at that time and day
 // use GetCoursesOnDay(day) / GetClubsOnDay(day) to get a list of the courses/clubs stored on that day, in order of time
-// currently cannot add multiple courses/clubs at the same time
+
+// can also be used to give a Mascot certain locations at certain times, without forcing it to have a course/club at
+// that time. 
 
 public class Calendar : MonoBehaviour
 {
     // struct which holds the timeslot essentially for the time of day. can have a course, a club, and a location.
     // currently the same time and day can have a course and a club, this is easily changeable if this isn't desired behavior
-
-    // * perhaps make club and course subclasses of an activity superclass. so that each schedule slot can just have an activity. idk
-    // * and/or mascot events/dates are also things that can be in the activity struct
-    public struct Activity
+    private struct Activity
     {
         public Course course;
         public Club club;
@@ -28,55 +27,74 @@ public class Calendar : MonoBehaviour
     private Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
-    private List<Course> courses;
+    public List<Course> courses = new();
     // store clubs that the player is in
-    private List<Club> clubs;
+    public List<Club> clubs = new();
     
-    // member functions
-
-    // UnEncode time/day/location enums to the strings they correspond to. this doesn't have to be in this class.. probably.. (can't put it in GlobalVars because you can't put functions in namespaces)
-    // * the solution is to probably make time, day, and location into their own classes
-    public static string TimeToString(TimeSlot time) {
-        if (time == TimeSlot.midday) return "midday";
-        if (time == TimeSlot.afternoon) return "afternoon";
-        if (time == TimeSlot.evening) return "evening";
-        return "invalid input!";
+    /// <summary>
+    /// UnEncode time/day/location enums to the strings they correspond to. this doesn't have to be in this class.. probably.. 
+    /// </summary>
+    public static string TimeToString(TimeSlot time)
+    {
+        // fancy schmancy c# switch expression woag
+        return time switch
+        {
+            TimeSlot.midday => "Midday",
+            TimeSlot.afternoon => "Afternoon",
+            TimeSlot.evening => "Evening",
+            _ => "invalid input!"
+        };
     }
 
-    public static string DayToString(Day day) {
-        if (day == Day.Sunday) return "Sunday";
-        if (day == Day.Monday) return "Monday";
-        if (day == Day.Tuesday) return "Tuesday";
-        if (day == Day.Wednesday) return "Wednesday";
-        if (day == Day.Thursday) return "Thursday";
-        if (day == Day.Friday) return "Friday";
-        if (day == Day.Saturday) return "Saturday";
-        return "invalid input!";
+    public static string DayToString(Day day) 
+    {
+        return day switch
+        {
+            Day.Sunday => "Sunday",
+            Day.Monday => "Monday",
+            Day.Tuesday => "Tuesday",
+            Day.Wednesday => "Wednesday",
+            Day.Thursday => "Thursday",
+            Day.Friday => "Friday",
+            Day.Saturday => "Saturday",
+            _ => "invalid input!"
+        };
     }
 
-    public static string LocationToString(Location location) {
-        if (location == Location.none) return "none";
-        if (location == Location.belltower) return "belltower";
-        if (location == Location.wilcoxs_office) return "wilcox's office";
-        if (location == Location.physics_2000) return "physics 2000";
-        if (location == Location.et_cetera) return "et cetera";
-        return "invalid input!";
+    public static string LocationToString(Location location) 
+    {
+        return location switch
+        {
+            Location.none => "none",
+            Location.belltower => "belltower",
+            Location.wilcoxs_office => "wilcox's office",
+            Location.physics_2000 => "physics 2000",
+            Location.et_cetera => "et cetera",
+            _ => "invalid input!"
+        };
     }
 
-    // return List of Courses this Calendar has
+    /// <summary>
+    /// return List of Courses this Calendar has
+    /// </summary>
     public List<Course> GetCourses() 
     {
         return courses;
     }
-
-    // return List of Clubs this Calendar has
+    
+    /// <summary>
+    /// return List of Clubs this Calendar has
+    /// </summary>
     public List<Club> GetClubs() 
     {
         return clubs;
     }
-
-    // add Course course to this Calendar
-    public void AddCourse(Course course) {
+    
+    /// <summary>
+    /// add Course course to this Calendar
+    /// </summary>
+    public void AddCourse(Course course) 
+    {
         // set activity's course and location to that of the course
         // add all course times and days
         foreach (var timeSlot in course.times) {
@@ -89,8 +107,11 @@ public class Calendar : MonoBehaviour
         courses.Add(course);
     }
     
-    // remove Course course to this Calendar
-    public void RemoveCourse(Course course) {
+    /// <summary>
+    /// remove Course course to this Calendar
+    /// </summary>
+    public void RemoveCourse(Course course) 
+    {
         // remove time slots in every day that the course is in
         foreach (var timeSlot in course.times) {
             foreach (var day in course.days) {
@@ -103,9 +124,11 @@ public class Calendar : MonoBehaviour
 
         courses.Remove(course);
     }
-
-    // add Club club to this Calendar
-    public void AddClub(Club club) {
+    /// <summary>
+    /// add Club club to this Calendar
+    /// </summary>
+    public void AddClub(Club club) 
+    {
         // set activity's club and location to that of the club
         // add all club times and days
         // does overwrite club that was there before
@@ -118,9 +141,12 @@ public class Calendar : MonoBehaviour
 
         clubs.Add(club);
     }
-
-    // remove Club club from this Calendar
-    public void RemoveClub(Club club) {
+    
+    /// <summary>
+    /// remove Club club from this Calendar
+    /// </summary>
+    public void RemoveClub(Club club) 
+    {
         // remove time slots in every day that the club is in
         foreach (var timeSlot in club.times) {
             foreach (var day in club.days) {
@@ -134,35 +160,60 @@ public class Calendar : MonoBehaviour
 
         clubs.Remove(club);
     }
-
-    // returns true if this Calendar contains designated Course
+    
+    /// <summary>
+    /// set location Location to Time time and Day day. this is so give something a location without forcing it to have
+    /// a course or club at that time/day. for mascots. it's for mascots.
+    /// </summary>
+    /// <remarks>
+    /// also overrides course and club at that time/day.
+    /// </remarks>
+    public void SetLocation(TimeSlot time, Day day, Location location)
+    {
+        Activity ac = schedule[(int)time, (int)day];
+        ac.location = location;
+        ac.course = null;
+        ac.club = null;
+    }
+    
+    /// <summary>
+    /// returns true if this Calendar contains designated Course
+    /// </summary>
     public bool HasCourse(Course course)
     {
         return courses.Contains(course);
     }
-
-    // returns true if this Calendar contains designated Club
+    
+    /// <summary>
+    /// returns true if this Calendar contains designated Club
+    /// </summary>
     public bool HasClub(Club club) 
     {
         return clubs.Contains(club);
     }
-
-    // returns Location enum of the Activity (Club or Course) at Time time and Day day for this Calendar
-    // if there is no Activity for that time/day combination, this returns Location.none
+    
+    /// <summary>
+    /// returns Location enum of the Activity (Club or Course) at Time time and Day day for this Calendar
+    /// if there is no Activity for that time/day combination, this returns Location.none
+    /// </summary>
     public Location GetLocation(TimeSlot time, Day day)
     {
         return schedule[(int)time, (int)day].location;
     }
-
-    // returns Course at Time time and Day day for this Calendar
-    // NOTE: returns null if there is no course at that time and day
+    
+    /// <summary>
+    /// returns Course at Time time and Day day for this Calendar
+    /// </summary>
+    /// <remarks> returns null if there is no course at that time and day </remarks>
     public Course GetCourseAtTime(TimeSlot time, Day day) 
     {
         return schedule[(int)time, (int)day].course;
     }
 
-    // returns List of Courses on Day day (Course at each time slot in the day) in order of time
-    // NOTE: elements of the List will be *null* if there is no Course at that time slot
+    /// <summary>
+    /// returns List of Courses on Day day (Course at each time slot in the day) in order of time
+    /// </summary>
+    /// <remarks> elements of the List will be *null* if there is no Course at that time slot </remarks>
     public List<Course> GetCoursesOnDay(Day day)
     {
         List<Course> courseList = new List<Course>();
@@ -171,16 +222,20 @@ public class Calendar : MonoBehaviour
         }
         return courseList;
     }
-
-    // returns Club at Time time and Day day for this calendar
-    // NOTE: returns null if there is no club at that time and day
+    
+    /// <summary>
+    /// returns Club at Time time and Day day for this calendar
+    /// </summary>
+    /// <remarks> returns null if there is no club at that time and day </remarks>
     public Club GetClubAtTime(TimeSlot time, Day day)
     {
         return schedule[(int)time, (int)day].club;
     }
 
-    // returns List of Clubs on Day day (Club at each time slot in the day) in order of time
-    // NOTE: elements of the List will be *null* if there is no Course at that time slot
+    /// <summary>
+    /// returns List of Clubs on Day day (Club at each time slot in the day) in order of time
+    /// </summary>
+    /// <remarks> elements of the List will be *null* if there is no Course at that time slot </remarks>
     public List<Club> GetClubsOnDay(Day day)
     {
         List<Club> clubList = new List<Club>();
@@ -200,8 +255,5 @@ public class Calendar : MonoBehaviour
                 schedule[i, j].location = Location.none;
             }
         }
-
-        courses = new List<Course>();
-        clubs = new List<Club>();
     }
 }
