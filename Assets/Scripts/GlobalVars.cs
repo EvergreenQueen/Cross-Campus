@@ -26,6 +26,8 @@ namespace GlobalVars
     // public enum Location {in_class, belltower, hub, wilcoxs_office, et_cetera}; // naming conventions not final
 
     // supporting classes for Calendar!
+    // for giving the ability to create courses in the inspector
+    [System.Serializable]
     public class Club
     {
         public string name;
@@ -42,6 +44,8 @@ namespace GlobalVars
         }
     }
 
+    // for giving the ability to create clubs in the inspector
+    [System.Serializable]
     public class Course
     {
         public string name;

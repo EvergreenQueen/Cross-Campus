@@ -95,12 +95,12 @@ public class CalendarTestStub : MonoBehaviour
                                     new List<TimeSlot> {TimeSlot.afternoon},
                                     new List<Day> {Day.Tuesday, Day.Thursday},
                                     Location.wilcoxs_office); 
-
+        
         course_phys040b = new Course("phys040b", 
                                     new List<TimeSlot> {TimeSlot.midday},
                                     new List<Day> {Day.Tuesday, Day.Wednesday, Day.Thursday},
                                     Location.physics_2000);
-
+        
         course_math031  = new Course("math031", 
                                     new List<TimeSlot> {TimeSlot.evening}, 
                                     new List<Day> {Day.Monday, Day.Wednesday, Day.Friday}, 
