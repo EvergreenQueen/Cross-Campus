@@ -49,8 +49,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         //handle continuing to next line in dialogue when submit pressed
-        //in our case, i'm lazy so i decided to use enter instead
-        if(Input.GetKeyDown(KeyCode.C)){
+        if(Input.GetKeyDown(KeyCode.Space)){
             ContinueStory();
         }
     }
@@ -73,6 +72,7 @@ public class DialogueManager : MonoBehaviour
             //handling tags
             HandleTags(currentStory.currentTags);
         }else{
+            Debug.Log("hallo?");
             ExitDialogueMode();
             displayImage.gameObject.SetActive(false);
         }
@@ -106,7 +106,7 @@ public class DialogueManager : MonoBehaviour
                     }
                     break;
                 case EXTRA_TAG:
-                    if(tagValue == "jayRoom"){
+                    if(tagValue != ""){
                         StartCoroutine(switchScene(tagValue));
                     }
                     break;
@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
         switch(whatScene){
-            case "jayRoom":
+            case "scottysbedroomlmao":
                 break;
             case null:
                 break;

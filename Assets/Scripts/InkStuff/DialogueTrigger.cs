@@ -6,20 +6,29 @@ public class DialogueTrigger : MonoBehaviour
 {
 
     [Header("Ink Jason for Test Purposes")]
-    [SerializeField] private TextAsset inkRoom;
-    private bool playerInRange;
-    private string bumpedIntoWhat = "";
+    [SerializeField] private TextAsset testInk;
+    [SerializeField] private TextAsset scottyInk1;
+    private string talkingTo = "";
+    private bool startedIntro = false;
 
     private void Awake(){
-        playerInRange = false;
+        talkingTo = "Introduction";
+    }
+
+    void Start(){
     }
 
     private void Update(){
-        if(playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying){
-            if(Input.GetKey(KeyCode.C)){
-                switch(bumpedIntoWhat){
-                    case "Door":
-                        DialogueManager.GetInstance().EnterDialogueMode(inkRoom);
+        if(!startedIntro){
+            DialogueManager.GetInstance().EnterDialogueMode(testInk);
+            startedIntro = true;
+            talkingTo = "Scotty";
+        }
+        if(!DialogueManager.GetInstance().dialogueIsPlaying){
+            if(Input.GetKey(KeyCode.Space)){
+                switch(talkingTo){
+                    case "Scotty":
+                        DialogueManager.GetInstance().EnterDialogueMode(scottyInk1);
                         break;
                     case null:
                         break;
@@ -29,16 +38,5 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider){
-        if(collider.gameObject.tag == "Interactable"){
-            playerInRange = true;
-            bumpedIntoWhat = collider.gameObject.transform.parent.name;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collider){
-        if(collider.gameObject.tag == "Interactable"){
-            playerInRange = false;
-        }
-    }
+    //functions down here handle whatever button is pressed
 }
