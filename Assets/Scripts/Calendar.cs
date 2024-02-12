@@ -1,6 +1,6 @@
 using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
-using GlobalVars;
+using GlobalVariables;
 using System.Linq;
 using UnityEditor.Rendering.Universal;
 using System.Globalization;
@@ -27,14 +27,14 @@ public class Calendar
     
     // 3x7 2d array, each storing location enum
     // first dimension is time, second is day, i.e. afternoon on thursday would be schedule[2, 5] (?)
-    private Location[,] schedule = new Location[3, 7];
+    private GlobalVars.Location[,] schedule = new GlobalVars.Location[3, 7];
 
     // store courses that the player is in
-    private Course[] courseSchedule;
+    private GlobalVars.Course[] courseSchedule;
     // store clubs that the player is in
-    private Club[] clubSchedule;
+    private GlobalVars.Club[] clubSchedule;
 
-    public void UpdateCourseSchedule(Course[] newCourses)
+    public void UpdateCourseSchedule(GlobalVars.Course[] newCourses)
     {
         // TODO somehow indicate what responsibility the calendar owner has at the given location in the schedule
         for (int i = 0; i < newCourses.Length; i++) 
@@ -45,19 +45,19 @@ public class Calendar
                 courseSchedule.Append(course);
                 for (int j = 0; j < course.times.Length; j++) {
                     for (int k = 0; k < course.dates.Length; k++) {
-                        AddLocation(course.times[j], course.dates[k], Location.et_cetera); // TODO TODO FIXME CHANGE THIS TO THE LOCATION OF THE COURSE
+                        AddLocation(course.times[j], course.dates[k], GlobalVars.Location.et_cetera); // TODO TODO FIXME CHANGE THIS TO THE LOCATION OF THE COURSE
                     }
                 }
             }
         }
     }
 
-    public Course[] GetCourseSchedule() 
+    public GlobalVars.Course[] GetCourseSchedule() 
     {
         return courseSchedule;
     }
 
-    public void UpdateClubSchedule(Club[] newClubs)
+    public void UpdateClubSchedule(GlobalVars.Club[] newClubs)
     {
         for (int i = 0; i < newClubs.Length; i++)
         {
@@ -66,23 +66,23 @@ public class Calendar
                 clubSchedule.Append(club);
                 for (int j = 0; j < club.times.Length; j++) {
                     for (int k = 0; k < club.dates.Length; k++) {
-                        AddLocation(club.times[j], club.dates[k], Location.et_cetera); // TODO TODO FIXME CHANGE THIS TO THE LOCATION OF THE COURSE
+                        AddLocation(club.times[j], club.dates[k], GlobalVars.Location.et_cetera); // TODO TODO FIXME CHANGE THIS TO THE LOCATION OF THE COURSE
                     }
                 }
             }
         }
     }
-    public Club[] GetClubSchedule() 
+    public GlobalVars.Club[] GetClubSchedule() 
     {
         return clubSchedule;
     }
 
-    public void AddLocation(int time, int day, Location l)
+    public void AddLocation(int time, int day, GlobalVars.Location l)
     {
         schedule[time, day] = l;
     }
 
-    public Location GetLocation(int time, int day)
+    public GlobalVars.Location GetLocation(int time, int day)
     {
         return schedule[time, day];
     }

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using GlobalVars;
+using GlobalVariables;
 using Unity.Mathematics;
+using GlobalVariables;
 
 public class Mascot : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class Mascot : MonoBehaviour
         2. able to get and update information about the characters
     */
 
-    private string name;
+    private string mascotName;
     private int affectionMeter; // int 0-100 to indicate affection level?
     private Calendar calendar; // contains schedule (location at each time and day)
-    private Location currentLocation; 
-    private Course[] courses; 
-    private Club club; 
+    private GlobalVars.Location currentLocation; 
+    private GlobalVars.Course[] courses; 
+    private GlobalVars.Club club; 
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class Mascot : MonoBehaviour
         
     }
 
-    public Location GetLocation() 
+    public GlobalVars.Location GetLocation() 
     {
         return currentLocation;
     }
@@ -62,13 +63,13 @@ public class Mascot : MonoBehaviour
         affectionMeter = math.clamp(affectionMeter + amount, 0, 100);
     }
 
-    public Club GetClub() 
+    public GlobalVars.Club GetClub() 
     {
         return club;
     }
     
     // returns array of courses
-    public Course[] GetCourses()
+    public GlobalVars.Course[] GetCourses()
     {
         return courses;
     }
