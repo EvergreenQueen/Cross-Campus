@@ -18,6 +18,9 @@ public class ExampleLocationManager : MonoBehaviour
 
     private Day currentDay;
     private TimeSlot currentTimeSlot;
+    
+    public CourseScriptableObject courseAtTime;
+    public ClubScriptableObject clubAtTime;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,7 @@ public class ExampleLocationManager : MonoBehaviour
         btn_progressTime.onClick.AddListener(delegate {ProgressTime();});
 
         currentDay = Day.Sunday;
-        currentTimeSlot = TimeSlot.midday;
+        currentTimeSlot = TimeSlot.morning;
     }
 
     // Update is called once per frame
@@ -39,8 +42,8 @@ public class ExampleLocationManager : MonoBehaviour
         var displayText = string.Format($"current time: {timeString} on {dayString}\n");
 
         displayText += "current activity: ";
-        var courseAtTime = calendar.GetCourseAtTime(currentTimeSlot, currentDay);
-        var clubAtTime = calendar.GetClubAtTime(currentTimeSlot, currentDay);
+        courseAtTime = calendar.GetCourseAtTime(currentTimeSlot, currentDay);
+        clubAtTime = calendar.GetClubAtTime(currentTimeSlot, currentDay);
         var courseName = "";
         var clubName = "";
         var locationName = "none";
@@ -48,13 +51,13 @@ public class ExampleLocationManager : MonoBehaviour
         bool clubWasNull = false;
 
         // check club first so that course overwrites club information if there's a conflict (don't skip class kids)
-        if (clubAtTime != null) {
+        if (clubAtTime) {
             clubName = clubAtTime.name;
             locationName = Calendar.LocationToString(clubAtTime.location);
         }
         else clubWasNull = true;
 
-        if (courseAtTime != null) {
+        if (courseAtTime) {
             courseName = courseAtTime.name;
             locationName = Calendar.LocationToString(courseAtTime.location);
         }
@@ -74,7 +77,7 @@ public class ExampleLocationManager : MonoBehaviour
     {
 
         if (currentTimeSlot == TimeSlot.evening) {
-            currentTimeSlot = TimeSlot.midday;
+            currentTimeSlot = TimeSlot.morning;
             if (currentDay == Day.Saturday) currentDay = Day.Sunday;
             else currentDay++;
         }

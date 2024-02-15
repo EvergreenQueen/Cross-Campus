@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: MathCourse
-  m_EditorClassIdentifier: Assembly-CSharp:GlobalVars:Course
-  name: Math
-  dates: 010000000300000005000000
-  times: 2003000084030000
-  grade: 100
+  m_Script: {fileID: 11500000, guid: 81ac88802f574ba448682b500a0421a7, type: 3}
+  m_Name: ClubGamespawn
+  m_EditorClassIdentifier: 
+  name: Gamespawn
+  days: 03000000
+  times: 01000000
+  location: 2
+  clubLevel: 0

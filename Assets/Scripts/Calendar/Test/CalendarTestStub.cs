@@ -37,34 +37,34 @@ public class CalendarTestStub : MonoBehaviour
     public Button b_acmRemove; // SET IN I N S P E C T O R 
     
     // course stubs
-    public Course course_cs141;
-    public Course course_phys040b;
-    public Course course_math031;
-
+    public CourseScriptableObject course_cs141;
+    public CourseScriptableObject course_phys040b;
+    public CourseScriptableObject course_math031;
+    
     // club stubs
-    public Club club_gamespawn;
-    public Club club_hlg;
-    public Club club_acm;
+    public ClubScriptableObject club_gamespawn;
+    public ClubScriptableObject club_hlg;
+    public ClubScriptableObject club_acm;
 
 
     public Calendar calendar;
 
-    public void CalendarAddCourse(Course newCourse)
+    public void CalendarAddCourse(CourseScriptableObject newCourse)
     {
         calendar.AddCourse(newCourse);
     }
 
-    public void CalendarRemoveCourse(Course oldCourse) 
+    public void CalendarRemoveCourse(CourseScriptableObject oldCourse) 
     {
         calendar.RemoveCourse(oldCourse);
     }
 
-    public void CalendarAddClub(Club newClub)
+    public void CalendarAddClub(ClubScriptableObject newClub)
     {
         calendar.AddClub(newClub);
     }
 
-    public void CalendarRemoveClub(Club oldClub) 
+    public void CalendarRemoveClub(ClubScriptableObject oldClub) 
     {
         calendar.RemoveClub(oldClub);
     }
@@ -82,44 +82,44 @@ public class CalendarTestStub : MonoBehaviour
         b_phys040bRemove.onClick.AddListener(delegate { CalendarRemoveCourse(course_phys040b); });
         b_math031Add.onClick.AddListener(delegate { CalendarAddCourse(course_math031); });
         b_math031Remove.onClick.AddListener(delegate { CalendarRemoveCourse(course_math031); });
-
+        
         b_gamespawnAdd.onClick.AddListener(delegate { CalendarAddClub(club_gamespawn); });
         b_gamespawnRemove.onClick.AddListener(delegate { CalendarRemoveClub(club_gamespawn); });
         b_hlgAdd.onClick.AddListener(delegate { CalendarAddClub(club_hlg); });
         b_hlgRemove.onClick.AddListener(delegate { CalendarRemoveClub(club_hlg); });
         b_acmAdd.onClick.AddListener(delegate { CalendarAddClub(club_acm); });
         b_acmRemove.onClick.AddListener(delegate { CalendarRemoveClub(club_acm); });
-
-        // define stubs
-        course_cs141    = new Course("cs141", 
-                                    new List<TimeSlot> {TimeSlot.afternoon},
-                                    new List<Day> {Day.Tuesday, Day.Thursday},
-                                    Location.wilcoxs_office); 
         
-        course_phys040b = new Course("phys040b", 
-                                    new List<TimeSlot> {TimeSlot.midday},
-                                    new List<Day> {Day.Tuesday, Day.Wednesday, Day.Thursday},
-                                    Location.physics_2000);
-        
-        course_math031  = new Course("math031", 
-                                    new List<TimeSlot> {TimeSlot.evening}, 
-                                    new List<Day> {Day.Monday, Day.Wednesday, Day.Friday}, 
-                                    Location.belltower);
-        
-        club_gamespawn  = new Club("Gamespawn",
-                                    new List<TimeSlot> {TimeSlot.afternoon},
-                                    new List<Day> {Day.Wednesday},
-                                    Location.hub);
-        
-        club_hlg        = new Club("HLG",
-                                    new List<TimeSlot> {TimeSlot.midday, TimeSlot.evening},
-                                    new List<Day> {Day.Sunday, Day.Saturday},
-                                    Location.et_cetera);
-        
-        club_acm        = new Club("ACM",
-                                    new List<TimeSlot> {TimeSlot.afternoon, TimeSlot.evening},
-                                    new List<Day> {Day.Monday, Day.Wednesday, Day.Friday},
-                                    Location.wilcoxs_office);
+        // // define stubs
+        // course_cs141    = new Course("cs141", 
+        //                             new List<TimeSlot> {TimeSlot.afternoon},
+        //                             new List<Day> {Day.Tuesday, Day.Thursday},
+        //                             Location.wilcoxs_office); 
+        //
+        // course_phys040b = new Course("phys040b", 
+        //                             new List<TimeSlot> {TimeSlot.midday},
+        //                             new List<Day> {Day.Tuesday, Day.Wednesday, Day.Thursday},
+        //                             Location.physics_2000);
+        //
+        // course_math031  = new Course("math031", 
+        //                             new List<TimeSlot> {TimeSlot.evening}, 
+        //                             new List<Day> {Day.Monday, Day.Wednesday, Day.Friday}, 
+        //                             Location.belltower);
+        //
+        // club_gamespawn  = new Club("Gamespawn",
+        //                             new List<TimeSlot> {TimeSlot.afternoon},
+        //                             new List<Day> {Day.Wednesday},
+        //                             Location.hub);
+        //
+        // club_hlg        = new Club("HLG",
+        //                             new List<TimeSlot> {TimeSlot.midday, TimeSlot.evening},
+        //                             new List<Day> {Day.Sunday, Day.Saturday},
+        //                             Location.et_cetera);
+        //
+        // club_acm        = new Club("ACM",
+        //                             new List<TimeSlot> {TimeSlot.afternoon, TimeSlot.evening},
+        //                             new List<Day> {Day.Monday, Day.Wednesday, Day.Friday},
+        //                             Location.wilcoxs_office);
     }
 
 

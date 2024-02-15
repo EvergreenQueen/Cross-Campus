@@ -17,8 +17,8 @@ public class Calendar : MonoBehaviour
     // currently the same time and day can have a course and a club, this is easily changeable if this isn't desired behavior
     private struct Activity
     {
-        public Course course;
-        public Club club;
+        public CourseScriptableObject course;
+        public ClubScriptableObject club;
         public Location location;
     }
 
@@ -27,9 +27,9 @@ public class Calendar : MonoBehaviour
     private Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
-    public List<Course> courses = new();
+    public List<CourseScriptableObject> courses;
     // store clubs that the player is in
-    public List<Club> clubs = new();
+    public List<ClubScriptableObject> clubs;
     
     /// <summary>
     /// UnEncode time/day/location enums to the strings they correspond to. this doesn't have to be in this class.. probably.. 
@@ -39,7 +39,7 @@ public class Calendar : MonoBehaviour
         // fancy schmancy c# switch expression woag
         return time switch
         {
-            TimeSlot.midday => "Midday",
+            TimeSlot.morning => "Morning",
             TimeSlot.afternoon => "Afternoon",
             TimeSlot.evening => "Evening",
             _ => "invalid input!"
@@ -77,7 +77,7 @@ public class Calendar : MonoBehaviour
     /// <summary>
     /// return List of Courses this Calendar has
     /// </summary>
-    public List<Course> GetCourses() 
+    public List<CourseScriptableObject> GetCourses() 
     {
         return courses;
     }
@@ -85,7 +85,7 @@ public class Calendar : MonoBehaviour
     /// <summary>
     /// return List of Clubs this Calendar has
     /// </summary>
-    public List<Club> GetClubs() 
+    public List<ClubScriptableObject> GetClubs() 
     {
         return clubs;
     }
@@ -93,7 +93,7 @@ public class Calendar : MonoBehaviour
     /// <summary>
     /// add Course course to this Calendar
     /// </summary>
-    public void AddCourse(Course course) 
+    public void AddCourse(CourseScriptableObject course) 
     {
         // set activity's course and location to that of the course
         // add all course times and days
@@ -103,14 +103,17 @@ public class Calendar : MonoBehaviour
                 schedule[(int)timeSlot, (int)day].location = course.location;
             }
         }
-
-        courses.Add(course);
+        
+        // since this method is also used to add existing courses to the calendar, check if the
+        // list of courses doesn't already contain the course we're adding
+        if (!courses.Contains(course)) courses.Add(course);
+        Debug.Log($"added course {course.name} to calendar");
     }
     
     /// <summary>
     /// remove Course course to this Calendar
     /// </summary>
-    public void RemoveCourse(Course course) 
+    public void RemoveCourse(CourseScriptableObject course) 
     {
         // remove time slots in every day that the course is in
         foreach (var timeSlot in course.times) {
@@ -127,7 +130,7 @@ public class Calendar : MonoBehaviour
     /// <summary>
     /// add Club club to this Calendar
     /// </summary>
-    public void AddClub(Club club) 
+    public void AddClub(ClubScriptableObject club) 
     {
         // set activity's club and location to that of the club
         // add all club times and days
@@ -138,14 +141,17 @@ public class Calendar : MonoBehaviour
                 schedule[(int)timeSlot, (int)day].location = club.location;
             }
         }
-
-        clubs.Add(club);
+        
+        // since this method is also used to add existing clubs to the calendar, check if the
+        // list of clubs doesn't already contain the club we're adding
+        if (!clubs.Contains(club)) clubs.Add(club);
+        Debug.Log($"added club {club.name} to calendar");
     }
     
     /// <summary>
     /// remove Club club from this Calendar
     /// </summary>
-    public void RemoveClub(Club club) 
+    public void RemoveClub(ClubScriptableObject club) 
     {
         // remove time slots in every day that the club is in
         foreach (var timeSlot in club.times) {
@@ -179,7 +185,7 @@ public class Calendar : MonoBehaviour
     /// <summary>
     /// returns true if this Calendar contains designated Course
     /// </summary>
-    public bool HasCourse(Course course)
+    public bool HasCourse(CourseScriptableObject course)
     {
         return courses.Contains(course);
     }
@@ -187,7 +193,7 @@ public class Calendar : MonoBehaviour
     /// <summary>
     /// returns true if this Calendar contains designated Club
     /// </summary>
-    public bool HasClub(Club club) 
+    public bool HasClub(ClubScriptableObject club) 
     {
         return clubs.Contains(club);
     }
@@ -205,7 +211,7 @@ public class Calendar : MonoBehaviour
     /// returns Course at Time time and Day day for this Calendar
     /// </summary>
     /// <remarks> returns null if there is no course at that time and day </remarks>
-    public Course GetCourseAtTime(TimeSlot time, Day day) 
+    public CourseScriptableObject GetCourseAtTime(TimeSlot time, Day day) 
     {
         return schedule[(int)time, (int)day].course;
     }
@@ -214,9 +220,9 @@ public class Calendar : MonoBehaviour
     /// returns List of Courses on Day day (Course at each time slot in the day) in order of time
     /// </summary>
     /// <remarks> elements of the List will be *null* if there is no Course at that time slot </remarks>
-    public List<Course> GetCoursesOnDay(Day day)
+    public List<CourseScriptableObject> GetCoursesOnDay(Day day)
     {
-        List<Course> courseList = new List<Course>();
+        List<CourseScriptableObject> courseList = new List<CourseScriptableObject>();
         for (int i = 0; i < 3; i++) {
             courseList.Add(schedule[i, (int)day].course);
         }
@@ -227,7 +233,7 @@ public class Calendar : MonoBehaviour
     /// returns Club at Time time and Day day for this calendar
     /// </summary>
     /// <remarks> returns null if there is no club at that time and day </remarks>
-    public Club GetClubAtTime(TimeSlot time, Day day)
+    public ClubScriptableObject GetClubAtTime(TimeSlot time, Day day)
     {
         return schedule[(int)time, (int)day].club;
     }
@@ -236,9 +242,9 @@ public class Calendar : MonoBehaviour
     /// returns List of Clubs on Day day (Club at each time slot in the day) in order of time
     /// </summary>
     /// <remarks> elements of the List will be *null* if there is no Course at that time slot </remarks>
-    public List<Club> GetClubsOnDay(Day day)
+    public List<ClubScriptableObject> GetClubsOnDay(Day day)
     {
-        List<Club> clubList = new List<Club>();
+        List<ClubScriptableObject> clubList = new List<ClubScriptableObject>();
         for (int i = 0; i < 3; i++) {
             clubList.Add(schedule[i, (int)day].club);
         }
@@ -254,6 +260,17 @@ public class Calendar : MonoBehaviour
                 schedule[i, j].club = null;
                 schedule[i, j].location = Location.none;
             }
+        }
+        
+        // add scriptable objects to the schedule
+        foreach (var course in courses)
+        {
+            AddCourse(course);
+        }
+
+        foreach (var club in clubs)
+        {
+            AddClub(club);
         }
     }
 }
