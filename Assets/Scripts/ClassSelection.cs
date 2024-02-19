@@ -14,31 +14,31 @@ using static UnityEditor.Progress;
 
 public class ClassSelection : MonoBehaviour
 {
-    private GlobalVars.Club[] fullClubList;
-    private GlobalVars.Course[] fullCourseList;
+    private Club[] fullClubList;
+    private Course[] fullCourseList;
     private int currentIndex;
     
     private int courseButtonIndex = 0;
-    public SerializableDictionary<TextMeshProUGUI, GlobalVars.Course> menuButtons = new SerializableDictionary<TextMeshProUGUI, GlobalVars.Course>();
+    public SerializableDictionary<TextMeshProUGUI, Course> menuButtons = new SerializableDictionary<TextMeshProUGUI, Course>();
     [SerializeField] private GameObject courseLayout;
     [SerializeField] private GameObject clubLayout;
     [SerializeField] private GameObject registrationButton;
 
-    private List<GlobalVars.Course> playerCourseList = new List<GlobalVars.Course>();
-    private List<GlobalVars.Club> playerClubList = new List<GlobalVars.Club>();
+    private List<Course> playerCourseList = new List<Course>();
+    private List<Club> playerClubList = new List<Club>();
 
     void Start()
     {
-        fullClubList = Resources.LoadAll("Clubs").Cast<GlobalVars.Club>().ToArray();
-        fullCourseList = Resources.LoadAll("Courses").Cast<GlobalVars.Course>().ToArray();
+        fullClubList = Resources.LoadAll("Clubs").Cast<Club>().ToArray();
+        fullCourseList = Resources.LoadAll("Courses").Cast<Course>().ToArray();
         Button currentButton;
-        foreach (GlobalVars.Course course in fullCourseList)
+        foreach (Course course in fullCourseList)
         {
             currentButton = Instantiate(registrationButton, courseLayout.transform).GetComponent<Button>();
             currentButton.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = course.courseName;
             currentButton.onClick.AddListener(delegate { AddOrRemoveCourse(course); });
         }
-        foreach (GlobalVars.Club club in fullClubList)
+        foreach (Club club in fullClubList)
         {
             currentButton = Instantiate(registrationButton, courseLayout.transform).GetComponent<Button>();
             currentButton.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = club.clubName;
@@ -46,7 +46,7 @@ public class ClassSelection : MonoBehaviour
         }
     }
 
-    void AddOrRemoveCourse(GlobalVars.Course course)
+    void AddOrRemoveCourse(Course course)
     {
         if(playerCourseList.Contains(course))
             playerCourseList.Remove(course);
@@ -54,7 +54,7 @@ public class ClassSelection : MonoBehaviour
             playerCourseList.Add(course);
     }
 
-    void AddOrRemoveClub(GlobalVars.Club club)
+    void AddOrRemoveClub(Club club)
     {
         if (playerClubList.Contains(club))
             playerClubList.Remove(club);
@@ -63,7 +63,8 @@ public class ClassSelection : MonoBehaviour
     }
 
     public void ConfirmCourses() 
-    { 
+    {
+        Debug.Log("hooray");
         //Push list to player class    
     }
 

@@ -30,11 +30,11 @@ public class Calendar
     private GlobalVars.Location[,] schedule = new GlobalVars.Location[3, 7];
 
     // store courses that the player is in
-    private GlobalVars.Course[] courseSchedule;
+    private Course[] courseSchedule;
     // store clubs that the player is in
-    private GlobalVars.Club[] clubSchedule;
+    private Club[] clubSchedule;
 
-    public void UpdateCourseSchedule(GlobalVars.Course[] newCourses)
+    public void UpdateCourseSchedule(Course[] newCourses)
     {
         // TODO somehow indicate what responsibility the calendar owner has at the given location in the schedule
         for (int i = 0; i < newCourses.Length; i++) 
@@ -52,12 +52,12 @@ public class Calendar
         }
     }
 
-    public GlobalVars.Course[] GetCourseSchedule() 
+    public Course[] GetCourseSchedule() 
     {
         return courseSchedule;
     }
 
-    public void UpdateClubSchedule(GlobalVars.Club[] newClubs)
+    public void UpdateClubSchedule(Club[] newClubs)
     {
         for (int i = 0; i < newClubs.Length; i++)
         {
@@ -72,7 +72,7 @@ public class Calendar
             }
         }
     }
-    public GlobalVars.Club[] GetClubSchedule() 
+    public Club[] GetClubSchedule() 
     {
         return clubSchedule;
     }

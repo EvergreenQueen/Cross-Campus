@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using GlobalVariables;
 using Unity.Mathematics;
-using GlobalVariables;
 
 public class Mascot : MonoBehaviour
 {
@@ -20,8 +19,8 @@ public class Mascot : MonoBehaviour
     private int affectionMeter; // int 0-100 to indicate affection level?
     private Calendar calendar; // contains schedule (location at each time and day)
     private GlobalVars.Location currentLocation; 
-    private GlobalVars.Course[] courses; 
-    private GlobalVars.Club club; 
+    private Course[] courses; 
+    private Club club; 
 
     // Start is called before the first frame update
     void Start()
@@ -63,13 +62,13 @@ public class Mascot : MonoBehaviour
         affectionMeter = math.clamp(affectionMeter + amount, 0, 100);
     }
 
-    public GlobalVars.Club GetClub() 
+    public Club GetClub() 
     {
         return club;
     }
     
     // returns array of courses
-    public GlobalVars.Course[] GetCourses()
+    public Course[] GetCourses()
     {
         return courses;
     }
