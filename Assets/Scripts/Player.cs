@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-using GlobalVars;
+using GlobalVariables;
 
 public class Player
 {
@@ -19,5 +19,11 @@ public class Player
     {
         return courses;
     }
+
+    public void SetCourses()
+    { 
+        
+    }
+
 }
 
