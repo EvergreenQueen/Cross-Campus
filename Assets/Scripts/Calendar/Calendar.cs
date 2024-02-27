@@ -1,6 +1,7 @@
 using UnityEngine;
 using GlobalVars;
 using System.Collections.Generic;
+using Ink.Parsed;
 
 // data structure for keeping track of a mascot/player's Clubs and Courses
 // use AddCourse(course) / AddClub(club) to add courses/clubs to this calendar
@@ -27,9 +28,9 @@ public class Calendar : MonoBehaviour
     private Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
-    public List<CourseScriptableObject> courses;
+    public List<CourseScriptableObject> courses = new List<CourseScriptableObject>();
     // store clubs that the player is in
-    public List<ClubScriptableObject> clubs;
+    public List<ClubScriptableObject> clubs = new List<ClubScriptableObject>();
     
     /// <summary>
     /// UnEncode time/day/location enums to the strings they correspond to. this doesn't have to be in this class.. probably.. 
@@ -126,6 +127,7 @@ public class Calendar : MonoBehaviour
         }
 
         courses.Remove(course);
+        Debug.Log($"removed course {course.name} from calendar");
     }
     /// <summary>
     /// add Club club to this Calendar
@@ -165,6 +167,7 @@ public class Calendar : MonoBehaviour
         }
 
         clubs.Remove(club);
+        Debug.Log($"removed club {club.name} from calendar");
     }
     
     /// <summary>
@@ -180,6 +183,8 @@ public class Calendar : MonoBehaviour
         ac.location = location;
         ac.course = null;
         ac.club = null;
+        
+        Debug.Log($"location at time {TimeToString(time)} and day {DayToString(day)} set to {LocationToString(location)}");
     }
     
     /// <summary>

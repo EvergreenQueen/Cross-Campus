@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83af93560518b14d9c9805800e68d82, type: 3}
-  m_Name: CoursePHYS040B
+  m_Name: Course_ComputerScience
   m_EditorClassIdentifier: 
-  name: PHYS040B
+  name: Computer Science
   days: 020000000300000004000000
   times: 00000000
   location: 4

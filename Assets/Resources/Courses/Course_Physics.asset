@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83af93560518b14d9c9805800e68d82, type: 3}
-  m_Name: CourseCS141
+  m_Name: Course_Physics
   m_EditorClassIdentifier: 
-  name: CS141
-  days: 0200000004000000
-  times: 01000000
-  location: 3
+  name: Physics
+  days: 
+  times: 
+  location: 0
   grade: 0
