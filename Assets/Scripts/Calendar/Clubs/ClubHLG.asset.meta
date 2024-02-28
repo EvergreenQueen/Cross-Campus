@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Courses/Science.asset.meta
+guid: 052b5cf90a24d2c46a1ecd40c5628813
+========
+guid: fa95025e08edaa044ab47ea0279ad412
+>>>>>>>> master:Assets/Scripts/Calendar/Clubs/ClubHLG.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

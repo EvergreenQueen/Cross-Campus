@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 64abc620e6cce264a8350a6084a1ad00, type: 2}
+      objectReference: {fileID: 11400000, guid: 7e8fadc53f2ed68438b782bdce13112f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
 --- !u!4 &274633040 stripped
@@ -1527,20 +1527,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 64abc620e6cce264a8350a6084a1ad00, type: 2}
+      objectReference: {fileID: 11400000, guid: 7e8fadc53f2ed68438b782bdce13112f, type: 2}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e8fadc53f2ed68438b782bdce13112f, type: 2}
+      objectReference: {fileID: 11400000, guid: c05b4765c7188ac438e2a5937e043e78, type: 2}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: c05b4765c7188ac438e2a5937e043e78, type: 2}
+      objectReference: {fileID: 11400000, guid: f47e8cc23ea7afd42a2619e6bf6324fa, type: 2}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.data[3]
       value: 

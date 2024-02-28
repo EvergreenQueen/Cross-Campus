@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GlobalVariables;
+using GlobalVars;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using GlobalVariables;
+using GlobalVars;
 using Unity.Mathematics;
 
 public class Mascot : MonoBehaviour
@@ -15,7 +12,8 @@ public class Mascot : MonoBehaviour
         2. able to get and update information about the characters
     */
 
-    private string mascotName;
+    public string mascotName;
+    public Sprite mascotSprite;
     private int affectionMeter; // int 0-100 to indicate affection level?
     private Calendar calendar; // contains schedule (location at each time and day)
     private GlobalVars.Location currentLocation; 
@@ -25,32 +23,39 @@ public class Mascot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        calendar = GetComponent<Calendar>();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// call when updating to a new time/day, passing in the time and day. will update this mascot's location to the
+    /// location at that time/day. 
+    /// </summary>
+    public void UpdateLocation(TimeSlot time, Day day)
     {
-        
+        var prevLocation = currentLocation;
+        currentLocation = calendar.GetLocation(time, day);
+        Debug.Log($"Mascot {mascotName} location changed from {prevLocation} to {currentLocation}");
+    }
+    
+    /// <summary>
+    /// set location at time and day
+    /// </summary>
+    public void SetLocation(TimeSlot time, Day day, Location location)
+    {
+        calendar.SetLocation(time, day, location);
     }
 
     public GlobalVars.Location GetLocation() 
     {
         return currentLocation;
     }
-    // change location according to inputted time and day
-    // called in LocationManager every time time/day changes
-    public void UpdateLocation(int time, int day) 
-    {
-        currentLocation = calendar.GetLocation(time, day); 
-    }
     
     public string GetName()
     {
-        return name;
+        return mascotName;
     }
 
-    public int GetAffection()
+    public float GetAffection()
     {
         return affectionMeter;
     }
@@ -60,16 +65,5 @@ public class Mascot : MonoBehaviour
     public void IncreaseAffection(int amount)
     {
         affectionMeter = math.clamp(affectionMeter + amount, 0, 100);
-    }
-
-    public Club GetClub() 
-    {
-        return club;
-    }
-    
-    // returns array of courses
-    public Course[] GetCourses()
-    {
-        return courses;
     }
 }
