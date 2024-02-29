@@ -33,6 +33,7 @@ public class ClassSelectionManager : MonoBehaviour
         {
             Button button = Instantiate(registrationButton, courseLayout.transform).GetComponent<Button>();
             button.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = course.name;
+            button.GetComponent<RegistrationButton>().course = course;
             button.onClick.AddListener(delegate { AddOrRemoveCourse(button.gameObject, course); });
             button.gameObject.name = $"b_{course.name}";
             Debug.Log($"created button {button.gameObject.name}, for course {course.name}");

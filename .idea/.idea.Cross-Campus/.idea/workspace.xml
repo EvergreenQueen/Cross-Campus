@@ -6,43 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EventManager.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EventManager.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Clubs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Clubs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Math.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Math.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SelectionScreen/RegistrationButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/SelectionScreen/RegistrationButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs/ClubACM.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs/ClubACM.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs/ClubGamespawn.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs/ClubGamespawn.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs/ClubHLG.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Clubs/ClubHLG.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseCS010C.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseCS010C.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseCS141.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseCS141.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseENGR001.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseENGR001.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseMATH010A.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseMATH010A.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseMATH031.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CourseMATH031.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CoursePHYS040B.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Courses/CoursePHYS040B.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ClassSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ClassSelection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InkScripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InkScripts.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Club.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Club.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Course.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Course.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SerializableDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SerializableDictionary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CourseDescriptionTextBox.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CourseDescriptionTextBox.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RegistrationButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RegistrationButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SelectionScreen/CourseDescriptionTextBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/SelectionScreen/CourseDescriptionTextBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ClassSelection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ClassSelection.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ClassSelectionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ClassSelectionManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +119,8 @@
       <workItem from="1708816053979" duration="1769000" />
       <workItem from="1708909374900" duration="1440000" />
       <workItem from="1709015100860" duration="3988000" />
-      <workItem from="1709063804774" duration="4972000" />
+      <workItem from="1709063804774" duration="5305000" />
+      <workItem from="1709178566602" duration="5232000" />
     </task>
     <servers />
   </component>

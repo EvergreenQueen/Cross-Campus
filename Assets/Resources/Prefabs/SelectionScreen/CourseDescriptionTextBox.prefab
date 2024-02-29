@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.36862746}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6117647}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -275,3 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd067a034b2a144b8391de40fea81c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCam: {fileID: 0}
+  descriptionText: 
+  cursorOffset: {x: 10, y: -10}
