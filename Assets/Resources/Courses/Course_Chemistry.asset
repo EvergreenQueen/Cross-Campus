@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Course_Chemistry
   m_EditorClassIdentifier: 
   name: Chemistry
-  days: 
-  times: 
-  location: 0
+  days: 0200000004000000
+  times: 00000000
+  location: 1
   grade: 0

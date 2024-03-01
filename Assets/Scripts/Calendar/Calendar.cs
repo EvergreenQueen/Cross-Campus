@@ -108,7 +108,10 @@ public class Calendar : MonoBehaviour
         // since this method is also used to add existing courses to the calendar, check if the
         // list of courses doesn't already contain the course we're adding
         if (!courses.Contains(course)) courses.Add(course);
-        Debug.Log($"added course {course.name} to calendar");
+        Debug.Log($"[calendar]added course {course.name} to calendar");
+        Debug.Log($"[calendar] course list is now {courses}");
+        
+        Verify();
     }
     
     /// <summary>
@@ -128,6 +131,8 @@ public class Calendar : MonoBehaviour
 
         courses.Remove(course);
         Debug.Log($"removed course {course.name} from calendar");
+        
+        Verify();
     }
     /// <summary>
     /// add Club club to this Calendar
@@ -148,6 +153,8 @@ public class Calendar : MonoBehaviour
         // list of clubs doesn't already contain the club we're adding
         if (!clubs.Contains(club)) clubs.Add(club);
         Debug.Log($"added club {club.name} to calendar");
+        
+        Verify();
     }
     
     /// <summary>
@@ -168,6 +175,42 @@ public class Calendar : MonoBehaviour
 
         clubs.Remove(club);
         Debug.Log($"removed club {club.name} from calendar");
+        
+        Verify();
+    }
+    
+    /// <summary>
+    /// re-check through added courses/clubs in the calendar and add them
+    /// basically, a way to work around the problem of overwriting calendar entries
+    /// will be called after adding/removing anything from the calendar, so a little inefficient but we DO NOT CARE
+    /// </summary>
+    public void Verify()
+    {
+        foreach (var course in courses)
+        {
+            foreach (var timeSlot in course.times)
+            {
+                foreach (var day in course.days)
+                {
+                    schedule[(int)timeSlot, (int)day].course = course;
+                    schedule[(int)timeSlot, (int)day].location = course.location;
+                    schedule[(int)timeSlot, (int)day].club = null;
+                }
+            }
+        }
+
+        foreach (var club in clubs)
+        {
+            foreach (var timeSlot in club.times)
+            {
+                foreach (var day in club.days)
+                {
+                    schedule[(int)timeSlot, (int)day].club = club;
+                    schedule[(int)timeSlot, (int)day].course = null;
+                    schedule[(int)timeSlot, (int)day].location = club.location;
+                }
+            }
+        }
     }
     
     /// <summary>

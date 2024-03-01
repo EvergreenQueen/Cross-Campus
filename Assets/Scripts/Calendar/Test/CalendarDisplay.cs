@@ -38,8 +38,7 @@ public class CalendarDisplay : MonoBehaviour
             courseStr += "\n";
         }
 
-        if (tmp_coursesDisplay)
-            tmp_coursesDisplay.text = courseStr;
+        if (tmp_coursesDisplay) tmp_coursesDisplay.text = courseStr;
 
         var clubStr = "clubs: \n";
         for (var j = Day.Sunday; j <= Day.Saturday; j++) {
@@ -56,7 +55,6 @@ public class CalendarDisplay : MonoBehaviour
             clubStr += "\n";
         }
 
-        if (tmp_clubsDisplay)
-            tmp_clubsDisplay.text = clubStr;
+        if (tmp_clubsDisplay) tmp_clubsDisplay.text = clubStr;
     }
 }

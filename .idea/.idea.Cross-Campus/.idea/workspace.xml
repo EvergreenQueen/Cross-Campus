@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CourseDescriptionTextBox.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CourseDescriptionTextBox.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RegistrationButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RegistrationButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SelectionScreen/CourseDescriptionTextBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/SelectionScreen/CourseDescriptionTextBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Chemistry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Chemistry.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_History.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_History.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Physics.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Physics.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ClassSelection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ClassSelection.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Test/CalendarDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/Test/CalendarDisplay.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ClassSelectionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ClassSelectionManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,9 +20,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/CourseDescriptionTextBox.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RegistrationButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Calendar/Test/CalendarTestStub.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ClassSelectionCalendarDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ClassSelectionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SerializableDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
@@ -120,7 +119,7 @@
       <workItem from="1708909374900" duration="1440000" />
       <workItem from="1709015100860" duration="3988000" />
       <workItem from="1709063804774" duration="5305000" />
-      <workItem from="1709178566602" duration="5232000" />
+      <workItem from="1709178566602" duration="22179000" />
     </task>
     <servers />
   </component>
