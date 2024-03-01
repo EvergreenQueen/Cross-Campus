@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour {
     
     public Button start, quit;
+    UIController control;
     
     void Start() {
         start.onClick.AddListener(onClickStart);
@@ -12,6 +13,8 @@ public class Menu : MonoBehaviour {
 
     void onClickStart() {
         Debug.Log("Pressed play!");
+        control = FindObjectOfType<UIController>();
+        control.Change();
     }
 
     void onClickQuit() {
