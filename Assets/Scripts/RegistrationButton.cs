@@ -48,9 +48,12 @@ public class RegistrationButton : MonoBehaviour, IPointerEnterHandler, IPointerE
             }
         }
         
-        tempTextBox.GetComponentInChildren<TextMeshProUGUI>().text = $"Course: {course.name}\n" +
-                                                                     $"Times: {timesString}\n" +
-                                                                     $"Days: {daysString}\n";
+        tempTextBox.GetComponent<Tooltip>().SetDescriptionText($"Course: {course.name}\n" +
+                                                                                $"Times: {timesString}\n" +
+                                                                                $"Days: {daysString}\n");
+        // tempTextBox.GetComponentInChildren<TextMeshProUGUI>().text = $"Course: {course.name}\n" +
+        //                                                              $"Times: {timesString}\n" +
+        //                                                              $"Days: {daysString}\n";
     }
 
     public void OnPointerExit(PointerEventData data)
