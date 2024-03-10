@@ -113,7 +113,7 @@ public class ClassSelectionManager : MonoBehaviour
             if (conflictList.Count > 0)
             {
                 Debug.Log($"uh oh! that's a conflict!");
-                var textMeshPro = obj_timeConflictNotifier.GetComponent<TextMeshProUGUI>();
+                var textMeshPro = obj_timeConflictNotifier.GetComponentInChildren<TextMeshProUGUI>();
                 var conflictString = "";
                 conflictString += "Time conflict! Add a different course or remove ";
                 foreach (var conflict in conflictList)
