@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
 using GlobalVars;
 using Unity.Mathematics;
+using UnityEngine.Rendering;
 
 public class Mascot : MonoBehaviour
 {
     // class for mascots
     // could probably make it abstract as 
     private string mascotName;
-    private float affectionMeter;
+    [SerializeField] private int barValue;
+    [SerializeField] private int heartLevel;
     private Calendar calendar; // component
     private Location currentLocation;
     // dialogue stuff probably
@@ -47,15 +50,33 @@ public class Mascot : MonoBehaviour
         return mascotName;
     }
 
-    public float GetAffection()
+    public float GetHeartLevel()
     {
-        return affectionMeter;
+        return heartLevel;
     }
-    
-    // increases/decreases affectionMeter by amount (use negative values to decrease)
-    //  * affectionMeter stays in the range [0, 100]
-    public void IncreaseAffection(float amount)
+
+    public float GetBarValue()
     {
-        affectionMeter = math.clamp(affectionMeter + amount, 0, 100);
+        return barValue;
+    }
+
+    public void IncreaseBarValue(int pips)
+    {
+        barValue = Math.Clamp(barValue + pips, 0, 5);
+        Debug.Log($"bar value increased to {barValue}");
+        if (barValue == 5)
+        {
+            heartLevel = Math.Clamp(heartLevel + 1, 0, 4);
+            barValue = 0;
+            Debug.Log($"heart level increased by 1! to {heartLevel}");
+            Debug.Log($"bar value reset to 0!");
+        }
+    }
+
+    public void DecreaseBarValue(int pips)
+    {
+        barValue = Math.Clamp(barValue - pips, 0, 5);
+        Debug.Log($"bar value decreased to {barValue}");
+        // TODO reduce heart level when it's zero? maybe?
     }
 }
