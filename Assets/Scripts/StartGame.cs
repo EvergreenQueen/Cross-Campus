@@ -9,7 +9,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DialogueManager.GetInstance().EnterDialogueMode(inkjson);
+        //DialogueManager.GetInstance().EnterDialogueMode(inkjson);
     }
 
     // Update is called once per frame
