@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour {
         Debug.Log("Pressed play!");
         control = FindObjectOfType<UIController>();
         control.Change();
+        SceneChanger.GetInstance().loadOrientation();
     }
 
     void onClickQuit() {

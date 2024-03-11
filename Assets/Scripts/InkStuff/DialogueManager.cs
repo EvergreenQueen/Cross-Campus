@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than 1 Dialogue Manager. That's not bueno.");
         }
         instance = this;
+        dialogueCurrentlyPlaying = false;
     }
 
     public static DialogueManager GetInstance(){
@@ -50,7 +51,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Start(){
         dialogueIsPlaying = false;
-        dialogueCurrentlyPlaying = false;
         dialoguePanel.SetActive(false);
 
         Color tempC = displayImage.GetComponent<Image>().color;
@@ -102,6 +102,7 @@ public class DialogueManager : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkjson){
         currentStory = new Story(inkjson.text);
         dialogueIsPlaying = true;
+        dialogueCurrentlyPlaying = false;
         dialoguePanel.SetActive(true);
 
         ContinueStory();
