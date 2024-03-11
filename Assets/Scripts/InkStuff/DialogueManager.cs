@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Image displayImage;
+    [SerializeField] private Image[] threePositions;
     [SerializeField] private Image backgroundImage;
 
     [Header("Player")]
@@ -31,6 +32,8 @@ public class DialogueManager : MonoBehaviour
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string BACKGROUND_TAG = "background";
+    private const string CIRCLE_TAG = "circle";
+    private const string POSITION_TAG = "position";
     private const string EXTRA_TAG = "extra";
 
 
@@ -49,6 +52,20 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialogueCurrentlyPlaying = false;
         dialoguePanel.SetActive(false);
+
+        Color tempC = displayImage.GetComponent<Image>().color;
+        tempC.a = 0f;
+        displayImage.GetComponent<Image>().color = tempC;
+
+        displayImage = threePositions[1];
+        tempC = displayImage.GetComponent<Image>().color;
+        tempC.a = 0f;
+        displayImage.GetComponent<Image>().color = tempC;
+
+        displayImage = threePositions[2];
+        tempC = displayImage.GetComponent<Image>().color;
+        tempC.a = 0f;
+        displayImage.GetComponent<Image>().color = tempC;
 
         //get all of the choices text
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -144,32 +161,56 @@ public class DialogueManager : MonoBehaviour
             string tagValue = splitTag[1].Trim();
 
             switch(tagKey){
+                case POSITION_TAG:
+                    if(tagValue == "right"){
+                        displayImage = threePositions[1];
+                    }
+                    else if(tagValue == "left"){
+                        displayImage = threePositions[0];
+                    }
+                    else{
+                        displayImage = threePositions[2];
+                    }
+                    break;
                 case SPEAKER_TAG:
                     displayNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
                     Color tmp = displayImage.GetComponent<Image>().color;
-                    if(tagValue == "none"){
+                    if(tagValue == ""){
                         tmp.a = 0f;
                         displayImage.GetComponent<Image>().color = tmp;
                     }else{
                         tmp.a = 255f;
                         displayImage.GetComponent<Image>().color = tmp;
                         displayImage.gameObject.SetActive(true);
-                        displayImage.sprite = Resources.Load<Sprite>(tagValue);
+                        displayImage.sprite = Resources.Load<Sprite>("Sprites/"+tagValue);
+                        Debug.Log(tagValue);
+                    }
+                    break;
+                case CIRCLE_TAG:
+                    Color tmp3 = displayImage.GetComponent<Image>().color;
+                    if(tagValue == ""){
+                        tmp3.a = 0f;
+                        displayImage.GetComponent<Image>().color = tmp3;
+                    }else{
+                        tmp3.a = 255f;
+                        displayImage.GetComponent<Image>().color = tmp3;
+                        displayImage.gameObject.SetActive(true);
+                        displayImage.sprite = Resources.Load<Sprite>("Circles/"+tagValue);
                         Debug.Log(tagValue);
                     }
                     break;
                 case BACKGROUND_TAG:
                     Color tmp2 = displayImage.GetComponent<Image>().color;
-                    if(tagValue == "none"){
+                    if(tagValue == ""){
                         tmp2.a = 0f;
                         displayImage.GetComponent<Image>().color = tmp2;
                     }else{
                         tmp2.a = 255f;
                         displayImage.GetComponent<Image>().color = tmp2;
                         displayImage.gameObject.SetActive(true);
-                        displayImage.sprite = Resources.Load<Sprite>(tagValue);
+                        displayImage.sprite = Resources.Load<Sprite>("Backgrounds/"+tagValue);
                         Debug.Log(tagValue);
                     }
                     break;
