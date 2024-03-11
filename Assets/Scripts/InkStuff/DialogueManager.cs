@@ -20,10 +20,14 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
+    [Header("Typewriter")]
+    [SerializeField] private TypewriterEffect typa;
     private TextMeshProUGUI[] choicesText;
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
+    public bool dialogueCurrentlyPlaying { get; private set; }
     private static DialogueManager instance;
+    private string currDialogue;
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string BACKGROUND_TAG = "background";
@@ -43,6 +47,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start(){
         dialogueIsPlaying = false;
+        dialogueCurrentlyPlaying = false;
         dialoguePanel.SetActive(false);
 
         //get all of the choices text
@@ -69,6 +74,12 @@ public class DialogueManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             ContinueStory();
         }
+
+        if(dialogueText.text != currDialogue){
+            dialogueCurrentlyPlaying = true;
+        }else{
+            dialogueCurrentlyPlaying = false;
+        }
     }
 
     public void EnterDialogueMode(TextAsset inkjson){
@@ -85,11 +96,20 @@ public class DialogueManager : MonoBehaviour
 
     private void ContinueStory(){
         if(currentStory.canContinue){
-            dialogueText.text = currentStory.Continue();
-            //display choices
-            DisplayChoices();
-            //handling tags
-            HandleTags(currentStory.currentTags);
+            if(dialogueCurrentlyPlaying){
+                typa.stopTyping();
+                dialogueCurrentlyPlaying = false;
+                dialogueText.text = currDialogue;
+            }else{
+                // dialogueText.text = currentStory.Continue();
+                currDialogue = currentStory.Continue();
+                dialogueText.text = currDialogue;
+                typa.Type();
+                //display choices
+                DisplayChoices();
+                //handling tags
+                HandleTags(currentStory.currentTags);
+            }
         }else{
             Debug.Log("hallo?");
             ExitDialogueMode();

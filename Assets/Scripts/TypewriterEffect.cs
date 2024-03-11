@@ -17,6 +17,10 @@ public class TypewriterEffect : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		Type();
+	}
+
+	public void Type(){
 		_text = GetComponent<Text>()!;
 		_tmpProText = GetComponent<TMP_Text>()!;
 
@@ -35,6 +39,10 @@ public class TypewriterEffect : MonoBehaviour
 
 			StartCoroutine("TypeWriterTMP");
 		}
+	}
+
+	public void stopTyping(){
+		StopAllCoroutines();
 	}
 
 	IEnumerator TypeWriterText()
