@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83af93560518b14d9c9805800e68d82, type: 3}
+  m_Name: Course_ComputerScience
+  m_EditorClassIdentifier: 
+  name: Computer Science
+  days: 020000000300000004000000
+  times: 00000000
+  location: 4
+  grade: 0

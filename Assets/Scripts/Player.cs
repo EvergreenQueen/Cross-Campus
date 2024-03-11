@@ -19,5 +19,11 @@ public class Player
     {
         return courses;
     }
+
+    public void SetCourses()
+    { 
+        
+    }
+
 }
 

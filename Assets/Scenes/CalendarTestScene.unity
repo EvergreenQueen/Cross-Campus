@@ -3218,6 +3218,8 @@ MonoBehaviour:
   calendar: {fileID: 2070853246}
   tmp_currentTimeDisplay: {fileID: 0}
   btn_progressTime: {fileID: 0}
+  courseAtTime: {fileID: 0}
+  clubAtTime: {fileID: 0}
 --- !u!4 &1640280163
 Transform:
   m_ObjectHideFlags: 0
@@ -4446,8 +4448,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af3c03045cab4a4f85354456672d14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  courses: []
-  clubs: []
+  courses:
+  - {fileID: 11400000, guid: 7e8fadc53f2ed68438b782bdce13112f, type: 2}
+  - {fileID: 11400000, guid: c05b4765c7188ac438e2a5937e043e78, type: 2}
+  - {fileID: 11400000, guid: f47e8cc23ea7afd42a2619e6bf6324fa, type: 2}
+  clubs:
+  - {fileID: 11400000, guid: fa95025e08edaa044ab47ea0279ad412, type: 2}
+  - {fileID: 11400000, guid: ccf82fa5979147b499ca051764c4ee89, type: 2}
+  - {fileID: 11400000, guid: b68479872276b8d4c9661e187ae5a024, type: 2}
 --- !u!114 &2070853247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4700,42 +4708,12 @@ MonoBehaviour:
   b_hlgRemove: {fileID: 1587975259}
   b_acmAdd: {fileID: 1564682367}
   b_acmRemove: {fileID: 953334131}
-  course_cs141:
-    name: 
-    days: 
-    times: 
-    grade: 0
-    location: 0
-  course_phys040b:
-    name: 
-    days: 
-    times: 
-    grade: 0
-    location: 0
-  course_math031:
-    name: 
-    days: 
-    times: 
-    grade: 0
-    location: 0
-  club_gamespawn:
-    name: 
-    clubLevel: 0
-    days: 
-    times: 
-    location: 0
-  club_hlg:
-    name: 
-    clubLevel: 0
-    days: 
-    times: 
-    location: 0
-  club_acm:
-    name: 
-    clubLevel: 0
-    days: 
-    times: 
-    location: 0
+  course_cs141: {fileID: 11400000, guid: 7e8fadc53f2ed68438b782bdce13112f, type: 2}
+  course_phys040b: {fileID: 11400000, guid: f47e8cc23ea7afd42a2619e6bf6324fa, type: 2}
+  course_math031: {fileID: 11400000, guid: c05b4765c7188ac438e2a5937e043e78, type: 2}
+  club_gamespawn: {fileID: 11400000, guid: ccf82fa5979147b499ca051764c4ee89, type: 2}
+  club_hlg: {fileID: 11400000, guid: fa95025e08edaa044ab47ea0279ad412, type: 2}
+  club_acm: {fileID: 11400000, guid: b68479872276b8d4c9661e187ae5a024, type: 2}
   calendar: {fileID: 2070853246}
 --- !u!4 &2137639306
 Transform:
