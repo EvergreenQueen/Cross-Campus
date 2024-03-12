@@ -24,11 +24,12 @@ public class DialogueManager : MonoBehaviour
     [Header("Typewriter")]
     [SerializeField] private TypewriterEffect typa;
     private TextMeshProUGUI[] choicesText;
-    private Story currentStory;
+    [SerializeField] private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
     public bool dialogueCurrentlyPlaying { get; private set; }
     private static DialogueManager instance;
     private string currDialogue;
+    private bool firstLine = false;
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string BACKGROUND_TAG = "background";
@@ -100,10 +101,11 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EnterDialogueMode(TextAsset inkjson){
+        dialoguePanel.SetActive(true);
         currentStory = new Story(inkjson.text);
         dialogueIsPlaying = true;
-        dialogueCurrentlyPlaying = false;
-        dialoguePanel.SetActive(true);
+        firstLine = true;
+        // dialogueCurrentlyPlaying = true;
 
         ContinueStory();
     }
@@ -114,11 +116,23 @@ public class DialogueManager : MonoBehaviour
 
     private void ContinueStory(){
         if(currentStory.canContinue){
-            if(dialogueCurrentlyPlaying){
+            if(firstLine){
+                currDialogue = currentStory.Continue();
+                dialogueText.text = currDialogue;
+                // typa.Type();
+                //display choices
+                DisplayChoices();
+                //handling tags
+                HandleTags(currentStory.currentTags);
+                firstLine = false;
+            }
+            else if(dialogueCurrentlyPlaying){
+                Debug.Log("What about this?");
                 typa.stopTyping();
                 dialogueCurrentlyPlaying = false;
                 dialogueText.text = currDialogue;
             }else{
+                Debug.Log("moshi moshi");
                 // dialogueText.text = currentStory.Continue();
                 currDialogue = currentStory.Continue();
                 dialogueText.text = currDialogue;
@@ -132,6 +146,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("hallo?");
             ExitDialogueMode();
             displayImage.gameObject.SetActive(false);
+            firstLine = false;
         }
     }
 
