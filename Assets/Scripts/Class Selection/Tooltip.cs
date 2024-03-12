@@ -17,7 +17,7 @@ public class Tooltip : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"description created with position {transform.position}");
+        Debug.Log($"tooltip created with position {transform.position}");
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class Tooltip : MonoBehaviour
     /// sets the description text and automatically scales the background of it to match the size of the text
     /// </summary>
     /// <param name="text"></param>
-    public void SetDescriptionText(string text)
+    public void SetTooltipText(string text)
     {
         var textComponent = obj_text.GetComponent<TextMeshProUGUI>();
         textComponent.text = text;

@@ -102,7 +102,7 @@ public class ClassSelectionManager : MonoBehaviour
             // re-enable title just in case
             else if (numCoursesRegistered == 0)
             {
-                obj_calendarTitle.SetActive(true);
+                // obj_calendarTitle.SetActive(true);
             }
         }
         // COURSE ADDING
@@ -138,7 +138,7 @@ public class ClassSelectionManager : MonoBehaviour
             button.GetComponent<Button>().image.color = Color.red;
             calendarDisplay.UpdateCalendar(course, true);
             
-            obj_calendarTitle.SetActive(false);
+            // obj_calendarTitle.SetActive(false);
             
             // deactivate time conflict notifier when adding a course, i think the player gets it by now
             if (obj_timeConflictNotifier.activeSelf)
