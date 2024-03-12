@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     private bool firstLine = false;
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
+    private const string NO_PORTRAIT_TAG = "noportrait";
     private const string BACKGROUND_TAG = "background";
     private const string CIRCLE_TAG = "circle";
     private const string POSITION_TAG = "position";
@@ -178,7 +179,7 @@ public class DialogueManager : MonoBehaviour
 
             switch(tagKey){
                 case POSITION_TAG:
-                    if(tagValue == "right"){
+                    if(tagValue == "middle"){
                         displayImage = threePositions[1];
                     }
                     else if(tagValue == "left"){
@@ -202,6 +203,24 @@ public class DialogueManager : MonoBehaviour
                         displayImage.gameObject.SetActive(true);
                         displayImage.sprite = Resources.Load<Sprite>("Sprites/"+tagValue);
                         Debug.Log(tagValue);
+                    }
+                    break;
+                case NO_PORTRAIT_TAG:
+                    if(tagValue == "yes"){
+                        displayImage = threePositions[0];
+                        Color tempD = displayImage.GetComponent<Image>().color;
+                        tempD.a = 0f;
+                        displayImage.GetComponent<Image>().color = tempD;
+
+                        displayImage = threePositions[1];
+                        tempD = displayImage.GetComponent<Image>().color;
+                        tempD.a = 0f;
+                        displayImage.GetComponent<Image>().color = tempD;
+
+                        displayImage = threePositions[2];
+                        tempD = displayImage.GetComponent<Image>().color;
+                        tempD.a = 0f;
+                        displayImage.GetComponent<Image>().color = tempD;
                     }
                     break;
                 case CIRCLE_TAG:
