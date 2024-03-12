@@ -279,7 +279,8 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
         switch(whatScene){
-            case "scottysbedroomlmao":
+            case "class_registration":
+                SceneChanger.GetInstance().loadRegistration();
                 break;
             case null:
                 break;

@@ -25,6 +25,10 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadSceneAndCallDialogue("orientation"));
     }
 
+    public void loadRegistration(){
+        StartCoroutine(LoadSceneAndCallDialogue("registration"));
+    }
+
     IEnumerator LoadSceneAndCallDialogue(string whichScene){
         switch(whichScene){
             case "orientation":
@@ -38,6 +42,17 @@ public class SceneChanger : MonoBehaviour
                 DialogueManager.GetInstance().EnterDialogueMode(orientationJSON);
 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
+                break;
+            case "registration":
+                AsyncOperation asyncLoad2 = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ClassSelection", LoadSceneMode.Additive);
+
+                // Wait until the scene is fully loaded
+                while (!asyncLoad2.isDone)
+                {
+                    yield return null;
+                }
+
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
                 break;
             case null:
                 break;

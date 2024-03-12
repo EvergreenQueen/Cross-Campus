@@ -68,4 +68,4 @@ Can't wait to see you on campus! I'll make sure this love sick fool gets his wit
 I have no wits when your beauty has stolen them away from me! #speaker: Oleander
 I was then left alone finally, most of the students going back to their dorms or wherever they found themselves enjoying most. #speaker: --- #noportrait: yes
 Maybe with all the excitement of the day, I should head back too. 
-Oh! Can't forget to register too. Classes first, then home. And a nice warm bed waiting for me.
+Oh! Can't forget to register too. Classes first, then home. And a nice warm bed waiting for me. #extra: class_registration
