@@ -144,10 +144,16 @@ public class DialogueManager : MonoBehaviour
                 HandleTags(currentStory.currentTags);
             }
         }else{
-            Debug.Log("hallo?");
-            ExitDialogueMode();
-            displayImage.gameObject.SetActive(false);
-            firstLine = false;
+            if(dialogueCurrentlyPlaying){
+                typa.stopTyping();
+                dialogueCurrentlyPlaying = false;
+                dialogueText.text = currDialogue;
+            }else{
+                Debug.Log("hallo?");
+                ExitDialogueMode();
+                displayImage.gameObject.SetActive(false);
+                firstLine = false;
+            }
         }
     }
 
