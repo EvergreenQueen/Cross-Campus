@@ -1,4 +1,4 @@
-I barely got a wink of sleep, but I guess that means I won't be late? I don't want to miss orientation on my first day! #speaker: You
+I barely got a wink of sleep, but I guess that means I won't be late? I don't want to miss orientation on my first day! #speaker: You #background: pool
 I rush to get ready and eat whatever I can find in the fridge. There's barely anything yet, so I just have to grab a granola bar and some fruit. #speaker: ---
 Ah! I'm so excited! I've been waiting all high school for this. #speaker: You
 I grab my jacket and rush out the door, slamming it shut and racing out of my dorm onto campus. #speaker: ---

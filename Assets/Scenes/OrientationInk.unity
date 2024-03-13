@@ -368,6 +368,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1432036727875147017, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01c451b320d88294f9592ee6f92e9cbf, type: 3}
+    - target: {fileID: 1432036727875147017, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7786044785950661659, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_fontSize
       value: 16

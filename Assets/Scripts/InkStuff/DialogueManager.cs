@@ -243,15 +243,15 @@ public class DialogueManager : MonoBehaviour
                     }
                     break;
                 case BACKGROUND_TAG:
-                    Color tmp2 = displayImage.GetComponent<Image>().color;
+                    Color tmp2 = backgroundImage.GetComponent<Image>().color;
                     if(tagValue == ""){
                         tmp2.a = 0f;
-                        displayImage.GetComponent<Image>().color = tmp2;
+                        backgroundImage.GetComponent<Image>().color = tmp2;
                     }else{
                         tmp2.a = 255f;
-                        displayImage.GetComponent<Image>().color = tmp2;
-                        displayImage.gameObject.SetActive(true);
-                        displayImage.sprite = Resources.Load<Sprite>("Backgrounds/"+tagValue);
+                        backgroundImage.GetComponent<Image>().color = tmp2;
+                        backgroundImage.gameObject.SetActive(true);
+                        backgroundImage.sprite = Resources.Load<Sprite>("Backgrounds/"+tagValue);
                         Debug.Log(tagValue);
                     }
                     break;
