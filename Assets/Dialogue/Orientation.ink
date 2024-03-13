@@ -56,7 +56,7 @@ Ru sprints off in a cloud of dust towards a looming, silent man who is walking a
 ... #speaker: Asa- I MEAN Triton #position: right #portrait: Triton/asabilmao #position: left #portrait: Ru/Neutral
 GEEZ! HOLD ON A SEC!! #speaker: Ru 
 I really thought everyone would be going back to their dorms after orientation, guess not. #speaker: You #noportrait: yes
-You look lost, or perhaps that was simply my getting lost in your eyes. #speaker: ??? #position: right #portrait: Oleander/Neutral
+You look lost, or perhaps that was simply my getting lost in your eyes. #speaker: ??? #position: right #portrait: Oleander/oleander_placeholder
 Huh?? Oh- uh- hi?? Th-thank you? #speaker: You
 A man holds out a rose to me, a grin on his lips. #speaker: ---
 You need to stop harassing random people with flowers, Oleander. Some people might have allergies. Me, on the other hand? I'd love to take them off your hands. #speaker: ??? #position: left #portrait: Gunrock/Neutral1
