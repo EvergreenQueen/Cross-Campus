@@ -8,7 +8,7 @@ public class ButtonOnOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public TMP_Text text;
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        text.fontStyle = FontStyles.Bold;
+        text.fontStyle |= FontStyles.Bold;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)

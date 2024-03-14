@@ -46,7 +46,7 @@ public class ClassSelectionManager : MonoBehaviour
     
     // set when setting the button's sprite to the highlighted one when it's selected for the schedule,
     // so that we can assign it back. wanted to do this in the script instead of hardcoding the images in case we 
-    // want to change the menu sprites eventually
+    // want to change the background sprites eventually
     private Sprite registrationButtonUnhighlightedSprite;
 
     [SerializeField] private int numCoursesRegistered = 0;
