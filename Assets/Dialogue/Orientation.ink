@@ -53,7 +53,7 @@ Trust me, no one knows what those two are talking about, like, ever. It's all le
 H-Hey, it's great to meet you. Uh, how are you liking- #speaker: You
 Oops! Gotta go! HEY! TRITON! WAIT UP, I DON'T WANT TO GET LOST ON MY WAY TO THE GYM AGAIN! #speaker:Ru 
 Ru sprints off in a cloud of dust towards a looming, silent man who is walking away. He doesn't turn when his name is called, just continues to walk away. #speaker: --- #noportrait: yes
-... #speaker: Asa- I MEAN Triton #position: right #portrait: Triton/asabilmao #position: left #portrait: Ru/Neutral
+... #speaker: Triton #position: right #portrait: Triton/Neutral #position: left #portrait: Ru/Neutral
 GEEZ! HOLD ON A SEC!! #speaker: Ru 
 I really thought everyone would be going back to their dorms after orientation, guess not. #speaker: You #noportrait: yes
 You look lost, or perhaps that was simply my getting lost in your eyes. #speaker: ??? #position: right #portrait: Oleander/oleander_placeholder
