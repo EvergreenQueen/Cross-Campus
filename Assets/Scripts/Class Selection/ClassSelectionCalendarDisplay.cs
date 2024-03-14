@@ -15,6 +15,16 @@ public class ClassSelectionCalendarDisplay : MonoBehaviour
     {
         calendar = GetComponent<Calendar>();
         calendarText = obj_calendarDisplay.GetComponent<TextMeshProUGUI>();
+        
+        // clear the text field of all the calendar cells
+        for (var day = Day.Sunday; day <= Day.Saturday; day++)
+        {
+            for (var time = TimeSlot.morning; time <= TimeSlot.evening; time++)
+            {
+                var gridTextObject = GameObject.Find(Calendar.DayToString(day) + Calendar.TimeToString(time));
+                gridTextObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+        }
     }
     
     // call after changing calendar's courses/clubs to display it different
@@ -29,8 +39,8 @@ public class ClassSelectionCalendarDisplay : MonoBehaviour
                 var gridTextObject = GameObject.Find(Calendar.DayToString(day) + Calendar.TimeToString(time));
                 if (gridTextObject)
                 {
-                    if (adding) gridTextObject.GetComponent<TextMeshProUGUI>().text = course.name;
-                    else gridTextObject.GetComponent<TextMeshProUGUI>().text = "";
+                    if (adding) gridTextObject.GetComponentInChildren<TextMeshProUGUI>().text = course.name;
+                    else gridTextObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
                 }
             }
         }
