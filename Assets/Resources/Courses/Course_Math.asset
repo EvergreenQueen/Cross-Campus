@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Course_Math
   m_EditorClassIdentifier: 
   name: Math
-  days: 0200000004000000
-  times: 01000000
+  days: 010000000300000005000000
+  times: 00000000
   location: 3
   grade: 0

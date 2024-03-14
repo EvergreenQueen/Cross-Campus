@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Course_Physics
   m_EditorClassIdentifier: 
   name: Physics
-  days: 0200000004000000
+  days: 020000000300000004000000
   times: 02000000
   location: 4
   grade: 0

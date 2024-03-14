@@ -10,6 +10,7 @@ public class ClassSelectionCalendarDisplay : MonoBehaviour
     public GameObject obj_calendarDisplay;
     private TextMeshProUGUI calendarText;
     
+    
     // Start is called before the first frame update
     void Start()
     {
