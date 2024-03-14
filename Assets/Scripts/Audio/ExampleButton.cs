@@ -26,7 +26,7 @@ public class ExampleButton : MonoBehaviour
     private void triggerSoundEffect()
     {
         Debug.Log("E");
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonSound, transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonSound);
     }
 
     // Update is called once per frame

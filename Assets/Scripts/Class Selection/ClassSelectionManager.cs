@@ -81,6 +81,8 @@ public class ClassSelectionManager : MonoBehaviour
     // at the same time. also adds the courses to the calendar when pressed and able
     private void OnButtonPress(GameObject button, CourseScriptableObject course)
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonSound);
+
         // COURSE REMOVAL
         if (calendar.HasCourse(course) && numCoursesRegistered is <= 3 and > 0)
         {

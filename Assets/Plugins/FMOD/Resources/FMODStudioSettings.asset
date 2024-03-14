@@ -362,15 +362,15 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
-  - c88d16e5272a4e241b0ef0ac2e53b73d
-  - fd7c55dab0fce234b8c25f6ffca523c1
-  - 2c5177b11d81d824dbb064f9ac8527da
-  - e7a046c753c3c3d4aacc91f6597f310d
+  - 2fea114e74ecf3c4f920e1d5cc1c4c40
   - 52eb9df5db46521439908db3a29a1bbb
+  - c88d16e5272a4e241b0ef0ac2e53b73d
+  - 2c5177b11d81d824dbb064f9ac8527da
   - b7716510a1f36934c87976f3a81dbf3d
   - 0f8eb3f400726694eb47beb1a9f94ce8
+  - fd7c55dab0fce234b8c25f6ffca523c1
+  - e7a046c753c3c3d4aacc91f6597f310d
   - 46fbfdf3fc43db0458918377fd40293e
-  - 2fea114e74ecf3c4f920e1d5cc1c4c40
   codecChannels:
     Value: []
     HasValue: 0
@@ -416,6 +416,7 @@ MonoBehaviour:
   Banks:
   - Evening
   - Morning
+  - Orientation
   - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
@@ -432,17 +433,17 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131616
   Platforms:
-  - {fileID: 1990906045329589367}
-  - {fileID: -1656278468721049515}
-  - {fileID: -2528489461979041925}
-  - {fileID: 1646131779577033100}
-  - {fileID: -2463950915734092375}
-  - {fileID: 4531878371686047876}
+  - {fileID: -8020936686205183949}
   - {fileID: -6681618778311943259}
+  - {fileID: -2528489461979041925}
+  - {fileID: -2463950915734092375}
+  - {fileID: -1656278468721049515}
   - {fileID: 709073781433355316}
   - {fileID: 1186631493438703511}
+  - {fileID: 1646131779577033100}
+  - {fileID: 1990906045329589367}
+  - {fileID: 4531878371686047876}
   - {fileID: 5963656337245104520}
-  - {fileID: -8020936686205183949}
   MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
 --- !u!114 &709073781433355316
 MonoBehaviour:

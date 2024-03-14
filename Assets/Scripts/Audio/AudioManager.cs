@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;  // Import SceneManager
 using FMODUnity;
 using FMOD.Studio;
 using System;
-using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -16,16 +15,13 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
         
-
-
-        //InitializeAmbience(FMODEvents.instance.ambience);
-        InitializeMusic(FMODEvents.instance.music);
     }
 
     private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        InitializeMusic(FMODEvents.instance.music);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -50,9 +46,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayOneShot(EventReference sound, Vector3 position)
+    public void PlayOneShot(EventReference sound)
     {
-        RuntimeManager.PlayOneShot(sound, position);
+        RuntimeManager.PlayOneShot(sound);
     }
 
     public EventInstance CreateEventInstance(EventReference eventreference)

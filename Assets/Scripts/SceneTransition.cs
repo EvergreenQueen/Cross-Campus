@@ -17,7 +17,7 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadNextScene()
     {
-        Scene scene = SceneManager.GetActiveScene();
+/*        Scene scene = SceneManager.GetActiveScene();
         if (scene.buildIndex == 1)
         {
             SceneManager.LoadScene(2);
@@ -25,7 +25,7 @@ public class SceneTransition : MonoBehaviour
         else
         {
             SceneManager.LoadScene(1);
-        }
+        }*/
     }
 
 }
