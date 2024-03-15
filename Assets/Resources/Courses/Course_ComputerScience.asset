@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Computer Science
   days: 020000000300000004000000
-  times: 00000000
+  times: 01000000
   location: 4
   grade: 0

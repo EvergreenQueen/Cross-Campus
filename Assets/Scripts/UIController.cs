@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
     public GameObject Square;
     bool change = false;
     bool change2 = false;
-    int times = 0;
 
-    public Button start, quit;
+    public Button start, quit, load, collections, settings;
+    public GameObject foreground, background, title;
 
     public void Update() {
         if (change) {
@@ -27,15 +28,13 @@ public class UIController : MonoBehaviour {
         return change;
     }
 
-    public IEnumerator FadeBlackSquare(bool fade = true, int speed = 3) {
+    public IEnumerator FadeBlackSquare(bool fade = true, int speed = 1) {
         Color objectColor = Square.GetComponent<Image>().color;
         float fadeAmount;
-        //int times = 0;
 
         if (fade) {
             while (Square.GetComponent<Image>().color.a < 1 && change == true) {
                 fadeAmount = objectColor.a + (speed*Time.deltaTime);
-                times++;
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
                 Square.GetComponent<Image>().color = objectColor;
                 yield return null;
@@ -44,9 +43,14 @@ public class UIController : MonoBehaviour {
             change2 = true;
             start.gameObject.SetActive(false);
             quit.gameObject.SetActive(false);
+            load.gameObject.SetActive(false);
+            collections.gameObject.SetActive(false);
+            settings.gameObject.SetActive(false);
+            foreground.SetActive(false);
+            background.SetActive(false);
+            title.SetActive(false);
         } else {
             while (Square.GetComponent<Image>().color.a > 0 && change2 == true) {
-                //Debug.Break();
                 fadeAmount = objectColor.a - (speed*Time.deltaTime);
 
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);

@@ -13,6 +13,14 @@ public class RegistrationButton : MonoBehaviour, IPointerEnterHandler, IPointerE
     public GameObject courseDescriptionTextBox;
     
     private GameObject tempTextBox;
+    private TextMeshProUGUI text;
+    
+    public GameObject hoverSpriteObject;
+
+    public void Start()
+    {
+        text = this.GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     public void OnPointerEnter(PointerEventData data)
     {
@@ -54,12 +62,20 @@ public class RegistrationButton : MonoBehaviour, IPointerEnterHandler, IPointerE
         // tempTextBox.GetComponentInChildren<TextMeshProUGUI>().text = $"Course: {course.name}\n" +
         //                                                              $"Times: {timesString}\n" +
         //                                                              $"Days: {daysString}\n";
+        
+        // this is a bitmap
+        this.text.fontStyle = FontStyles.Bold;
+        hoverSpriteObject.transform.position = transform.position + (new Vector3(text.bounds.min.x + -10, text.bounds.min.y + 0.5f*text.bounds.size.y));
+        hoverSpriteObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData data)
     {
         Debug.Log($"pointer exited {gameObject.name}");
         Destroy(tempTextBox);
+        
+        this.text.fontStyle = FontStyles.Normal;
+        hoverSpriteObject.SetActive(false);
     }
 
 }
