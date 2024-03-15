@@ -6,25 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MatthewScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MatthewScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ButtonOnOver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonOnOver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUNROCK happy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUNROCK happy.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUNROCK passive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUNROCK passive.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUNROCK passive.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUNROCK passive.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_button.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_buttonhover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_buttonhover.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_foreground.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_quit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_quit.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_quithover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menu_quithover.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/NotoSansKhmer-VariableFont_wdth,wght SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/NotoSansKhmer-VariableFont_wdth,wght SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +123,8 @@
       <workItem from="1710132235703" duration="1907000" />
       <workItem from="1710196955591" duration="632000" />
       <workItem from="1710382987633" duration="6201000" />
-      <workItem from="1710399748443" duration="892000" />
+      <workItem from="1710399748443" duration="1491000" />
+      <workItem from="1710442540202" duration="1295000" />
     </task>
     <servers />
   </component>
