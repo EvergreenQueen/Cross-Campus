@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour {
     void onClickStart() {
         control = FindObjectOfType<UIController>();
         control.Change();
+        SceneChanger.GetInstance().loadOrientation();
     }
 
     void onClickQuit() {

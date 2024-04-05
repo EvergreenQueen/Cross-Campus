@@ -43,6 +43,11 @@ public class ClassSelectionManager : MonoBehaviour
     // calendar's already implemented capabilities
     private Calendar calendar;
     private ClassSelectionCalendarDisplay calendarDisplay;
+    
+    // set when setting the button's sprite to the highlighted one when it's selected for the schedule,
+    // so that we can assign it back. wanted to do this in the script instead of hardcoding the images in case we 
+    // want to change the background sprites eventually
+    private Sprite registrationButtonUnhighlightedSprite;
 
     [SerializeField] private int numCoursesRegistered = 0;
 
@@ -86,7 +91,7 @@ public class ClassSelectionManager : MonoBehaviour
         {
             calendar.RemoveCourse(course);
             numCoursesRegistered--;
-            button.GetComponent<Button>().image.color = Color.white;
+            button.GetComponent<Button>().image.sprite = registrationButtonUnhighlightedSprite;
             calendarDisplay.UpdateCalendar(course, false);
             
             // deactivate time conflict notifier when removing a course, i think the player gets it by now
@@ -102,7 +107,7 @@ public class ClassSelectionManager : MonoBehaviour
             // re-enable title just in case
             else if (numCoursesRegistered == 0)
             {
-                obj_calendarTitle.SetActive(true);
+                // obj_calendarTitle.SetActive(true);
             }
         }
         // COURSE ADDING
@@ -135,10 +140,12 @@ public class ClassSelectionManager : MonoBehaviour
 
             calendar.AddCourse(course);
             numCoursesRegistered++;
-            button.GetComponent<Button>().image.color = Color.red;
+            var buttonComponent = button.GetComponent<Button>();
+            registrationButtonUnhighlightedSprite = buttonComponent.image.sprite;
+            buttonComponent.image.sprite = buttonComponent.spriteState.highlightedSprite;
             calendarDisplay.UpdateCalendar(course, true);
             
-            obj_calendarTitle.SetActive(false);
+            // obj_calendarTitle.SetActive(false);
             
             // deactivate time conflict notifier when adding a course, i think the player gets it by now
             if (obj_timeConflictNotifier.activeSelf)

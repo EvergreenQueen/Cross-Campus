@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Course_History
   m_EditorClassIdentifier: 
   name: History
-  days: 010000000300000005000000
-  times: 00000000
+  days: 0100000005000000
+  times: 01000000
   location: 2
   grade: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
@@ -9,7 +10,7 @@ public class UIController : MonoBehaviour {
     bool change2 = false;
 
     public Button start, quit, load, collections, settings;
-    public GameObject foreground, menu;
+    public GameObject foreground, background, title;
 
     public void Update() {
         if (change) {
@@ -46,7 +47,8 @@ public class UIController : MonoBehaviour {
             collections.gameObject.SetActive(false);
             settings.gameObject.SetActive(false);
             foreground.SetActive(false);
-            menu.SetActive(false);
+            background.SetActive(false);
+            title.SetActive(false);
         } else {
             while (Square.GetComponent<Image>().color.a > 0 && change2 == true) {
                 fadeAmount = objectColor.a - (speed*Time.deltaTime);
