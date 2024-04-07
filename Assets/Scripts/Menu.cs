@@ -3,16 +3,16 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour {
     
-    public Button start, quit;
+    public Button start, quit, load, collections, settings;
     UIController control;
     
     void Start() {
         start.onClick.AddListener(onClickStart);
         quit.onClick.AddListener(onClickQuit);
+        
     }
 
     void onClickStart() {
-        Debug.Log("Pressed play!");
         control = FindObjectOfType<UIController>();
         control.Change();
         SceneChanger.GetInstance().loadOrientation();
