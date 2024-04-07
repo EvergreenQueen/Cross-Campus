@@ -390,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786044785950661661, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 72.8
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 7786044786277089531, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: timeBtwChars
@@ -402,7 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786044786277089534, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.9
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 7786044787024667651, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_Pivot.x
