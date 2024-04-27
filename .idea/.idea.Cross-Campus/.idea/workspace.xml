@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/StoryManaging.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MatthewScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MatthewScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ButtonOnOver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonOnOver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/NotoSansKhmer-VariableFont_wdth,wght SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/NotoSansKhmer-VariableFont_wdth,wght SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GlobalVars.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GlobalVars.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +18,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Calendar/Test/CalendarTestStub.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ClassSelectionCalendarDisplay.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ClassSelectionManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SerializableDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StoryManaging/Test/StoryManagerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -42,7 +41,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -125,6 +124,13 @@
       <workItem from="1710382987633" duration="6201000" />
       <workItem from="1710399748443" duration="1491000" />
       <workItem from="1710442540202" duration="1295000" />
+      <workItem from="1713736434004" duration="5770000" />
+      <workItem from="1713755107337" duration="4158000" />
+      <workItem from="1713854324823" duration="3696000" />
+      <workItem from="1713893452452" duration="3403000" />
+      <workItem from="1713939617829" duration="1277000" />
+      <workItem from="1714103521212" duration="2895000" />
+      <workItem from="1714245936476" duration="3601000" />
     </task>
     <servers />
   </component>

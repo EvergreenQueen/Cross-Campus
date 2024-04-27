@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MatthewScene.unity
     guid: b89b635c356123b4b9a6cfffe5c37b7a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FinalDefinitelyTotally/ClassSelection.unity
     guid: 7b187b3ca57128e49b51cf30d9b3c94f
   - enabled: 0
@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Showcase.unity
     guid: d8f1a6c32af6c0f4295e2722b9aac13b
+  - enabled: 1
+    path: Assets/Scenes/OrientationInk.unity
+    guid: c471fb668e9f52844929db0733cc1251
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4cc717cf32edc094aaad6984ebc74968
   m_configObjects: {}

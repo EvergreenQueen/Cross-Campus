@@ -64,13 +64,17 @@ public class Calendar : MonoBehaviour
 
     public static string LocationToString(Location location) 
     {
+        // public enum Location {none, pool, library, hub, gym, forest, classroom, botanical_gardens}; // naming conventions not final
         return location switch
         {
             Location.none => "none",
-            Location.belltower => "belltower",
-            Location.wilcoxs_office => "wilcox's office",
-            Location.physics_2000 => "physics 2000",
-            Location.et_cetera => "et cetera",
+            Location.pool => "pool",
+            Location.library => "library",
+            Location.hub => "hub",
+            Location.gym => "gym",
+            Location.forest => "forest",
+            Location.classroom => "classroom",
+            Location.botanical_gardens => "botanical gardens",
             _ => "invalid input!"
         };
     }

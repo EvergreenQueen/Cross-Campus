@@ -62,8 +62,7 @@ namespace GlobalVars
         }
     }
 
-    public enum Location {none, belltower, hub, wilcoxs_office, physics_2000, et_cetera}; // naming conventions not final
+    public enum Location {none, pool, library, hub, gym, forest, classroom, botanical_gardens}; // naming conventions not final
     public enum TimeSlot {morning, afternoon, evening};
     public enum Day {Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday};
-    
 }
