@@ -8,11 +8,14 @@ public class Mascot : MonoBehaviour
 {
     // class for mascots
     // could probably make it abstract as 
-    private string mascotName;
+    public string mascotName;
+    public Sprite mascotSprite;
     [SerializeField] private int barValue;
     [SerializeField] private int heartLevel;
     private Calendar calendar; // component
     private Location currentLocation;
+    private List<CourseScriptableObject> courses;
+    private Club club;
     // dialogue stuff probably
 
     // Start is called before the first frame update

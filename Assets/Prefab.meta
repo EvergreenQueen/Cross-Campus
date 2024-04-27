@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab.meta
 guid: f116a8bc9ca287949935b39341f84344
 folderAsset: yes
 DefaultImporter:
+========
+guid: c1c05dc7721b60e489c2d3116e21309e
+PrefabImporter:
+>>>>>>>> Alvin:Assets/Prefabs/Location Template.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

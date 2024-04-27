@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/Calendar/Clubs/ClubACM.asset.meta
-guid: b68479872276b8d4c9661e187ae5a024
-NativeFormatImporter:
-========
 guid: 0ce541f1db807c949a3150ff25a10d76
 folderAsset: yes
 DefaultImporter:
->>>>>>>> Alvin:Assets/Scripts/InkScripts.meta
+guid: b68479872276b8d4c9661e187ae5a024
+NativeFormatImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
