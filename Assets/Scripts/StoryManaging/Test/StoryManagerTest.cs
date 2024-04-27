@@ -54,6 +54,7 @@ public class StoryManagerTest : MonoBehaviour
         // Debug.Log($"test GetContext with morning, friday, gym, scotty, 0\nexpected: h, results: {FormatContextList(returnedValue)}");
         
         returnedValue = StoryManager.Instance.GetContexts(TimeSlot.morning, Day.Wednesday, Location.classroom, "scotty", 0);
+        Debug.Log($"test GetContext with morning, wednesday, classroom, scotty, 0\nexpected: Woah, results: {FormatContextList(returnedValue)}");
     }
 
     public string FormatContextList(List<TextAsset> inputList)

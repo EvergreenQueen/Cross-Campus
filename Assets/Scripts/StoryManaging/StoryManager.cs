@@ -15,9 +15,6 @@
 
 // loosely follows singleton pattern (lol)
 
-// banana cream pie woah... .,
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
