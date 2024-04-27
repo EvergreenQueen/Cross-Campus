@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="" />
+    <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Location Template.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Location Template.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Clubs/ClubACM.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Clubs/ClubACM.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InkScripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InkScripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mascot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mascot.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

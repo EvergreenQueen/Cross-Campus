@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using GlobalVars;
 using Unity.Mathematics;
@@ -7,7 +8,6 @@ using UnityEngine.Rendering;
 public class Mascot : MonoBehaviour
 {
     // class for mascots
-    // could probably make it abstract as 
     public string mascotName;
     public Sprite mascotSprite;
     [SerializeField] private int barValue;
@@ -16,7 +16,6 @@ public class Mascot : MonoBehaviour
     private Location currentLocation;
     private List<CourseScriptableObject> courses;
     private Club club;
-    // dialogue stuff probably
 
     // Start is called before the first frame update
     void Start()
