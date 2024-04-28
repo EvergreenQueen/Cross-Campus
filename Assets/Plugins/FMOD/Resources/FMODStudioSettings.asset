@@ -387,10 +387,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: C:/Users/Marcel/Documents/FMOD Studio/cross campus/cross campus.fspro
-  sourceBankPath: C:/Users/Marcel/Documents/FMOD Studio/cross campus/Build
+  sourceBankPath: Assets/FMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
