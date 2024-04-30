@@ -8,14 +8,11 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink Jason for Test Purposes")]
     // [SerializeField] private TextAsset testInk;
     // [SerializeField] private TextAsset scottyInk1;
-    private string talkingTo = "";
+    [SerializeField] private TextAsset talkingTo;
     private bool startedIntro = false;
 
-    private void Awake(){
-        // talkingTo = "Introduction";
-    }
-
-    void Start(){
+    void Awake(){
+    
     }
 
     private void Update(){
@@ -36,6 +33,10 @@ public class DialogueTrigger : MonoBehaviour
         //     }
         // }else{
         // }
+        if(talkingTo != null && !startedIntro){
+            DialogueManager.GetInstance().EnterDialogueMode(talkingTo);
+            startedIntro = true;
+        }
     }
 
     //functions down here handle whatever button is pressed

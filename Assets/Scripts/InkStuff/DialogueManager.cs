@@ -171,6 +171,7 @@ public class DialogueManager : MonoBehaviour
         for(int j=i; j<choices.Length; ++j){
             choices[j].gameObject.SetActive(false);
         }
+        StartCoroutine(SelectFirstChoice());
     }
 
     private void HandleTags(List<string> currentTags){
@@ -285,5 +286,17 @@ public class DialogueManager : MonoBehaviour
             case null:
                 break;
         }
+    }
+
+    private IEnumerator SelectFirstChoice(){
+        // Unity requires EventSystem to be cleared first AND THEN set (waiting for the frame)
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+    }
+
+    public void MakeChoice(int whichOne){
+        currentStory.ChooseChoiceIndex(whichOne);
+        ContinueStory();
     }
 }
