@@ -52,7 +52,7 @@ public class Mascot : MonoBehaviour
         return mascotName;
     }
 
-    public float GetHeartLevel()
+    public int GetHeartLevel()
     {
         return heartLevel;
     }
