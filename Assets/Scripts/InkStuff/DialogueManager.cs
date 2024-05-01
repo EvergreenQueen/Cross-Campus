@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
     public bool dialogueCurrentlyPlaying { get; private set; }
+    private bool noContinue = false;
     private static DialogueManager instance;
     private string currDialogue;
     private bool firstLine = false;
@@ -90,7 +91,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         //handle continuing to next line in dialogue when submit pressed
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Space) && !noContinue){
             ContinueStory();
         }
 
@@ -164,6 +165,7 @@ public class DialogueManager : MonoBehaviour
         }
         int i = 0;
         foreach(Choice choice in currentChoices){
+            noContinue = true;
             choices[i].gameObject.SetActive(true);
             choicesText[i].text = choice.text;
             i++; 
@@ -292,11 +294,12 @@ public class DialogueManager : MonoBehaviour
         // Unity requires EventSystem to be cleared first AND THEN set (waiting for the frame)
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        // EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
     public void MakeChoice(int whichOne){
         currentStory.ChooseChoiceIndex(whichOne);
+        noContinue = false;
         ContinueStory();
     }
 }
