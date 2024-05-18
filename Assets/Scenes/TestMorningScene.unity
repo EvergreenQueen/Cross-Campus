@@ -176,11 +176,11 @@ MonoBehaviour:
     Path: event:/Morning/Morning Music
   <buttonSound>k__BackingField:
     Guid:
-      Data1: -178747100
-      Data2: 1323121385
-      Data3: -1702901068
-      Data4: 1400357746
-    Path: event:/never gonna
+      Data1: -1586069003
+      Data2: 1256128828
+      Data3: 759331242
+      Data4: 1559131721
+    Path: event:/SFX/Bubble2
 --- !u!1 &218598506
 GameObject:
   m_ObjectHideFlags: 0

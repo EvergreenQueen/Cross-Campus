@@ -390,18 +390,18 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: C:/Users/Marcel/Documents/FMOD Studio/cross campus/cross campus.fspro
-  sourceBankPath: Assets/FMOD/Build
+  sourceBankPath: Assets/FMOD/Build/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
-  AutomaticEventLoading: 1
-  BankLoadType: 0
+  AutomaticEventLoading: 0
+  BankLoadType: 1
   AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
   TargetBankFolder: 
-  EventLinkage: 0
+  EventLinkage: 1
   LoggingLevel: 2
   SpeakerModeSettings: []
   SampleRateSettings: []
@@ -412,13 +412,19 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
+  - Desktop/Master
   Banks:
+  - Desktop/Evening
+  - Desktop/Morning
+  - Desktop/Orientation
+  - Desktop/SFX
+  BanksToLoad:
+  - Master.strings
   - Evening
+  - Master
   - Morning
   - Orientation
   - SFX
-  BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0
