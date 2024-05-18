@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OrientationInk.unity
     guid: c471fb668e9f52844929db0733cc1251
   - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: c9960850fa2bbc0418823a6f69418489
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4cc717cf32edc094aaad6984ebc74968
   m_configObjects: {}

@@ -29,7 +29,12 @@ public class Mascot : MonoBehaviour
     /// </summary>
     public void UpdateLocation(TimeSlot time, Day day)
     {
+        calendar = GetComponent<Calendar>();
         var prevLocation = currentLocation;
+        if (calendar is null)
+        {
+            Debug.Log($"CALENDAR IS NULL FOR MASCOT {mascotName}");
+        }
         currentLocation = calendar.GetLocation(time, day);
         Debug.Log($"Mascot {mascotName} location changed from {prevLocation} to {currentLocation}");
     }

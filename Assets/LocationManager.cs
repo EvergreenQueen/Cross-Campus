@@ -12,11 +12,27 @@ public class LocationManager : MonoBehaviour
     [SerializeField] private List<GameObject> mascotList = new List<GameObject>();
     [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
 
+    
     //Runtime variables
+    private static LocationManager instance;
     private TimeSlot currentTimeSlot = TimeSlot.morning;
     private Day currentDay = Day.Monday;
     private Location currentLocation;
 
+    private void Awake()
+    {
+        if (instance != null) 
+        {
+            Debug.LogWarning("found more than one location manager, uh oh");
+        }
+        instance = this;
+    }
+
+    public static LocationManager GetInstance()
+    {
+        return instance;
+    }
+    
     private void Start()
     {
         UpdateAllMascotLocations();
@@ -58,6 +74,13 @@ public class LocationManager : MonoBehaviour
                 debugOutput += item.name + " ";
             }
             Debug.Log("location stories: " + debugOutput);
+
+            if (ctxList.Count == 1)
+            {
+                var storyContext = ctxList[0];
+                Debug.Log("only one story at location, jumping to story " + storyContext.name);
+                StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("story", storyContext));
+            }
         }
     }
 
@@ -68,7 +91,7 @@ public class LocationManager : MonoBehaviour
         timeAndDayPlaceHolder.text = Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
     }
 
-    private List<GameObject> GetMascotsAtLocation(string locationName)
+    public List<GameObject> GetMascotsAtLocation(string locationName)
     {
         List<GameObject> mascotsAtLocation = new List<GameObject>();
         foreach (GameObject mascot in mascotList)
@@ -84,7 +107,7 @@ public class LocationManager : MonoBehaviour
             mascot.GetComponent<Mascot>().UpdateLocation(currentTimeSlot, currentDay);
     }
 
-    // given a location string convert it to a Location (enum)
+    // given a location (string) convert it to a Location (enum)
     // not case sensitive!
     private Location LocationStringToLocation(string locationName)
     {

@@ -14,18 +14,33 @@ public class Tooltip : MonoBehaviour
     public GameObject obj_textBG;
     public GameObject obj_text;
     public Vector2 cursorOffset;
+    public bool doAutoUpdate = true;
 
     void Start()
     {
+        if (Camera.current != null)
+        {
+            uiCam = Camera.current;
+        }
         Debug.Log($"tooltip created with position {transform.position}");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, uiCam, out localPoint);
-        transform.localPosition = localPoint + cursorOffset;
+        if (doAutoUpdate)
+        {
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(),
+                Input.mousePosition, uiCam, out localPoint);
+            Debug.Log(localPoint);
+            transform.localPosition = localPoint + cursorOffset;
+        }
+    }
+
+    public void ManualUpdatePosition(Vector2 newPos)
+    {
+        transform.position = newPos;
     }
     
     /// <summary>

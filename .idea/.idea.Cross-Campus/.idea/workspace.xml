@@ -7,7 +7,16 @@
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LocationManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Location Template.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Location Template.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/Scotty/Woah.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/Scotty/Woah.ink" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/Scotty/Woah.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/Scotty/Woah.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/StoryContexts/Scotty/Woah.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/StoryContexts/Scotty/Woah.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CampusMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CampusMap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Class Selection/Tooltip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Class Selection/Tooltip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InkStuff/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InkStuff/DialogueManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mascot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mascot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/LocationTemplate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Calendar/Test/CalendarTestStub.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StoryManaging/Test/StoryManagerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
@@ -129,6 +139,9 @@
       <workItem from="1713939617829" duration="1277000" />
       <workItem from="1714103521212" duration="2895000" />
       <workItem from="1714245936476" duration="3601000" />
+      <workItem from="1714805137311" duration="12488000" />
+      <workItem from="1715474014212" duration="5977000" />
+      <workItem from="1716053299759" duration="1433000" />
     </task>
     <servers />
   </component>

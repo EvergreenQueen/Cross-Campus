@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
@@ -22,14 +23,20 @@ public class SceneChanger : MonoBehaviour
     public void loadOrientation(){
         // UnityEngine.SceneManagement.SceneManager.LoadScene("OrientationInk");
         // DialogueManager.GetInstance().EnterDialogueMode(orientationJSON);
-        StartCoroutine(LoadSceneAndCallDialogue("orientation"));
+        StartCoroutine(LoadSceneAndCallDialogue("orientation", orientationJSON));
     }
 
     public void loadRegistration(){
         StartCoroutine(LoadSceneAndCallDialogue("registration"));
     }
 
-    IEnumerator LoadSceneAndCallDialogue(string whichScene){
+    public void loadCampusMap()
+    {
+        StartCoroutine(LoadSceneAndCallDialogue("campus_map"));
+    }
+
+    // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
+    public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null){
         switch(whichScene){
             case "orientation":
                 AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("OrientationInk", LoadSceneMode.Additive);
@@ -39,7 +46,7 @@ public class SceneChanger : MonoBehaviour
                 {
                     yield return null;
                 }
-                DialogueManager.GetInstance().EnterDialogueMode(orientationJSON);
+                DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
                 break;
@@ -53,6 +60,36 @@ public class SceneChanger : MonoBehaviour
                 }
 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
+                break;
+            // i don't want to break ANYTHING that hao did so i am simply adding to the switch statement and not messing with the above ^^^ - grat
+            case "story":
+                if (dialogue is null)
+                {
+                    Debug.LogError("trying to switch to a story with a null dialogue!!! wuh oh! abandoning ship!!");
+                    break;
+                }
+                
+                AsyncOperation asyncLoad3 = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("StoryScene", LoadSceneMode.Additive);
+                // unload the map scene
+                while (!asyncLoad3.isDone)
+                {
+                    yield return null;
+                }
+
+                DialogueManager.GetInstance().EnterDialogueMode(dialogue);
+                // there's a better way to do this
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("CampusMap");
+                break;
+            case "campus_map":
+                AsyncOperation asyncLoad4 = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("CampusMap", LoadSceneMode.Additive);
+                while (!asyncLoad4.isDone)
+                {
+                    yield return null;
+                }
+                
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
+                // progress time :>
+                LocationManager.GetInstance().ProgressTime();
                 break;
             case null:
                 break;

@@ -282,7 +282,13 @@ public class DialogueManager : MonoBehaviour
             case "class_registration":
                 SceneChanger.GetInstance().loadRegistration();
                 break;
+            case "campus_map":
+                SceneChanger.GetInstance().loadCampusMap();
+                break;
             case null:
+                break;
+            default:
+                Debug.Log("attempted to switch scenes.. but couldnt,., .woahs...g...");
                 break;
         }
     }
