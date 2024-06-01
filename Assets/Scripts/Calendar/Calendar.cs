@@ -112,7 +112,7 @@ public class Calendar : MonoBehaviour
         // since this method is also used to add existing courses to the calendar, check if the
         // list of courses doesn't already contain the course we're adding
         if (!courses.Contains(course)) courses.Add(course);
-        Debug.Log($"[calendar]added course {course.name} to calendar");
+        Debug.Log($"[calendar] added course {course.name} to calendar");
         Debug.Log($"[calendar] course list is now {courses}");
         
         Verify();

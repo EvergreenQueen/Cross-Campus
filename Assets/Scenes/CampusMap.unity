@@ -527,6 +527,14 @@ MonoBehaviour:
   - {fileID: 2048091570}
   - {fileID: 57566081}
   timeAndDayPlaceHolder: {fileID: 616741674}
+  eventPopUpPrefab: {fileID: 1101423493248803087, guid: 4f33b08b9d7187848ac69b46d13960d3, type: 3}
+  uiCanvas: {fileID: 2042922681}
+  basicClassStory: {fileID: 4900000, guid: dda54a3b2351bab46b325fb6a0e56a89, type: 3}
+  placeholderCourse: {fileID: 11400000, guid: f8c1ec980e4e709439ef98b2685899c3, type: 2}
+  currentTimeSlot: 0
+  currentDay: 1
+  savedTimeAndDay: {fileID: 11400000, guid: 3564b1a3ef1b2654fb1948fe819ce5d9, type: 2}
+  playerCalendar: {fileID: 0}
 --- !u!4 &473283414
 Transform:
   m_ObjectHideFlags: 0
@@ -906,7 +914,6 @@ GameObject:
   - component: {fileID: 765417476}
   - component: {fileID: 765417475}
   - component: {fileID: 765417474}
-  - component: {fileID: 765417477}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -964,19 +971,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &765417477
+--- !u!1 &987662268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987662270}
+  - component: {fileID: 987662269}
+  m_Layer: 0
+  m_Name: SceneChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &987662269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765417473}
+  m_GameObject: {fileID: 987662268}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65e45959837bd7241a8a6c63db9580cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   orientationJSON: {fileID: 0}
+  savedTimeAndDay: {fileID: 0}
+--- !u!4 &987662270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987662268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 819.068, y: 525.42096, z: 2.4277122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074292100
 GameObject:
   m_ObjectHideFlags: 0

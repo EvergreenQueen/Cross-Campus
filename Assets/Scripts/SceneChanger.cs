@@ -1,19 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private TextAsset orientationJSON;
     private static SceneChanger instance;
-
+    
+    public GameObject savedTimeAndDay; // used to preserve global time and day between scenes, see the SavedTimeAndDay script
+    
     private void Awake(){
-        if(instance != null){
+        if (instance != null && instance != this) 
+        {
             Debug.LogWarning("Found more than 1 Scene Changer. That's not bueno.");
+            Destroy(this.gameObject);
         }
-        instance = this;
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     public static SceneChanger GetInstance(){
@@ -50,6 +57,7 @@ public class SceneChanger : MonoBehaviour
 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
                 break;
+            
             case "registration":
                 AsyncOperation asyncLoad2 = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ClassSelection", LoadSceneMode.Additive);
 
@@ -61,6 +69,7 @@ public class SceneChanger : MonoBehaviour
 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
                 break;
+            
             // i don't want to break ANYTHING that hao did so i am simply adding to the switch statement and not messing with the above ^^^ - grat
             case "story":
                 if (dialogue is null)
@@ -69,7 +78,13 @@ public class SceneChanger : MonoBehaviour
                     break;
                 }
                 
+                EventSystem e = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+                e.enabled = false;
+                GameObject mainCam = GameObject.Find("Main Camera");
+                mainCam.SetActive(false);
+                
                 AsyncOperation asyncLoad3 = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("StoryScene", LoadSceneMode.Additive);
+
                 // unload the map scene
                 while (!asyncLoad3.isDone)
                 {
@@ -79,17 +94,26 @@ public class SceneChanger : MonoBehaviour
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
                 // there's a better way to do this
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("CampusMap");
+               
                 break;
+            
             case "campus_map":
+                EventSystem e2 = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+                e2.enabled = false;
+                GameObject mainCam2 = GameObject.Find("Main Camera");
+                mainCam2.SetActive(false);
+                
                 AsyncOperation asyncLoad4 = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("CampusMap", LoadSceneMode.Additive);
                 while (!asyncLoad4.isDone)
                 {
                     yield return null;
                 }
                 
-                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
                 // progress time :>
+                LocationManager.GetInstance().RetrieveTimeAndDayState();
                 LocationManager.GetInstance().ProgressTime();
+                
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
                 break;
             case null:
                 break;
