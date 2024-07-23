@@ -378,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786044785950661659, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_fontSize
-      value: 24
+      value: 25.2
       objectReference: {fileID: 0}
     - target: {fileID: 7786044785950661659, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_fontSizeBase
@@ -395,6 +395,14 @@ PrefabInstance:
     - target: {fileID: 7786044786277089531, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: timeBtwChars
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786044786277089532, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786044786277089532, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 7786044786277089534, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -609,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4f9f9bb2c0f2f449d3ed64afebec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talkingTo: {fileID: 0}
 --- !u!4 &1770100194
 Transform:
   m_ObjectHideFlags: 0
@@ -698,3 +707,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4f9f9bb2c0f2f449d3ed64afebec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talkingTo: {fileID: 0}
