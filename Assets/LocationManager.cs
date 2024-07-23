@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LocationManager : MonoBehaviour
 {
@@ -11,13 +13,25 @@ public class LocationManager : MonoBehaviour
     //Serialized variables
     [SerializeField] private List<GameObject> mascotList = new List<GameObject>();
     [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
+    [SerializeField] private GameObject eventPopUpPrefab;
+    public Canvas uiCanvas; // might wanna do this thru a ui manager tbh
+    
+    [SerializeField] private TextAsset basicClassStory;
+    [SerializeField] private CourseScriptableObject placeholderCourse;
+    
 
     
     //Runtime variables
     private static LocationManager instance;
-    private TimeSlot currentTimeSlot = TimeSlot.morning;
-    private Day currentDay = Day.Monday;
+    public TimeSlot currentTimeSlot = TimeSlot.morning;
+    public Day currentDay = Day.Monday;
     private Location currentLocation;
+    
+    private EventPopUp eventPopUp;
+    public SavedTimeAndDay savedTimeAndDay; // SET IN INSPECTOR
+    
+    public Player player;
+    public Calendar playerCalendar;
 
     private void Awake()
     {
@@ -26,6 +40,22 @@ public class LocationManager : MonoBehaviour
             Debug.LogWarning("found more than one location manager, uh oh");
         }
         instance = this;
+
+        if (player == null)
+        {
+            player = new Player();
+            if (!playerCalendar)
+            {
+                var dayList = new List<Day>();
+                dayList.Add(Day.Monday);
+                var timesList = new List<TimeSlot>();
+                timesList.Add(TimeSlot.evening);
+                playerCalendar = gameObject.AddComponent<Calendar>();
+                playerCalendar.AddCourse(placeholderCourse);
+                
+                player.SetCalendar(playerCalendar);
+            }
+        }
     }
 
     public static LocationManager GetInstance()
@@ -42,6 +72,7 @@ public class LocationManager : MonoBehaviour
     
     public void ProgressTime()
     {
+        Debug.Log($"progressing time, old time slot is {currentTimeSlot}, old day is {currentDay}");
         if (currentTimeSlot == TimeSlot.evening)
         {
             currentTimeSlot = TimeSlot.morning;
@@ -49,11 +80,29 @@ public class LocationManager : MonoBehaviour
             else currentDay++;
         }
         else currentTimeSlot++;
+        Debug.Log($"done progressing time, new time slot is {currentTimeSlot}, new day is {currentDay}");
 
+        if (eventPopUp)
+        {
+            Destroy(eventPopUp.gameObject);
+        }
+        
+        // saturday life events
+        if (currentDay == Day.Saturday)
+        {
+            foreach (var mascotObj in mascotList)
+            {
+                var mascot = mascotObj.GetComponent<Mascot>();
+                if (mascot.GetHeartLevel() >= 5)
+                {
+                    // load and play date story probably
+                }
+            }
+        }
+        
         UpdateTimeAndDayGUI();
-
         UpdateAllMascotLocations();
-
+        CheckPlayerScheduleAndNotify();
     }
     
     // called when clicking on a location on the map
@@ -78,9 +127,41 @@ public class LocationManager : MonoBehaviour
             if (ctxList.Count == 1)
             {
                 var storyContext = ctxList[0];
-                Debug.Log("only one story at location, jumping to story " + storyContext.name);
-                StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("story", storyContext));
+                SaveStateAndJumpToStory(storyContext);
             }
+        }
+    }
+
+    // check if the player has clubs OR even courses at the current time/day slot
+    // and notify them in the corner or something
+    // give them the option to go to that club or course if they want to
+    // for courses probably load a very short story that says "woah you learned things..."
+    // for clubs i think we want interactions w/ other mascots to happen so uhhh depending on the club load a story ig
+    // unless we're like not doing clubs
+    private void CheckPlayerScheduleAndNotify()
+    {
+        var calendar = player.GetCalendar();
+        // check courbses
+        var course = calendar.GetCourseAtTime(currentTimeSlot, currentDay);
+        Debug.Log($"course right now is {course}");
+        if (course != null)
+        {
+            var eventPopUpObject = Instantiate(eventPopUpPrefab, uiCanvas.transform);
+            // eventPopUpObject.transform.position = 
+            eventPopUp = eventPopUpObject.GetComponent<EventPopUp>();
+            eventPopUp.SetText($"You have {course.name} right now! Go to class? (skipping class may result in bad grades)");
+            eventPopUp.AssignButtonEvents(() =>
+            {
+                // accept callback
+                SaveStateAndJumpToStory(basicClassStory);
+            }, () =>
+            {
+                // deny callback...
+                course.Skip(); // adds 1 to the "skipped" counter
+                // FIXME decrement grade at another time instead of as soon as you press the button??
+                course.DecrementGrade(5);
+                Destroy(eventPopUp.gameObject);
+            });
         }
     }
 
@@ -106,6 +187,8 @@ public class LocationManager : MonoBehaviour
         foreach (GameObject mascot in mascotList)
             mascot.GetComponent<Mascot>().UpdateLocation(currentTimeSlot, currentDay);
     }
+    
+    
 
     // given a location (string) convert it to a Location (enum)
     // not case sensitive!
@@ -125,6 +208,21 @@ public class LocationManager : MonoBehaviour
             "botanical gardens" => Location.botanical_gardens,
             _ => Location.none
         };
+    }
+
+    public void RetrieveTimeAndDayState()
+    {
+        currentDay = savedTimeAndDay.day;
+        currentTimeSlot = savedTimeAndDay.time;
+    }
+
+    private void SaveStateAndJumpToStory(TextAsset story)
+    {
+        Debug.Log("jumping to story " + story.name);
+        // save time and day state
+        savedTimeAndDay.time = currentTimeSlot;
+        savedTimeAndDay.day = currentDay;
+        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("story", story));
     }
 
     #endregion 

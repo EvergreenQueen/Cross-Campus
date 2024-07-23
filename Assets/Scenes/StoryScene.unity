@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &420964175
+--- !u!1 &128537490
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,10 +131,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 420964179}
-  - component: {fileID: 420964178}
-  - component: {fileID: 420964177}
-  - component: {fileID: 420964176}
+  - component: {fileID: 128537494}
+  - component: {fileID: 128537493}
+  - component: {fileID: 128537492}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -142,38 +141,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &420964176
+--- !u!114 &128537492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420964175}
+  m_GameObject: {fileID: 128537490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4f9f9bb2c0f2f449d3ed64afebec68, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &420964177
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &128537493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420964175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e45959837bd7241a8a6c63db9580cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orientationJSON: {fileID: 4900000, guid: 0ce89e88913d6fd409d0f106e5213bf5, type: 3}
---- !u!114 &420964178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420964175}
+  m_GameObject: {fileID: 128537490}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -182,15 +176,15 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!4 &420964179
+--- !u!4 &128537494
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420964175}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_GameObject: {fileID: 128537490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,11 +216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786044785950661661, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -274
+      value: -279.8
       objectReference: {fileID: 0}
     - target: {fileID: 7786044785950661661, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 48
+      value: 70.4
       objectReference: {fileID: 0}
     - target: {fileID: 7786044786277089531, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: timeBtwChars
@@ -238,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786044786277089534, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7786044787024667651, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_Pivot.x
@@ -533,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 7766422648511862063, guid: 639785d31c08e8944b3bd7fdbad21008, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 420964175}
+      objectReference: {fileID: 583316194}
     - target: {fileID: 7766422648511862063, guid: 639785d31c08e8944b3bd7fdbad21008, type: 3}
       propertyPath: dialogueText
       value: 
