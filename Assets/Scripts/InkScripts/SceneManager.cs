@@ -134,7 +134,4 @@ public class SceneManager : MonoBehaviour
             Destroy(canvas.transform.GetChild(i).gameObject);
         }
     }
-
-    
-
 }
