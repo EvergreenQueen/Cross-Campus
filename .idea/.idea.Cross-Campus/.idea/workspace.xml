@@ -6,27 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LocationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DialogueManager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DialogueManager.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Ink.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Ink.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/a.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/a.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/b.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/b.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/c.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/c.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/d.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/d.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/e.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/e.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/f.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/f.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/g.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/g.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/h.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/h.ink" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LocationManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LocationManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LocationTemplate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LocationTemplate.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mascot Template.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mascot Template.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Chemistry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Chemistry.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_ComputerScience.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_ComputerScience.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_English.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_English.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_History.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_History.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Math.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Math.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Physics.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Courses/Course_Physics.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CampusMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CampusMap.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoryScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StoryScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/CourseScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/CourseScriptableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Class Selection/ClassSelectionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Class Selection/ClassSelectionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mascot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mascot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SavedTimeAndDay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SavedTimeAndDay.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +31,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/53aac14d88ba4477acc998b039cfd73a15ae00/43/4a21d7f6/ScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffe351aa6232372f4a3b8c3ff36a636f33de226f60e607acbfe569289d7289d/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/LocationTemplate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Calendar/Test/CalendarTestStub.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EventPopUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SavedTimeAndDay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StoryManaging/Test/StoryManagerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -51,29 +49,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Garett\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Garett\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Garett\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Garett\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Garett\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Garett\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe" />
@@ -159,6 +157,13 @@
       <workItem from="1716596658870" duration="970000" />
       <workItem from="1716759339870" duration="11166000" />
       <workItem from="1717266214365" duration="8113000" />
+      <workItem from="1722462155965" duration="6499000" />
+      <workItem from="1722622068668" duration="4961000" />
+      <workItem from="1722660811685" duration="4306000" />
+      <workItem from="1722720663693" duration="5497000" />
+      <workItem from="1722800183846" duration="9255000" />
+      <workItem from="1722844893037" duration="1157000" />
+      <workItem from="1722915097495" duration="5511000" />
     </task>
     <servers />
   </component>

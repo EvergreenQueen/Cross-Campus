@@ -1,26 +1,28 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using GlobalVars;
 using Unity.Mathematics;
 using UnityEngine.Rendering;
 
+[System.Serializable]
 public class Mascot : MonoBehaviour
 {
     // class for mascots
     public string mascotName;
     public Sprite mascotSprite;
-    [SerializeField] private int barValue;
-    [SerializeField] private int heartLevel;
-    private Calendar calendar; // component
+    public int barValue;
+    public int heartLevel;
+    public Calendar calendar; 
     private Location currentLocation;
-    private List<CourseScriptableObject> courses;
+    private List<CourseScriptableObject> courses; // course list should be stored in the calendar
     private Club club;
 
     // Start is called before the first frame update
     void Start()
     {
-        calendar = GetComponent<Calendar>();
+        calendar?.Verify(); // verify the calendar in case this mascot's course list was set in the inspector
     }
 
     /// <summary>
@@ -29,7 +31,7 @@ public class Mascot : MonoBehaviour
     /// </summary>
     public void UpdateLocation(TimeSlot time, Day day)
     {
-        calendar = GetComponent<Calendar>();
+        // calendar = GetComponent<Calendar>();
         var prevLocation = currentLocation;
         if (calendar is null)
         {
@@ -85,5 +87,51 @@ public class Mascot : MonoBehaviour
         barValue = Math.Clamp(barValue - pips, 0, 5);
         Debug.Log($"bar value decreased to {barValue}");
         // TODO reduce heart level when it's zero? maybe?
+    }
+
+    public void SaveMascot()
+    {
+        // meow
+        // save data in a text file
+        // Debug.Log("attempting to save mascot data for mascot " + mascotName);
+        // string dirPath = Path.Combine(Application.persistentDataPath, mascotName);
+        // Directory.CreateDirectory(dirPath);
+        // string filePath = Path.Combine(dirPath, "MascotData.txt");
+        // string jsonData = JsonUtility.ToJson(this);
+        //
+        // FileStream fcreate = File.Open(filePath, FileMode.Create); // create file if it doesn't exist, overwrite it if it does exist
+        // StreamWriter sw = new StreamWriter(fcreate);
+        //
+        // sw.WriteLine(jsonData);
+        // Debug.Log("saved mascot data to path: " + filePath);
+        // sw.Close();
+        
+        SaveSystem<Mascot>.Save(this, mascotName, "MascotData.json");
+    }
+
+    public void LoadMascot()
+    {
+        // Debug.Log("attempting to load mascot data for mascot " + mascotName);
+        // string dirPath = Path.Combine(Application.persistentDataPath, mascotName);
+        // if (Directory.Exists(dirPath))
+        // {
+        //     string filePath = Path.Combine(dirPath, "MascotData.txt");
+        //     
+        //     FileStream fread = File.Open(filePath, FileMode.Open);
+        //     StreamReader sr = new StreamReader(fread);
+        //     
+        //     string jsonData = sr.ReadLine();
+        //     JsonUtility.FromJsonOverwrite(jsonData, this);
+        //     calendar.Verify(); // add courses in loaded calendar to the actual calendar
+        //     fread.Close();
+        // }
+        // else
+        // {
+        //     Debug.LogError("directory: " + dirPath + " does not exist! aborting mascot load.");
+        // }
+        
+        string mascotJson = SaveSystem<Mascot>.Load(mascotName, "MascotData.json");
+        JsonUtility.FromJsonOverwrite(mascotJson, this);
+        calendar.Verify();
     }
 }

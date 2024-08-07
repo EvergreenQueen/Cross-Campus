@@ -16,4 +16,5 @@ MonoBehaviour:
   days: 0200000004000000
   times: 00000000
   location: 1
-  grade: 0
+  grade: 100
+  timesSkipped: 0

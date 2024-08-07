@@ -12,11 +12,12 @@ using Ink.Parsed;
 // can also be used to give a Mascot certain locations at certain times, without forcing it to have a course/club at
 // that time. 
 
-public class Calendar : MonoBehaviour
+[System.Serializable]
+public class Calendar
 {
     // struct which holds the timeslot essentially for the time of day. can have a course, a club, and a location.
     // currently the same time and day can have a course and a club, this is easily changeable if this isn't desired behavior
-    private struct Activity
+    public struct Activity
     {
         public CourseScriptableObject course;
         public ClubScriptableObject club;
@@ -25,7 +26,7 @@ public class Calendar : MonoBehaviour
 
     // 2d array holding activities for each time/day combination
     // indexed using ints instead of [Time, Day] because it's an array. the time/day are casted to ints to retrieve the value at the indices
-    private Activity[,] schedule = new Activity[3, 7];
+    public Activity[,] schedule = new Activity[3, 7];
 
     // store courses that the player is in
     public List<CourseScriptableObject> courses = new List<CourseScriptableObject>();
@@ -184,8 +185,8 @@ public class Calendar : MonoBehaviour
     }
     
     /// <summary>
-    /// re-check through added courses/clubs in the calendar and add them
-    /// basically, a way to work around the problem of overwriting calendar entries
+    /// re-check through added courses/clubs in the calendar and add them.
+    /// basically, a way to work around the problem of overwriting calendar entries.
     /// will be called after adding/removing anything from the calendar, so a little inefficient but we DO NOT CARE
     /// </summary>
     public void Verify()

@@ -17,3 +17,4 @@ MonoBehaviour:
   times: 01000000
   location: 4
   grade: 0
+  timesSkipped: 0

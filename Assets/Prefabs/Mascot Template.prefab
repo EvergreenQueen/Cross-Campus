@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5367738793158065799}
-  - component: {fileID: 7649193697260545775}
   - component: {fileID: 5608371332889792056}
   m_Layer: 0
   m_Name: Mascot Template
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7649193697260545775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3548488474304492323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af3c03045cab4a4f85354456672d14f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  courses: []
-  clubs: []
 --- !u!114 &5608371332889792056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,3 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mascotName: 
   mascotSprite: {fileID: 0}
+  barValue: 0
+  heartLevel: 0
+  calendar:
+    courses: []
+    clubs: []
