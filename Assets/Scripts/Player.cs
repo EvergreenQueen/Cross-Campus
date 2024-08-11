@@ -31,20 +31,6 @@ public class Player : MonoBehaviour
             calendar.Verify();
         }
     }
-
-    void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.S))
-        // {
-        //     SaveCalendar();
-        //     SaveName();
-        // }
-        // if (Input.GetKeyDown(KeyCode.L))
-        // {
-        //     LoadCalendar();
-        //     LoadName();
-        // }
-    }
     
     public string GetName()
     {
@@ -115,6 +101,19 @@ public class Player : MonoBehaviour
         }
         
         sr.Close();
+    }
+    
+    // returns true if player data exists in the persistent data path of the game. mainly used to know if we should gray out the load game button on the main menu scene.
+    public bool PlayerDataExists()
+    {
+        string dirPath = Path.Combine(Application.persistentDataPath, "Player");
+        string filePath = Path.Combine(dirPath, "CourseGrades.txt");
+        
+        if (Directory.Exists(dirPath) && File.Exists(filePath))
+        {
+            return true;
+        }
+        return false;
     }
 }
 

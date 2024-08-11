@@ -44,23 +44,26 @@ public class LocationManager : MonoBehaviour
         instance = this;
         
         // player should in theory be dontdestroyonloaded
-        player = GameObject.Find("Player").GetComponent<Player>();
+        player = GameObject.Find("Player")?.GetComponent<Player>();
         
         // create new calendar if it's not defined for some reason
         // FIXME move this to the player object itself, because this functionality is not the location manager's responsibility
-        playerCalendar = player.GetCalendar();
-        if (playerCalendar == null)
+        if (player)
         {
-            playerCalendar = new Calendar();
-            
-            var dayList = new List<Day>();
-            dayList.Add(Day.Monday);
-            var timesList = new List<TimeSlot>();
-            timesList.Add(TimeSlot.evening);
-            // playerCalendar = gameObject.AddComponent<Calendar>();
-            playerCalendar.AddCourse(placeholderCourse);
-            
-            player.SetCalendar(playerCalendar);
+            playerCalendar = player.GetCalendar();
+            if (playerCalendar == null)
+            {
+                playerCalendar = new Calendar();
+
+                var dayList = new List<Day>();
+                dayList.Add(Day.Monday);
+                var timesList = new List<TimeSlot>();
+                timesList.Add(TimeSlot.evening);
+                // playerCalendar = gameObject.AddComponent<Calendar>();
+                playerCalendar.AddCourse(placeholderCourse);
+
+                player.SetCalendar(playerCalendar);
+            }
         }
     }
 
@@ -234,6 +237,20 @@ public class LocationManager : MonoBehaviour
         {
             Debug.LogError("directory: " + dirPath + " does not exist! aborting time day data load.");
         }
+    }
+    
+    // returns true if location save data exists. mainly used to know whether the main menu should gray out the load game button.
+    public bool LocationDataExists()
+    {
+        string dirPath = Path.Combine(Application.persistentDataPath, "Map");
+        if (Directory.Exists(dirPath))
+        {
+            if (File.Exists(Path.Combine(dirPath, "TimeDayData.txt")))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     #region HELPER FUNCTIONS 
