@@ -199,6 +199,9 @@ public class DialogueManager : MonoBehaviour
                     }
                     break;
                 case SPEAKER_TAG:
+                    if(tagValue == "Player"){
+                        tagValue = Player.GetName();
+                    }
                     displayNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
@@ -282,6 +285,9 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
         switch(whatScene){
+            case "name_select":
+                SceneChanger.GetInstance().loadName();
+                break;
             case "class_registration":
                 SceneChanger.GetInstance().loadRegistration();
                 break;
