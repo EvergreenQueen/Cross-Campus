@@ -1,3 +1,4 @@
+using System;
 using GlobalVars;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
+using System.IO;
 
 public class LocationManager : MonoBehaviour
 {
@@ -40,19 +42,26 @@ public class LocationManager : MonoBehaviour
             Debug.LogWarning("found more than one location manager, uh oh");
         }
         instance = this;
-
-        if (player == null)
+        
+        // player should in theory be dontdestroyonloaded
+        player = GameObject.Find("Player")?.GetComponent<Player>();
+        
+        // create new calendar if it's not defined for some reason
+        // FIXME move this to the player object itself, because this functionality is not the location manager's responsibility
+        if (player)
         {
-            player = new Player();
-            if (!playerCalendar)
+            playerCalendar = player.GetCalendar();
+            if (playerCalendar == null)
             {
+                playerCalendar = new Calendar();
+
                 var dayList = new List<Day>();
                 dayList.Add(Day.Monday);
                 var timesList = new List<TimeSlot>();
                 timesList.Add(TimeSlot.evening);
-                playerCalendar = gameObject.AddComponent<Calendar>();
+                // playerCalendar = gameObject.AddComponent<Calendar>();
                 playerCalendar.AddCourse(placeholderCourse);
-                
+
                 player.SetCalendar(playerCalendar);
             }
         }
@@ -68,7 +77,7 @@ public class LocationManager : MonoBehaviour
         UpdateAllMascotLocations();
         UpdateTimeAndDayGUI();
     }
-
+    
     
     public void ProgressTime()
     {
@@ -164,9 +173,89 @@ public class LocationManager : MonoBehaviour
             });
         }
     }
+    
+    // save many things related to locations
+    public void SaveLocationData()
+    {
+        // save each mascot
+        foreach (GameObject mascot in mascotList)
+        {
+            mascot.GetComponent<Mascot>().SaveMascot();
+        }
+        
+        // save current time/day and stuff like that
+        Debug.Log("attempting to save location data");
+        string dirPath = Path.Combine(Application.persistentDataPath, "Map");
+        Directory.CreateDirectory(dirPath);
+        // writing to a text file, because all we care about is the current day and time, nothing json/object related
+        string filePath = Path.Combine(dirPath, "TimeDayData.txt");
+        
+        FileStream fcreate = File.Open(filePath, FileMode.Create); // create file if it doesn't exist, overwrite it if it does exist
+        StreamWriter sw = new StreamWriter(fcreate);
+        
+        // this writes the enum value as a string which we will parse when reading it
+        sw.WriteLine(currentDay);
+        sw.WriteLine(currentTimeSlot);
+        sw.Close();
+        
+        Debug.Log("saved location data (current time and day aka the state to path: " + filePath);
+    }
+
+    // load many things related to locations
+    public void LoadLocationData()
+    {
+        // load each mascot
+        foreach (GameObject mascot in mascotList)
+        {
+            mascot.GetComponent<Mascot>().LoadMascot();
+        }
+        
+        // 
+        Debug.Log("attempting to load location data");
+        string dirPath = Path.Combine(Application.persistentDataPath, "Map");
+        if (Directory.Exists(dirPath))
+        {
+            string filePath = Path.Combine(dirPath, "TimeDayData.txt");
+            
+            FileStream fread = File.Open(filePath, FileMode.Open);
+            StreamReader sr = new StreamReader(fread);
+            Enum.TryParse(sr.ReadLine(), out Day day);
+            Enum.TryParse(sr.ReadLine(), out TimeSlot timeSlot);
+            fread.Close();
+            
+            Debug.Log("parsed day: " + day);
+            Debug.Log("current time: " + timeSlot);
+            
+            currentDay = day;
+            currentTimeSlot = timeSlot;
+            
+            // restore state basically
+            UpdateTimeAndDayGUI(); 
+            UpdateAllMascotLocations(); 
+        }
+        else
+        {
+            Debug.LogError("directory: " + dirPath + " does not exist! aborting time day data load.");
+        }
+    }
+    
+    // returns true if location save data exists. mainly used to know whether the main menu should gray out the load game button.
+    public bool LocationDataExists()
+    {
+        string dirPath = Path.Combine(Application.persistentDataPath, "Map");
+        if (Directory.Exists(dirPath))
+        {
+            if (File.Exists(Path.Combine(dirPath, "TimeDayData.txt")))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     #region HELPER FUNCTIONS 
-
+    
+    // update the text that displays the time and day. eventually probably want this to update icons in the ui through some kind of ui manager
     private void UpdateTimeAndDayGUI()
     {
         timeAndDayPlaceHolder.text = Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
@@ -187,8 +276,6 @@ public class LocationManager : MonoBehaviour
         foreach (GameObject mascot in mascotList)
             mascot.GetComponent<Mascot>().UpdateLocation(currentTimeSlot, currentDay);
     }
-    
-    
 
     // given a location (string) convert it to a Location (enum)
     // not case sensitive!

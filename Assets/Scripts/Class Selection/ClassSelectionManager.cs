@@ -53,7 +53,8 @@ public class ClassSelectionManager : MonoBehaviour
 
     void Start()
     {
-        calendar = GetComponent<Calendar>();
+        // calendar = GetComponent<Calendar>();
+        calendar = new Calendar();
         calendarDisplay = GetComponent<ClassSelectionCalendarDisplay>();
         obj_courseSelectionTitle.GetComponent<TextMeshProUGUI>().text =
             $"Select your courses! {3 - numCoursesRegistered} courses left to choose!";
@@ -195,6 +196,10 @@ public class ClassSelectionManager : MonoBehaviour
     private void FinishClassSelection()
     {
         Debug.Log("congratulations you finished class selection :3");
-        // TODO switch scene, add calendar to player
+        
+        // switch scene, add calendar to player
+        GameObject player = new GameObject("Player");
+        player.AddComponent<Player>();
+        DontDestroyOnLoad(player); // make player a persistent object in every scene so you can easily gameobject.find() it??
     }
 }

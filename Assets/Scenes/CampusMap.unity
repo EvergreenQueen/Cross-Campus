@@ -439,9 +439,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: barValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: heartLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: mascotName
       value: Oski
       objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: calendar.courses.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: calendar.courses.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b70705f6939f5b469825fd18075b457, type: 2}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.size
       value: 1
@@ -450,7 +466,8 @@ PrefabInstance:
       propertyPath: courses.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 7e8fadc53f2ed68438b782bdce13112f, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
 --- !u!4 &274633040 stripped
 Transform:
@@ -527,7 +544,10 @@ MonoBehaviour:
   currentTimeSlot: 0
   currentDay: 1
   savedTimeAndDay: {fileID: 11400000, guid: 3564b1a3ef1b2654fb1948fe819ce5d9, type: 2}
-  playerCalendar: {fileID: 0}
+  player: {fileID: 0}
+  playerCalendar:
+    courses: []
+    clubs: []
 --- !u!4 &473283414
 Transform:
   m_ObjectHideFlags: 0
@@ -678,6 +698,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616741672}
   m_CullTransparentMesh: 1
+--- !u!1 &724323270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724323272}
+  - component: {fileID: 724323271}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &724323271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724323270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5e92bb22eb7e743bdda0286b2af222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: testplayername
+  calendar:
+    courses: []
+    clubs: []
+  placeholderCourse: {fileID: 0}
+--- !u!4 &724323272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724323270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1405869, y: -0.057883285, z: -9.939294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764040661
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +1032,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &915358159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915358161}
+  - component: {fileID: 915358160}
+  m_Layer: 0
+  m_Name: GameManagerSTUB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &915358160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915358159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5b20cec67259a41a8895b4b79be035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &915358161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915358159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.72893775, y: -0.36550894, z: 0.012901574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987662268
 GameObject:
@@ -1600,9 +1713,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: barValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: heartLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: mascotName
       value: Scotty
       objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: calendar.courses.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: calendar.courses.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c05b4765c7188ac438e2a5937e043e78, type: 2}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.size
       value: 3
@@ -1623,7 +1752,8 @@ PrefabInstance:
       propertyPath: courses.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: f47e8cc23ea7afd42a2619e6bf6324fa, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
 --- !u!4 &3496273876604365377 stripped
 Transform:

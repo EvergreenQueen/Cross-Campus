@@ -2,6 +2,8 @@
 // this object is dontdestroyonload-ed when going from the campusmap scene....
 // there is ABSOLUTELY a better way to do this but uhhhhhhhh i couldn't think of it :3
 
+// THIS IS NOT saving and loading to a FILE, that is handled by [something else]
+
 using System.Collections;
 using System.Collections.Generic;
 using GlobalVars;
