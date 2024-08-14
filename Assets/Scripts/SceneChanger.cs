@@ -42,6 +42,11 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadSceneAndCallDialogue("campus_map"));
     }
 
+    public void loadName()
+    {
+        StartCoroutine(LoadSceneAndCallDialogue("name_select"));
+    }
+
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
     public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null){
         switch(whichScene){
@@ -114,6 +119,9 @@ public class SceneChanger : MonoBehaviour
                 LocationManager.GetInstance().ProgressTime();
                 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
+                break;
+            case "name_select":
+            
                 break;
             case null:
                 break;

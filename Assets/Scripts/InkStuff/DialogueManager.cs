@@ -200,7 +200,12 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case SPEAKER_TAG:
                     if(tagValue == "Player"){
-                        tagValue = Player.GetName();
+                        Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
+                        if(tempPlayer){
+                            tagValue = tempPlayer.GetName();
+                        }else{
+                            tagValue = "Player";
+                        }
                     }
                     displayNameText.text = tagValue;
                     break;
