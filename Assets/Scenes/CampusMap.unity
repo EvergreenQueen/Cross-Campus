@@ -736,7 +736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: testplayername
   calendar:
-    courses: []
+    courses:
+    - {fileID: 11400000, guid: f8c1ec980e4e709439ef98b2685899c3, type: 2}
     clubs: []
   placeholderCourse: {fileID: 0}
 --- !u!4 &724323272

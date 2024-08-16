@@ -29,7 +29,7 @@ public class MainMenuManager : MonoBehaviour {
 
     void OnClickLoad()
     {
-        GameManagerSTUB.GetInstance().LoadGame();
+        StartCoroutine(GameManagerSTUB.GetInstance().LoadGame());
     }
 
     void OnClickQuit() {

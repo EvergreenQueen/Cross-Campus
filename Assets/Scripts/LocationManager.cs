@@ -149,6 +149,10 @@ public class LocationManager : MonoBehaviour
     // unless we're like not doing clubs
     private void CheckPlayerScheduleAndNotify()
     {
+        if (player is null)
+        {
+            player = GameObject.Find("Player").GetComponent<Player>();
+        }
         var calendar = player.GetCalendar();
         // check courbses
         var course = calendar.GetCourseAtTime(currentTimeSlot, currentDay);
@@ -258,7 +262,11 @@ public class LocationManager : MonoBehaviour
     // update the text that displays the time and day. eventually probably want this to update icons in the ui through some kind of ui manager
     private void UpdateTimeAndDayGUI()
     {
-        timeAndDayPlaceHolder.text = Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
+        if (timeAndDayPlaceHolder)
+        {
+            timeAndDayPlaceHolder.text =
+                Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
+        }
     }
 
     public List<GameObject> GetMascotsAtLocation(string locationName)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 
 // stub for game manager that only implements saving and loading, as the game manager should be the one doing that
@@ -39,7 +40,7 @@ public class GameManagerSTUB : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            LoadGame();
+            StartCoroutine(LoadGame());
         }
     }
 
@@ -49,41 +50,63 @@ public class GameManagerSTUB : MonoBehaviour
         player.SavePlayer();
     }
 
-    public void LoadGame()
+    public IEnumerator LoadGame()
     {
-        EventSystem e2 = GameObject.Find("EventSystem")?.GetComponent<EventSystem>();
-        if (e2)
-        {
-            e2.enabled = false;
-        }
+        // EventSystem e2 = GameObject.Find("EventSystem")?.GetComponent<EventSystem>();
+        // if (e2)
+        // {
+        //     e2.enabled = false;
+        // }
         
         // GameObject mainCam2 = GameObject.Find("Main Camera");
         // if (mainCam2)
         // {
         //     mainCam2.SetActive(false);
         // }
-        
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CampusMap", LoadSceneMode.Single);
-        if (!LocationManager.GetInstance())
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene() !=
+            UnityEngine.SceneManagement.SceneManager.GetSceneByName("CampusMap")) // don't load campusmap scene if we're already on it
         {
-            GameObject locationManagerObject = new GameObject();
-            locationManagerObject.name = "LocationManager";
-            locationManagerObject.AddComponent<LocationManager>();
+            AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("CampusMap", LoadSceneMode.Additive);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            Debug.Log("loaded campusmap scene");
+            
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainMenu");
         }
+
+        // if (!LocationManager.GetInstance())
+        // {
+        //     GameObject locationManagerObject = new GameObject();
+        //     locationManagerObject.name = "LocationManager";
+        //     locationManagerObject.AddComponent<LocationManager>();
+        //     Debug.Log("made a new location manager for some reason");
+        // }
         LocationManager.GetInstance().LoadLocationData();
+        
+        // very silly player gameobject things. will mostly likely be solved once the player is a static class
         if (!player)
         {
-            GameObject playerObject = new GameObject();
-            playerObject.name = "Player";
-            player = playerObject.AddComponent<Player>();
-            DontDestroyOnLoad(playerObject);
+            if (GameObject.Find("Player"))
+            {
+                player = GameObject.Find("Player").GetComponent<Player>();
+            }
+            else
+            {
+                GameObject playerObject = new GameObject();
+                playerObject.name = "CreatedPlayer";
+                player = playerObject.AddComponent<Player>();
+                DontDestroyOnLoad(playerObject);
+            }
         }
         player.LoadPlayer();
 
-        if (e2)
-        {
-            Destroy(e2); // the campus map scene already has an event system object, so delete the one that was in the previous scene (probably main menu) if there was one
-        }
+        // if (e2)
+        // {
+        //     Destroy(e2); // the campus map scene already has an event system object, so delete the one that was in the previous scene (probably main menu) if there was one
+        // }
     }
 
     public bool SaveDataExists()
