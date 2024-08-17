@@ -46,6 +46,7 @@ public class DialogueManager : MonoBehaviour
         }
         instance = this;
         dialogueCurrentlyPlaying = false;
+        player = GameObject.Find("Player");
     }
 
     public static DialogueManager GetInstance(){
@@ -120,6 +121,16 @@ public class DialogueManager : MonoBehaviour
         if(currentStory.canContinue){
             if(firstLine){
                 currDialogue = currentStory.Continue();
+
+                Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
+                string tempString;
+                if(tempPlayer){
+                    tempString = tempPlayer.GetName();
+                }else{
+                    tempString = "Player";
+                }
+                currDialogue = currDialogue.Replace("<Player>", tempString);
+
                 dialogueText.text = currDialogue;
                 // typa.Type();
                 //display choices
