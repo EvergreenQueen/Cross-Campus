@@ -302,7 +302,7 @@ public class DialogueManager : MonoBehaviour
         }
         switch(whatScene){
             case "name_select":
-                SceneChanger.GetInstance().loadName();
+                // SceneChanger.GetInstance().loadName();
                 break;
             case "class_registration":
                 SceneChanger.GetInstance().loadRegistration();
