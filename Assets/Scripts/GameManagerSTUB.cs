@@ -34,14 +34,14 @@ public class GameManagerSTUB : MonoBehaviour
     // TODO access save and load buttons from a menu or something on the campus map scene
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SaveGame();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartCoroutine(LoadGame());
-        }
+        // if (Input.GetKeyDown(KeyCode.S))
+        // {
+        //     SaveGame();
+        // }
+        // if (Input.GetKeyDown(KeyCode.L))
+        // {
+        //     StartCoroutine(LoadGame());
+        // }
     }
 
     public void SaveGame()
@@ -50,6 +50,11 @@ public class GameManagerSTUB : MonoBehaviour
         player.SavePlayer();
     }
 
+    // made this a couroutine because it needs to be on the campus map scene to load things properly
+    // (and loading scenes using SceneManager.LoadScene doesn't load the scene on the same frame so i needed to use a couroutine)
+    // you could probably separate the functionality into more parts (if you wanted to load the game to end up on a different scene or something),
+    // but for our purposes i dont think we'll ever need to load the game in a different context
+    // campus map is kinda the main scene of the game 
     public IEnumerator LoadGame()
     {
         // EventSystem e2 = GameObject.Find("EventSystem")?.GetComponent<EventSystem>();
@@ -96,7 +101,7 @@ public class GameManagerSTUB : MonoBehaviour
             else
             {
                 GameObject playerObject = new GameObject();
-                playerObject.name = "CreatedPlayer";
+                playerObject.name = "Player"; // ermmmmm
                 player = playerObject.AddComponent<Player>();
                 DontDestroyOnLoad(playerObject);
             }
