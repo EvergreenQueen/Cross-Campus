@@ -24,7 +24,8 @@ public class MainMenuManager : MonoBehaviour {
     void OnClickStart() {
         control = FindObjectOfType<UIController>();
         control.Change();
-        SceneChanger.GetInstance().loadOrientation();
+        // SceneChanger.GetInstance().loadOrientation();
+        SceneChanger.GetInstance().loadName();
     }
 
     void OnClickLoad()

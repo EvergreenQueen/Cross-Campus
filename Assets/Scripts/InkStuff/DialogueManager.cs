@@ -46,6 +46,7 @@ public class DialogueManager : MonoBehaviour
         }
         instance = this;
         dialogueCurrentlyPlaying = false;
+        player = GameObject.Find("Player");
     }
 
     public static DialogueManager GetInstance(){
@@ -117,9 +118,19 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void ContinueStory(){
+        Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
+        string tempString;
+        if(tempPlayer){
+            tempString = tempPlayer.GetName();
+        }else{
+            tempString = "Player";
+        }
         if(currentStory.canContinue){
             if(firstLine){
                 currDialogue = currentStory.Continue();
+                // Debug.Log(currDialogue);
+                currDialogue = currDialogue.Replace("<Player>", tempString);
+
                 dialogueText.text = currDialogue;
                 // typa.Type();
                 //display choices
@@ -132,11 +143,13 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("What about this?");
                 typa.stopTyping();
                 dialogueCurrentlyPlaying = false;
+                currDialogue = currDialogue.Replace("<Player>", tempString);
                 dialogueText.text = currDialogue;
             }else{
                 Debug.Log("moshi moshi");
                 // dialogueText.text = currentStory.Continue();
                 currDialogue = currentStory.Continue();
+                currDialogue = currDialogue.Replace("<Player>", tempString);
                 dialogueText.text = currDialogue;
                 typa.Type();
                 //display choices
@@ -199,6 +212,14 @@ public class DialogueManager : MonoBehaviour
                     }
                     break;
                 case SPEAKER_TAG:
+                    if(tagValue == "Player"){
+                        Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
+                        if(tempPlayer){
+                            tagValue = tempPlayer.GetName();
+                        }else{
+                            tagValue = "Player";
+                        }
+                    }
                     displayNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
@@ -282,6 +303,9 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
         switch(whatScene){
+            case "orientation":
+                SceneChanger.GetInstance().loadOrientation();
+                break;
             case "class_registration":
                 SceneChanger.GetInstance().loadRegistration();
                 break;

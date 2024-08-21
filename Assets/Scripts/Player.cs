@@ -15,9 +15,11 @@ public class Player : MonoBehaviour
     
     [SerializeField]
     private CourseScriptableObject placeholderCourse;
+    private static Player instance;
 
     private void Awake()
     {
+        // calendar check
         if (calendar == null)
         {
             calendar = new Calendar();
@@ -30,11 +32,28 @@ public class Player : MonoBehaviour
         {
             calendar.Verify();
         }
+
+        // singleton check + slap on dontdestroyonload
+        if (instance != null && instance != this) 
+        {
+            Debug.LogWarning("Found more than 1 Player. That's not bueno.");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
     
     public string GetName()
     {
         return playerName;
+    }
+
+    public void SetName(string name)
+    {
+        playerName = name;
     }
 
     public Calendar GetCalendar()
