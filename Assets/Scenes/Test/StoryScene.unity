@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 583316196}
   - component: {fileID: 583316195}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4f9f9bb2c0f2f449d3ed64afebec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talkingTo: {fileID: 0}
 --- !u!4 &583316196
 Transform:
   m_ObjectHideFlags: 0
