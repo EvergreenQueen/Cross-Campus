@@ -118,17 +118,17 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void ContinueStory(){
+        Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
+        string tempString;
+        if(tempPlayer){
+            tempString = tempPlayer.GetName();
+        }else{
+            tempString = "Player";
+        }
         if(currentStory.canContinue){
             if(firstLine){
                 currDialogue = currentStory.Continue();
-
-                Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
-                string tempString;
-                if(tempPlayer){
-                    tempString = tempPlayer.GetName();
-                }else{
-                    tempString = "Player";
-                }
+                // Debug.Log(currDialogue);
                 currDialogue = currDialogue.Replace("<Player>", tempString);
 
                 dialogueText.text = currDialogue;
@@ -143,11 +143,13 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("What about this?");
                 typa.stopTyping();
                 dialogueCurrentlyPlaying = false;
+                currDialogue = currDialogue.Replace("<Player>", tempString);
                 dialogueText.text = currDialogue;
             }else{
                 Debug.Log("moshi moshi");
                 // dialogueText.text = currentStory.Continue();
                 currDialogue = currentStory.Continue();
+                currDialogue = currDialogue.Replace("<Player>", tempString);
                 dialogueText.text = currDialogue;
                 typa.Type();
                 //display choices
@@ -301,8 +303,8 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
         switch(whatScene){
-            case "name_select":
-                // SceneChanger.GetInstance().loadName();
+            case "orientation":
+                SceneChanger.GetInstance().loadOrientation();
                 break;
             case "class_registration":
                 SceneChanger.GetInstance().loadRegistration();

@@ -51,6 +51,11 @@ public class Player : MonoBehaviour
         return playerName;
     }
 
+    public void SetName(string name)
+    {
+        playerName = name;
+    }
+
     public Calendar GetCalendar()
     {
         return calendar;

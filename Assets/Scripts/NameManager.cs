@@ -23,7 +23,7 @@ public class NameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return)){
             Player player = GameObject.Find("Player")?.GetComponent<Player>();
-            player.name = name.text;
+            player.SetName(name.text);
             DialogueManager.GetInstance().EnterDialogueMode(nameJSONpt2);
         }
     }
