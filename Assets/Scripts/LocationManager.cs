@@ -96,7 +96,7 @@ public class LocationManager : MonoBehaviour
             Destroy(eventPopUp.gameObject);
         }
         
-        // saturday life events
+        // SATURDAY LIFE EVENTS
         if (currentDay == Day.Saturday)
         {
             foreach (var mascotObj in mascotList)
@@ -118,13 +118,16 @@ public class LocationManager : MonoBehaviour
     // should get the story given all the contexts and load it
     // TODO add ui indication of what story you're going to get, maybe a menu that pops up? or a tooltip when hovering over?
     //  ^^^ leaning towards a menu that pops up so you can select the mascot you want to talk to in case there's multiple at the same location
+    // also the story that is picked WILL be a random one from the m
     public void GoToLocation(string locationName)
     {
-        foreach (GameObject mascot in GetMascotsAtLocation(locationName))
+        foreach (GameObject mascot in GetMascotsAtLocation(locationName)) // probably have a button for each mascot currently at the location, and each button calls gotolocation for that mascot
         {
             var mascotName = mascot.GetComponent<Mascot>().mascotName;
             var location = LocationStringToLocation(locationName);
             var ctxList = StoryManager.Instance.GetContexts(currentTimeSlot, currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel());
+            
+            // TODO pick a random context from the list of contexts
 
             string debugOutput = "";
             foreach (var item in ctxList)

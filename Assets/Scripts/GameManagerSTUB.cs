@@ -34,14 +34,15 @@ public class GameManagerSTUB : MonoBehaviour
     // TODO access save and load buttons from a menu or something on the campus map scene
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.S))
-        // {
-        //     SaveGame();
-        // }
-        // if (Input.GetKeyDown(KeyCode.L))
-        // {
-        //     StartCoroutine(LoadGame());
-        // }
+        // temporary saving and loading hotkeys
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveGame();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            StartCoroutine(LoadGame());
+        }
     }
 
     public void SaveGame()
