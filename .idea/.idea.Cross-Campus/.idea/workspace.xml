@@ -6,27 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LocationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DialogueManager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DialogueManager.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Ink.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Ink.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/a.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/a.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/b.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/b.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/c.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/c.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/d.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/d.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/e.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/e.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/f.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/f.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/g.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/g.ink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/h.ink" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterInkFiles/MoreTest/h.ink" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LocationManager.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CampusMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CampusMap.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoryScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StoryScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/Calendar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Calendar/CourseScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Calendar/CourseScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LocationManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LocationManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LocationManager.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +142,7 @@
       <workItem from="1716596658870" duration="970000" />
       <workItem from="1716759339870" duration="11166000" />
       <workItem from="1717266214365" duration="8113000" />
+      <workItem from="1723587680120" duration="1990000" />
     </task>
     <servers />
   </component>

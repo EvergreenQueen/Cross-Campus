@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &57566081 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3548488474304492323, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
-  m_PrefabInstance: {fileID: 274633039}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &239331899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -520,17 +515,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 473283412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf10e5961adfd646b8b6f635e67f186, type: 3}
+  m_Script: {fileID: 11500000, guid: f176a26e36c7ac64bb3ca182465a44e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mascotList:
-  - {fileID: 2048091570}
-  - {fileID: 57566081}
+  mascotList: []
   timeAndDayPlaceHolder: {fileID: 616741674}
   eventPopUpPrefab: {fileID: 1101423493248803087, guid: 4f33b08b9d7187848ac69b46d13960d3, type: 3}
   uiCanvas: {fileID: 2042922681}
   basicClassStory: {fileID: 4900000, guid: dda54a3b2351bab46b325fb6a0e56a89, type: 3}
-  placeholderCourse: {fileID: 11400000, guid: f8c1ec980e4e709439ef98b2685899c3, type: 2}
+  placeholderCourse: {fileID: 11400000, guid: 64abc620e6cce264a8350a6084a1ad00, type: 2}
   currentTimeSlot: 0
   currentDay: 1
   savedTimeAndDay: {fileID: 11400000, guid: 3564b1a3ef1b2654fb1948fe819ce5d9, type: 2}
@@ -1507,11 +1500,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &2048091570 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3548488474304492323, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
-  m_PrefabInstance: {fileID: 3496273876604365376}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2049460421
 GameObject:
   m_ObjectHideFlags: 0
