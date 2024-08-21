@@ -548,5 +548,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: afa502171cf09d04ca2dfe046f60b094, type: 3}
   - {fileID: 8300000, guid: 9d1806b9b173f6f4285395ba92c71672, type: 3}
   soundEffects: []
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
+  musicSource: {fileID: 933680817}
+  sfxSource: {fileID: 686126399}

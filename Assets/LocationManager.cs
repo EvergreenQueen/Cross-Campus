@@ -12,11 +12,7 @@ public class LocationManager : MonoBehaviour
 
     //Serialized variables
     [SerializeField] private List<GameObject> mascotList = new List<GameObject>();
-    [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
-    [SerializeField] private GameObject eventPopUpPrefab;
-    public Canvas uiCanvas; // might wanna do this thru a ui manager tbh
     
-    [SerializeField] private TextAsset basicClassStory;
     [SerializeField] private CourseScriptableObject placeholderCourse;
     
 
@@ -27,11 +23,14 @@ public class LocationManager : MonoBehaviour
     public Day currentDay = Day.Monday;
     private Location currentLocation;
     
-    private EventPopUp eventPopUp;
+    
     public SavedTimeAndDay savedTimeAndDay; // SET IN INSPECTOR
     
     public Player player;
     public Calendar playerCalendar;
+
+    //Manger Refs
+    private UIManager uiManager;
 
     private void Awake()
     {
@@ -65,8 +64,9 @@ public class LocationManager : MonoBehaviour
     
     private void Start()
     {
+        uiManager = UIManager.Instance;
         UpdateAllMascotLocations();
-        UpdateTimeAndDayGUI();
+        uiManager.UpdateTimeAndDayGUI(currentTimeSlot, currentDay);
     }
 
     
@@ -81,11 +81,6 @@ public class LocationManager : MonoBehaviour
         }
         else currentTimeSlot++;
         Debug.Log($"done progressing time, new time slot is {currentTimeSlot}, new day is {currentDay}");
-
-        if (eventPopUp)
-        {
-            Destroy(eventPopUp.gameObject);
-        }
         
         // saturday life events
         if (currentDay == Day.Saturday)
@@ -100,7 +95,7 @@ public class LocationManager : MonoBehaviour
             }
         }
         
-        UpdateTimeAndDayGUI();
+        uiManager.UpdateTimeAndDayGUI(currentTimeSlot, currentDay);
         UpdateAllMascotLocations();
         CheckPlayerScheduleAndNotify();
     }
@@ -146,31 +141,13 @@ public class LocationManager : MonoBehaviour
         Debug.Log($"course right now is {course}");
         if (course != null)
         {
-            var eventPopUpObject = Instantiate(eventPopUpPrefab, uiCanvas.transform);
-            // eventPopUpObject.transform.position = 
-            eventPopUp = eventPopUpObject.GetComponent<EventPopUp>();
-            eventPopUp.SetText($"You have {course.name} right now! Go to class? (skipping class may result in bad grades)");
-            eventPopUp.AssignButtonEvents(() =>
-            {
-                // accept callback
-                SaveStateAndJumpToStory(basicClassStory);
-            }, () =>
-            {
-                // deny callback...
-                course.Skip(); // adds 1 to the "skipped" counter
-                // FIXME decrement grade at another time instead of as soon as you press the button??
-                course.DecrementGrade(5);
-                Destroy(eventPopUp.gameObject);
-            });
+            uiManager.ShowNotificationPopup(course);
         }
     }
 
     #region HELPER FUNCTIONS 
 
-    private void UpdateTimeAndDayGUI()
-    {
-        timeAndDayPlaceHolder.text = Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
-    }
+    
 
     public List<GameObject> GetMascotsAtLocation(string locationName)
     {
@@ -216,7 +193,7 @@ public class LocationManager : MonoBehaviour
         currentTimeSlot = savedTimeAndDay.time;
     }
 
-    private void SaveStateAndJumpToStory(TextAsset story)
+    public void SaveStateAndJumpToStory(TextAsset story)
     {
         Debug.Log("jumping to story " + story.name);
         // save time and day state
@@ -224,6 +201,15 @@ public class LocationManager : MonoBehaviour
         savedTimeAndDay.day = currentDay;
         StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("story", story));
     }
+
+    public void SkipClass(CourseScriptableObject course)
+    {
+        // deny callback...
+        course.Skip(); // adds 1 to the "skipped" counter
+                       // FIXME decrement grade at another time instead of as soon as you press the button??
+        course.DecrementGrade(5);
+    }
+    
 
     #endregion 
 }
