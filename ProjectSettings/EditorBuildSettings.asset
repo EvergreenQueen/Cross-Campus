@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalDefinitelyTotally/ClassSelection.unity
     guid: 7b187b3ca57128e49b51cf30d9b3c94f
   - enabled: 0
-    path: Assets/Scenes/CalendarTestScene.unity
+    path: Assets/Scenes/Test/CalendarTestScene.unity
     guid: e559c70ab30c3e34f989f491aa7b96f7
   - enabled: 0
     path: Assets/Scenes/MarcelScene.unity
