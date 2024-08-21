@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cross-Campus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManagerSTUB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagerSTUB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LocationManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="0749a925-6be8-4a27-8ab0-b5cfd92d0db0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,7 +151,7 @@
       <workItem from="1723768469199" duration="7127000" />
       <workItem from="1723871238700" duration="157000" />
       <workItem from="1723957971668" duration="576000" />
-      <workItem from="1724271634004" duration="1860000" />
+      <workItem from="1724271634004" duration="2469000" />
     </task>
     <servers />
   </component>
