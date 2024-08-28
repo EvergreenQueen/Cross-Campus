@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chemistry
   days: 0200000004000000
-  times: 00000000
-  location: 1
+  times: 01000000
+  location: 3
   grade: 100
   timesSkipped: 0

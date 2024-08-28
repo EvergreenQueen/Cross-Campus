@@ -474,6 +474,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5367738793158065799, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
   m_PrefabInstance: {fileID: 274633039}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &423325795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548488474304492323, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+  m_PrefabInstance: {fileID: 274633039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &453560951
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +540,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f176a26e36c7ac64bb3ca182465a44e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mascotList: []
+  mascotList:
+  - {fileID: 719915542}
+  - {fileID: 423325795}
   timeAndDayPlaceHolder: {fileID: 616741674}
   eventPopUpPrefab: {fileID: 1101423493248803087, guid: 4f33b08b9d7187848ac69b46d13960d3, type: 3}
   uiCanvas: {fileID: 2042922681}
@@ -698,6 +705,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616741672}
   m_CullTransparentMesh: 1
+--- !u!1 &719915542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548488474304492323, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+  m_PrefabInstance: {fileID: 3496273876604365376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &724323270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientationJSON: {fileID: 0}
+  nameJSON: {fileID: 0}
+  currScene: 
   savedTimeAndDay: {fileID: 0}
 --- !u!4 &987662270
 Transform:
@@ -1726,13 +1740,17 @@ PrefabInstance:
       value: Scotty
       objectReference: {fileID: 0}
     - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
+      propertyPath: interactedWith
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: calendar.courses.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5608371332889792056, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: calendar.courses.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: c05b4765c7188ac438e2a5937e043e78, type: 2}
+      objectReference: {fileID: 11400000, guid: 64abc620e6cce264a8350a6084a1ad00, type: 2}
     - target: {fileID: 7649193697260545775, guid: 7e80bbccae1f657408ea4bfd3debee93, type: 3}
       propertyPath: courses.Array.size
       value: 3

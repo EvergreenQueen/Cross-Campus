@@ -8,6 +8,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using System.IO;
+using Random = System.Random;
 
 public class LocationManager : MonoBehaviour
 {
@@ -121,25 +122,38 @@ public class LocationManager : MonoBehaviour
     // also the story that is picked WILL be a random one from the m
     public void GoToLocation(string locationName)
     {
-        foreach (GameObject mascot in GetMascotsAtLocation(locationName)) // probably have a button for each mascot currently at the location, and each button calls gotolocation for that mascot
+        foreach (GameObject mascot in GetMascotsAtLocation(locationName)) // probably have a SEPARATE button for each mascot currently at the location, and each button calls gotolocation for THAT mascot
         {
-            var mascotName = mascot.GetComponent<Mascot>().mascotName;
+            var mascotComponent = mascot.GetComponent<Mascot>();
+            var mascotName = mascotComponent.mascotName;
             var location = LocationStringToLocation(locationName);
-            var ctxList = StoryManager.Instance.GetContexts(currentTimeSlot, currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel());
-            
-            // TODO pick a random context from the list of contexts
+            var isFirstTimeInteraction = !mascotComponent.interactedWith;
+            var ctxList = StoryManager.Instance.GetContexts(currentTimeSlot, currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel(), isFirstTimeInteraction);
 
+            if (ctxList.Count == 0)
+            {
+                Debug.Log($"no stories with current context: time = {currentTimeSlot.ToString()}, day = {currentDay.ToString()}, location = {location.ToString()}, mascot = {mascotName}, heart level = {mascot.GetComponent<Mascot>().GetHeartLevel()}, first time interaction = {isFirstTimeInteraction.ToString()}");
+                return;
+            }
+            
             string debugOutput = "";
             foreach (var item in ctxList)
             {
                 debugOutput += item.name + " ";
             }
             Debug.Log("location stories: " + debugOutput);
-
-            if (ctxList.Count == 1)
+            
+            if (isFirstTimeInteraction)
             {
                 var storyContext = ctxList[0];
                 SaveStateAndJumpToStory(storyContext);
+            }
+            else
+            {
+                // pick a random context from the list of contexts
+                var storyIdx = UnityEngine.Random.Range(0, ctxList.Count);
+                Debug.Log("jumping to random story: " + ctxList[storyIdx]);
+                SaveStateAndJumpToStory(ctxList[storyIdx]);
             }
         }
     }
