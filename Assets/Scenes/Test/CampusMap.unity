@@ -551,6 +551,7 @@ MonoBehaviour:
   currentTimeSlot: 0
   currentDay: 1
   savedTimeAndDay: {fileID: 11400000, guid: 3564b1a3ef1b2654fb1948fe819ce5d9, type: 2}
+  mascotState: {fileID: 11400000, guid: 85f96040a12995249aefe99c1c8f712f, type: 2}
   player: {fileID: 0}
   playerCalendar:
     courses: []

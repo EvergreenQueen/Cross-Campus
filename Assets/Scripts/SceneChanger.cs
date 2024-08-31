@@ -126,7 +126,7 @@ public class SceneChanger : MonoBehaviour
                 }
                 
                 // progress time :>
-                LocationManager.GetInstance().RetrieveTimeAndDayState();
+                LocationManager.GetInstance().RetrieveState();
                 LocationManager.GetInstance().ProgressTime();
                 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
