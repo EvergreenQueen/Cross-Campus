@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
     private string currDialogue;
     private bool firstLine = false;
+    private string whoTalkingTo = "";
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string NO_PORTRAIT_TAG = "noportrait";
@@ -104,6 +105,18 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EnterDialogueMode(TextAsset inkjson){
+        whoTalkingTo = "";
+        dialoguePanel.SetActive(true);
+        currentStory = new Story(inkjson.text);
+        dialogueIsPlaying = true;
+        firstLine = true;
+        // dialogueCurrentlyPlaying = true;
+
+        ContinueStory();
+    }
+
+    public void EnterDialogueModeWithParam(TextAsset inkjson, string param){
+        whoTalkingTo = param;
         dialoguePanel.SetActive(true);
         currentStory = new Story(inkjson.text);
         dialogueIsPlaying = true;
@@ -130,6 +143,7 @@ public class DialogueManager : MonoBehaviour
                 currDialogue = currentStory.Continue();
                 // Debug.Log(currDialogue);
                 currDialogue = currDialogue.Replace("<Player>", tempString);
+                currDialogue = currDialogue.Replace("<WhoCall>", whoTalkingTo);
 
                 dialogueText.text = currDialogue;
                 // typa.Type();
@@ -144,12 +158,14 @@ public class DialogueManager : MonoBehaviour
                 typa.stopTyping();
                 dialogueCurrentlyPlaying = false;
                 currDialogue = currDialogue.Replace("<Player>", tempString);
+                currDialogue = currDialogue.Replace("<WhoCall>", whoTalkingTo);
                 dialogueText.text = currDialogue;
             }else{
                 Debug.Log("moshi moshi");
                 // dialogueText.text = currentStory.Continue();
                 currDialogue = currentStory.Continue();
                 currDialogue = currDialogue.Replace("<Player>", tempString);
+                currDialogue = currDialogue.Replace("<WhoCall>", whoTalkingTo);
                 dialogueText.text = currDialogue;
                 typa.Type();
                 //display choices

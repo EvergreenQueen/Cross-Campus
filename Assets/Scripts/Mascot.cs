@@ -11,6 +11,7 @@ public class Mascot : MonoBehaviour
 {
     // class for mascots
     public string mascotName;
+    public bool haveMet = false;
     public Sprite mascotSprite;
     public int barValue;
     public int heartLevel;
@@ -67,6 +68,11 @@ public class Mascot : MonoBehaviour
     public float GetBarValue()
     {
         return barValue;
+    }
+
+    public bool GetMetYet()
+    {
+        return haveMet;
     }
 
     public void IncreaseBarValue(int pips)
