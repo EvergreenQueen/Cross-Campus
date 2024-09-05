@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour {
     
     public Button start, quit, load, collections, settings;
-    UIController control;
+    MainMenuUIController control;
     
     void Start() {
         start.onClick.AddListener(OnClickStart);
@@ -22,7 +22,7 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     void OnClickStart() {
-        control = FindObjectOfType<UIController>();
+        control = FindObjectOfType<MainMenuUIController>();
         control.Change();
         // SceneChanger.GetInstance().loadOrientation();
         SceneChanger.GetInstance().loadName();

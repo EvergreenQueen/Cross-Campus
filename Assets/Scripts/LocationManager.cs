@@ -355,7 +355,7 @@ public class LocationManager : MonoBehaviour
             mascotState.UpdateData(component.name, component.heartLevel, component.barValue, component.interactedWith);
         }
 
-        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("story", story));
+        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("StoryScene", story));
     }
 
     #endregion 

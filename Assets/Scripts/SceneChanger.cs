@@ -10,8 +10,14 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] private string currScene;
     [SerializeField] private AsyncOperation asyncLoad;
     private static SceneChanger instance;
+
+    private string sceneToLoad;
     
     public GameObject savedTimeAndDay; // used to preserve global time and day between scenes, see the SavedTimeAndDay script
+
+    public Animator fadeToBlackAnimator;
+
+    public bool animationFinished;
     
     private void Awake(){
         if (instance != null && instance != this) 
@@ -33,50 +39,39 @@ public class SceneChanger : MonoBehaviour
     public void loadOrientation(){
         // UnityEngine.SceneManagement.SceneManager.LoadScene("OrientationInk");
         // DialogueManager.GetInstance().EnterDialogueMode(orientationJSON);
-        StartCoroutine(LoadSceneAndCallDialogue("orientation", orientationJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("Orientation", orientationJSON));
     }
 
     public void loadRegistration(){
-        StartCoroutine(LoadSceneAndCallDialogue("registration"));
+        StartCoroutine(LoadSceneAndCallDialogue("Registration"));
     }
 
     public void loadCampusMap()
     {
-        StartCoroutine(LoadSceneAndCallDialogue("campus_map"));
+        StartCoroutine(LoadSceneAndCallDialogue("CampusMap"));
     }
 
     public void loadName()
     {
-        StartCoroutine(LoadSceneAndCallDialogue("name_select", nameJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("NameSelect", nameJSON));
     }
 
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
     public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null){
-        switch(whichScene){
-            case "orientation":
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("OrientationInk", LoadSceneMode.Additive);
 
-                // Wait until the scene is fully loaded
-                while (!asyncLoad.isDone)
-                {
-                    yield return null;
-                }
+
+        switch(whichScene){
+            case "Orientation":
+                yield return LoadScene("Orientation");
+
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             
-            case "registration":
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("ClassSelection", LoadSceneMode.Additive);
-
-                // Wait until the scene is fully loaded
-                while (!asyncLoad.isDone)
-                {
-                    yield return null;
-                }
+            case "Registration":
+                yield return LoadScene("ClassSelection");
 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
@@ -84,26 +79,17 @@ public class SceneChanger : MonoBehaviour
             
             // i don't want to break ANYTHING that hao did so i am simply adding to the switch statement and not messing with the above ^^^ - grat
             // it's ok I WILL BREAK MY OWN STUFF - hao
-            case "story":
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                if (dialogue is null)
-                {
-                    Debug.LogError("trying to switch to a story with a null dialogue!!! wuh oh! abandoning ship!!");
-                    break;
-                }
-                
-                EventSystem e = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-                e.enabled = false;
-                GameObject mainCam = GameObject.Find("Main Camera");
-                mainCam.SetActive(false);
-                
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("StoryScene", LoadSceneMode.Additive);
+            case "StoryScene":
 
-                // unload the map scene
-                while (!asyncLoad.isDone)
-                {
-                    yield return null;
-                }
+                Debug.Log("time for story scene");
+
+                EventSystem e1 = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+                e1.enabled = false;
+                //GameObject mainCam1 = GameObject.Find("Main Camera");
+                //mainCam1.SetActive(false);
+
+                yield return LoadScene("StoryScene");
+
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
                 // there's a better way to do this
@@ -112,18 +98,13 @@ public class SceneChanger : MonoBehaviour
                
                 break;
             
-            case "campus_map":
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            case "CampusMap":
                 EventSystem e2 = GameObject.Find("EventSystem").GetComponent<EventSystem>();
                 e2.enabled = false;
-                GameObject mainCam2 = GameObject.Find("Main Camera");
-                mainCam2.SetActive(false);
-                
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("CampusMap", LoadSceneMode.Additive);
-                while (!asyncLoad.isDone)
-                {
-                    yield return null;
-                }
+                //GameObject mainCam2 = GameObject.Find("Main Camera");
+                //mainCam2.SetActive(false);
+
+                yield return LoadScene("CampusMap");
                 
                 // progress time :>
                 LocationManager.GetInstance().RetrieveState();
@@ -131,16 +112,12 @@ public class SceneChanger : MonoBehaviour
                 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
-                break;
-            case "name_select":
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("NameScene", LoadSceneMode.Additive);
 
-                // Wait until the scene is fully loaded
-                while (!asyncLoad.isDone)
-                {
-                    yield return null;
-                }
+
+                break;
+            case "NameSelect":
+                yield return LoadScene("NameSelect");
+
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
@@ -149,7 +126,37 @@ public class SceneChanger : MonoBehaviour
 
             case null:
                 break;
+
         }
-        
+    }
+
+    public IEnumerator LoadScene(string sceneName)
+    {
+        fadeToBlackAnimator.SetTrigger("FadeOut");
+        animationFinished = false;
+
+        while (!animationFinished)
+        {
+            yield return null;
+        }
+
+        currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        fadeToBlackAnimator.SetTrigger("FadeIn");
+    }
+
+    public void OnAnimationComplete()
+    {
+        animationFinished = true;
+    }
+
+    public void OnAnimationStart()
+    {
+        animationFinished = false;
     }
 }
