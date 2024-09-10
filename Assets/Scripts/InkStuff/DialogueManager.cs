@@ -55,6 +55,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void Start(){
+        //get all of the choices text
+        choicesText = new TextMeshProUGUI[choices.Length];
+        int i = 0;
+        foreach(GameObject choice in choices){
+            choicesText[i] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            i++;
+        }
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -71,14 +79,6 @@ public class DialogueManager : MonoBehaviour
         tempC = displayImage.GetComponent<Image>().color;
         tempC.a = 0f;
         displayImage.GetComponent<Image>().color = tempC;
-
-        //get all of the choices text
-        choicesText = new TextMeshProUGUI[choices.Length];
-        int i = 0;
-        foreach(GameObject choice in choices){
-            choicesText[i] = choice.GetComponentInChildren<TextMeshProUGUI>();
-            i++;
-        }
     }
 
     private void Update(){
@@ -228,7 +228,7 @@ public class DialogueManager : MonoBehaviour
                     }
                     break;
                 case SPEAKER_TAG:
-                    if(tagValue == "Player"){
+                    if(tagValue == "<Player>"){
                         Player tempPlayer = (Player)FindObjectOfType(typeof(Player));
                         if(tempPlayer){
                             tagValue = tempPlayer.GetName();

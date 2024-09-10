@@ -13,7 +13,7 @@ public class PhoneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        confirmationWindow.SetActive(false);
+        // confirmationWindow.SetActive(false);
         Mascot[] foundMascot = FindObjectsOfType<Mascot>();
         for(int i=0; i<foundMascot.Length; ++i){
             Debug.Log(foundMascot[i].mascotName);
@@ -32,46 +32,7 @@ public class PhoneManager : MonoBehaviour
 
     void findFren(string s){
         confirmationWindow.SetActive(true);
-        // mght reformat ths once we fgure out how the dates work
-        switch(s){
-            case "Scotty":
-                DialogueManager.GetInstance().EnterDialogueModeWithParam(confJSON, s);
-                Debug.Log("Touched Scotty");
-                break;
-            case "Triton":
-                Debug.Log("Touched Triton");
-                break;
-            case "Sammy":
-                Debug.Log("Touched Sammy");
-                break;
-            case "Ru":
-                Debug.Log("Touched Ru");
-                break;
-            case "Peter":
-                Debug.Log("Touched Peter");
-                break;
-            case "Oski":
-                Debug.Log("Touched Oski");
-                break;
-            case "Oleander":
-                Debug.Log("Touched Oleander");
-                break;
-            case "Norm":
-                Debug.Log("Touched Norm");
-                break;
-            case "Josie":
-                DialogueManager.GetInstance().EnterDialogueModeWithParam(confJSON, s);
-                Debug.Log("Touched Josie");
-                break;
-            case "Joe":
-                Debug.Log("Touched Joe");
-                break;
-            case "Gunrock":
-                Debug.Log("Touched Gunrock");
-                break;
-            case "":
-                break;
-        }
+        DialogueManager.GetInstance().EnterDialogueModeWithParam(confJSON, s);
     }
 
     // Update is called once per frame
