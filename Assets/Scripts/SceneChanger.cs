@@ -50,8 +50,18 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadSceneAndCallDialogue("name_select", nameJSON));
     }
 
+    public void loadLifeEvent(TextAsset tx, Mascot m)
+    {
+        StartCoroutine(LoadSceneAndCallDialogue("life", tx, m));
+    }
+
+    public void loadDateEvent(TextAsset tx, Mascot m)
+    {
+        StartCoroutine(LoadSceneAndCallDialogue("date", tx, m));
+    }
+
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
-    public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null){
+    public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null, Mascot m = null){
         switch(whichScene){
             case "orientation":
                 currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -146,7 +156,12 @@ public class SceneChanger : MonoBehaviour
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
-
+            case "life":
+                DialogueManager.GetInstance().EnterDialogueMode(dialogue, "", m);
+                break;
+            case "date":
+                DialogueManager.GetInstance().EnterDialogueMode(dialogue, "", m);
+                break;
             case null:
                 break;
         }

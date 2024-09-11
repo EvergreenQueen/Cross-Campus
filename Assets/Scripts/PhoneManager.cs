@@ -35,23 +35,48 @@ public class PhoneManager : MonoBehaviour
                 Transform txt = btn.transform.GetChild(0);
                 txt.GetComponent<TMP_Text>().text = foundMascot[i].mascotName;
                 int i2 = i;
-                btn.GetComponent<Button>().onClick.AddListener(delegate { findFren(foundMascot[i2].mascotName); });
+                btn.GetComponent<Button>().onClick.AddListener(delegate { findFren(foundMascot[i2], foundMascot[i2].mascotName); });
             }
         }
     }
 
-    void findFren(string s){
+    void findFren(Mascot m, string s){
         confirmationWindow.SetActive(true);
-        DialogueManager.GetInstance().EnterDialogueModeWithParam(confJSON, s);
-        StartCoroutine(ConfirmDeny());
+        DialogueManager.GetInstance().EnterDialogueMode(confJSON, s);
+        StartCoroutine(ConfirmDeny(m, s));
     }
 
-    IEnumerator ConfirmDeny(){
+    IEnumerator ConfirmDeny(Mascot m, string s){
         while(DialogueManager.GetInstance().dialogueIsPlaying){
             yield return null;
         }
         if(DialogueManager.GetInstance().yesno){
             // this is true; player selected yes to call
+            if(dateDay){
+                // initiate date
+                List<TextAsset> charDateEvent = new List<TextAsset>();
+                foreach(TextAsset tx in dateEvents){
+                    if(tx.name.Contains(s)){
+                        // Debug.Log("hit one");
+                        charDateEvent.Add(tx);
+                    }
+                }
+                TextAsset datE = charDateEvent[m.GetHeartLevel()];
+                SceneChanger.GetInstance().loadDateEvent(datE, m);
+            }else{
+                // initiate hangout / life event
+                List<TextAsset> charLifeEvent = new List<TextAsset>();
+                foreach(TextAsset tx in lifeEvents){
+                    if(tx.name.Contains(s)){
+                        // Debug.Log("hit one");
+                        charLifeEvent.Add(tx);
+                    }
+                }
+                TextAsset rand = charLifeEvent[Random.Range(0, charLifeEvent.Count)];
+                SceneChanger.GetInstance().loadLifeEvent(rand, m);
+            }
+        }else{
+            // do nothing
         }
     }
 

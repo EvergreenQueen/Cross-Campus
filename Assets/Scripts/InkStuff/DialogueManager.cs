@@ -27,12 +27,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
     public bool dialogueCurrentlyPlaying { get; private set; }
+    public bool yesno { get; private set;}
     private bool noContinue = false;
     private static DialogueManager instance;
     private string currDialogue;
     private bool firstLine = false;
     private string whoTalkingTo = "";
-    public bool yesno { get; private set;}
+    private Mascot dating = null;
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string NO_PORTRAIT_TAG = "noportrait";
@@ -41,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     private const string POSITION_TAG = "position";
     private const string EXTRA_TAG = "extra";
     private const string YES_NO_TAG = "yesno";
+    private const string HEART_TAG = "heart";
 
 
     private void Awake(){
@@ -106,18 +108,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkjson){
-        whoTalkingTo = "";
-        dialoguePanel.SetActive(true);
-        currentStory = new Story(inkjson.text);
-        dialogueIsPlaying = true;
-        firstLine = true;
-        // dialogueCurrentlyPlaying = true;
-
-        ContinueStory();
-    }
-
-    public void EnterDialogueModeWithParam(TextAsset inkjson, string param){
+    public void EnterDialogueMode(TextAsset inkjson, string param = "", Mascot m = null){
+        dating = m;
         whoTalkingTo = param;
         dialoguePanel.SetActive(true);
         currentStory = new Story(inkjson.text);
@@ -127,6 +119,17 @@ public class DialogueManager : MonoBehaviour
 
         ContinueStory();
     }
+
+    // public void EnterDialogueModeWithParam(TextAsset inkjson, string param){
+    //     whoTalkingTo = param;
+    //     dialoguePanel.SetActive(true);
+    //     currentStory = new Story(inkjson.text);
+    //     dialogueIsPlaying = true;
+    //     firstLine = true;
+    //     // dialogueCurrentlyPlaying = true;
+
+    //     ContinueStory();
+    // }
 
     private void ExitDialogueMode(){
         StartCoroutine(waiter());
@@ -307,6 +310,13 @@ public class DialogueManager : MonoBehaviour
                         yesno = true;
                     }else{
                         yesno = false;
+                    }
+                    break;
+                case HEART_TAG:
+                    if(tagValue == "1"){
+                        dating.IncreaseBarValue(1);
+                    }else{
+                        dating.DecreaseBarValue(1);
                     }
                     break;
                 default:

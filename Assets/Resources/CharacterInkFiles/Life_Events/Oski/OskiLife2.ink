@@ -19,7 +19,7 @@ Do you go? #speaker:
     Oski then pulls out the largest beaver you've ever seen in your life and holds it from the beak like those fishing dads with their fish. #speaker:
     Except this wasn't a fish. 
     No, very much not a fish.
-    It was a damn beaver.
+    It was a damn beaver. #heart: 1
 - "No": You walk away.
     DDD: #speaker: Oski
 }
