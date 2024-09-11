@@ -42,7 +42,7 @@ public class PhoneManager : MonoBehaviour
         StartCoroutine(ConfirmDeny());
     }
 
-    IEnumerator confirmDeny(){
+    IEnumerator ConfirmDeny(){
         while(DialogueManager.GetInstance().dialogueIsPlaying){
             yield return null;
         }
