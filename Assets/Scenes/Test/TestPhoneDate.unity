@@ -1253,6 +1253,12 @@ MonoBehaviour:
   confirmationWindow: {fileID: 1594972384}
   frenfndr: {fileID: 1352852822}
   confJSON: {fileID: 4900000, guid: 47934740439646545b8f8be43636fd13, type: 3}
+  lifeEvents:
+  - {fileID: 4900000, guid: f3145505187e6394c879c0fddd147fbf, type: 3}
+  - {fileID: 4900000, guid: 376dd38b5524c3e408cece5206a383de, type: 3}
+  dateEvents:
+  - {fileID: 4900000, guid: b29a6384b9b59d04e9fec7b0a0204243, type: 3}
+  - {fileID: 4900000, guid: 98e297b25902292449074ee51a5dcc4a, type: 3}
   whatDay: 0
 --- !u!114 &1224963155
 MonoBehaviour:

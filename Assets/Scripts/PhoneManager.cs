@@ -13,11 +13,15 @@ public class PhoneManager : MonoBehaviour
     public GameObject confirmationWindow;
     public TextMeshProUGUI frenfndr;
     public TextAsset confJSON;
+    [SerializeField] private TextAsset[] lifeEvents;
+    [SerializeField] private TextAsset[] dateEvents;
     public Day whatDay;
     private bool dateDay = false;
     // Start is called before the first frame update
     void Start()
     {
+        lifeEvents = Resources.LoadAll<TextAsset>("CharacterInkFiles/Life_Events");
+        dateEvents = Resources.LoadAll<TextAsset>("CharacterInkFiles/Dates");
         phone.SetActive(false);
         // confirmationWindow.SetActive(false);
         Mascot[] foundMascot = FindObjectsOfType<Mascot>();
