@@ -15,6 +15,7 @@ public class LocationManager : MonoBehaviour
     //Serialized variables
     [SerializeField] private List<GameObject> mascotList = new List<GameObject>();
     [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
+    [SerializeField] private TextMeshProUGUI phoneReminder;
     [SerializeField] private GameObject eventPopUpPrefab;
     public Canvas uiCanvas; // might wanna do this thru a ui manager tbh
     
@@ -269,6 +270,17 @@ public class LocationManager : MonoBehaviour
         {
             timeAndDayPlaceHolder.text =
                 Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
+        }
+
+        if (phoneReminder)
+        {
+            if (currentDay == Day.Saturday || currentDay == Day.Sunday)
+            {
+                phoneReminder.gameObject.SetActive(true);
+            }else
+            {
+                phoneReminder.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     private string currDialogue;
     private bool firstLine = false;
     private string whoTalkingTo = "";
+    private bool yesno { get; private set;}
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string NO_PORTRAIT_TAG = "noportrait";
@@ -39,6 +40,7 @@ public class DialogueManager : MonoBehaviour
     private const string CIRCLE_TAG = "circle";
     private const string POSITION_TAG = "position";
     private const string EXTRA_TAG = "extra";
+    private const string YES_NO_TAG = "yesno";
 
 
     private void Awake(){
@@ -300,6 +302,12 @@ public class DialogueManager : MonoBehaviour
                         StartCoroutine(switchScene(tagValue));
                     }
                     break;
+                case YES_NO:
+                    if(tagValue == "yes"){
+                        yesno = true;
+                    }else{
+                        yesno = false;
+                    }
                 default:
                     Debug.LogError("This aint s'possed ta happen");
                     break;
