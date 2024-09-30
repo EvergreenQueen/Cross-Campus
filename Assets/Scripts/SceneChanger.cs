@@ -18,6 +18,8 @@ public class SceneChanger : MonoBehaviour
     public Animator fadeToBlackAnimator;
 
     public bool animationFinished;
+
+    public StoryContext loadedStoryContext = null;
     
     private void Awake(){
         if (instance != null && instance != this) 
@@ -39,7 +41,7 @@ public class SceneChanger : MonoBehaviour
     public void loadOrientation(){
         // UnityEngine.SceneManagement.SceneManager.LoadScene("OrientationInk");
         // DialogueManager.GetInstance().EnterDialogueMode(orientationJSON);
-        StartCoroutine(LoadSceneAndCallDialogue("Orientation", orientationJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("Orientation", null, orientationJSON));
     }
 
     public void loadRegistration(){
@@ -53,12 +55,14 @@ public class SceneChanger : MonoBehaviour
 
     public void loadName()
     {
-        StartCoroutine(LoadSceneAndCallDialogue("NameSelect", nameJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("NameSelect", null, nameJSON));
     }
 
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
-    public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null){
-
+    public IEnumerator LoadSceneAndCallDialogue(string whichScene, StoryContext storyContext = null, TextAsset dialogue = null){
+        if (storyContext != null) {
+            dialogue = storyContext.inkStoryJson;
+        }
 
         switch(whichScene){
             case "Orientation":
@@ -92,6 +96,8 @@ public class SceneChanger : MonoBehaviour
 
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
+                DialogueManager.GetInstance().storyContext = storyContext;
+
                 // there's a better way to do this
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("CampusMap");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
@@ -106,9 +112,15 @@ public class SceneChanger : MonoBehaviour
 
                 yield return LoadScene("CampusMap");
                 
-                // progress time :>
+                // progress time :> and do state restoration :>
                 LocationManager.GetInstance().RetrieveState();
                 LocationManager.GetInstance().ProgressTime();
+
+                var ctx = DialogueManager.GetInstance().storyContext;
+                if (DialogueManager.GetInstance().successful)
+                {
+                    LocationManager.GetInstance().UpdateMascotLevel(ctx.mascotNames[0], ctx.heartExperienceGiven);
+                }
                 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);

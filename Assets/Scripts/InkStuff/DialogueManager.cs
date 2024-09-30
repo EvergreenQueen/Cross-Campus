@@ -25,6 +25,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TypewriterEffect typa;
     private TextMeshProUGUI[] choicesText;
     [SerializeField] private Story currentStory;
+
+
+    public StoryContext storyContext;
+    public bool successful = true; // if the story should give reputation for the mascot when it finishes, set to false when Bad Choices are selected
+
+
     public bool dialogueIsPlaying { get; private set; }
     public bool dialogueCurrentlyPlaying { get; private set; }
     private bool noContinue = false;
@@ -47,6 +53,7 @@ public class DialogueManager : MonoBehaviour
         instance = this;
         dialogueCurrentlyPlaying = false;
         player = GameObject.Find("Player");
+        successful = true;
     }
 
     public static DialogueManager GetInstance(){

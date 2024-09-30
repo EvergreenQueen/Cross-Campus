@@ -62,10 +62,10 @@ public class StoryManager : MonoBehaviour
     /// <param name="heartLevel"></param>
     /// <param name="isFirstTime"></param>
     /// <returns>list of JSON files of the possible Ink stories to load, list is empty if no story exists for the context</returns>
-    public List<TextAsset> GetContexts(TimeSlot time, Day day, Location location, string mascotName,
+    public List<StoryContext> GetContexts(TimeSlot time, Day day, Location location, string mascotName,
         int heartLevel, bool isFirstTime = false)
     {
-        List<TextAsset> contextList = new List<TextAsset>();
+        List<StoryContext> contextList = new List<StoryContext>();
         // highly efficient searching for the context given parameters 😁👍
         foreach (var storyContext in storyContextList)
         {
@@ -100,7 +100,7 @@ public class StoryManager : MonoBehaviour
             }
             
             Debug.Log($"added story {storyContext} to call with parameters: {time.ToString()}, {day.ToString()}, {location.ToString()}, {mascotName}, {heartLevel}");
-            contextList.Add(storyContext.inkStoryJson);
+            contextList.Add(storyContext);
         }
         
         return contextList;

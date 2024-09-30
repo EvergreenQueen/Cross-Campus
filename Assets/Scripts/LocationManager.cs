@@ -18,7 +18,8 @@ public class LocationManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
     [SerializeField] private GameObject eventPopUpPrefab;
     public Canvas uiCanvas; // might wanna do this thru a ui manager tbh
-    
+
+    [SerializeField] private StoryContext basicClassStoryContext; // default context for classes, all params are ignored except it's textasset field
     [SerializeField] private TextAsset basicClassStory;
     [SerializeField] private CourseScriptableObject placeholderCourse;
     
@@ -150,6 +151,7 @@ public class LocationManager : MonoBehaviour
             {
                 var storyContext = ctxList[0];
                 mascotComponent.interactedWith = true;
+
                 SaveStateAndJumpToStory(storyContext);
             }
             else
@@ -188,7 +190,7 @@ public class LocationManager : MonoBehaviour
             eventPopUp.AssignButtonEvents(() =>
             {
                 // accept callback
-                SaveStateAndJumpToStory(basicClassStory);
+                SaveStateAndJumpToStory(basicClassStoryContext);
             }, () =>
             {
                 // deny callback...
@@ -279,6 +281,7 @@ public class LocationManager : MonoBehaviour
         return false;
     }
 
+
     #region HELPER FUNCTIONS 
     
     // update the text that displays the time and day. eventually probably want this to update icons in the ui through some kind of ui manager
@@ -327,6 +330,8 @@ public class LocationManager : MonoBehaviour
         };
     }
 
+
+
     public void RetrieveState()
     {
         currentDay = savedTimeAndDay.day;
@@ -342,9 +347,23 @@ public class LocationManager : MonoBehaviour
         }
     }
 
-    private void SaveStateAndJumpToStory(TextAsset story)
+    public void UpdateMascotLevel(string mascotName, int amountIncrease)
     {
-        Debug.Log("jumping to story " + story.name);
+        foreach (var mascot in mascotList)
+        {
+            var component = mascot.GetComponent<Mascot>();
+            if (component.mascotName.ToLower().Equals(mascotName.ToLower()))
+            {
+                Debug.Log($"updating mascot level of {mascotName}");
+                component.IncreaseBarValue(amountIncrease); // clamping and increasing heart level is handled by mascot script
+                // also note that this will not overfill the heart meter if it goes 
+            }
+        }
+    }
+
+    private void SaveStateAndJumpToStory(StoryContext context)
+    {
+        Debug.Log("jumping to story " + context.name);
         // save time and day state
         savedTimeAndDay.time = currentTimeSlot;
         savedTimeAndDay.day = currentDay;
@@ -355,7 +374,7 @@ public class LocationManager : MonoBehaviour
             mascotState.UpdateData(component.name, component.heartLevel, component.barValue, component.interactedWith);
         }
 
-        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("StoryScene", story));
+        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("StoryScene", context));
     }
 
     #endregion 
