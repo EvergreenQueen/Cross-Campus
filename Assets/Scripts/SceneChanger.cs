@@ -98,7 +98,7 @@ public class SceneChanger : MonoBehaviour
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
                 DialogueManager.GetInstance().storyContext = storyContext;
 
-                // there's a better way to do this
+                // there's *PROBABLY* a better way to do this
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("CampusMap");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                
@@ -144,9 +144,10 @@ public class SceneChanger : MonoBehaviour
 
     public IEnumerator LoadScene(string sceneName)
     {
+        // start fading to black
         fadeToBlackAnimator.SetTrigger("FadeOut");
         animationFinished = false;
-
+        // wait until animation is finished
         while (!animationFinished)
         {
             yield return null;
@@ -154,6 +155,7 @@ public class SceneChanger : MonoBehaviour
 
         currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        // stay on black screen while loading scene
         while (!asyncLoad.isDone)
         {
             yield return null;
