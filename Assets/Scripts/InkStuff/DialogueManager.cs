@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         //handle continuing to next line in dialogue when submit pressed
-        if(Input.GetKeyDown(KeyCode.Space) && !noContinue){
+        if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !noContinue){
             ContinueStory();
         }
 
@@ -306,7 +306,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator waiter(){
         yield return new WaitForSeconds(0.2f);
-        dialoguePanel.SetActive(false);
+        //dialoguePanel.SetActive(false);
         dialogueText.text = "";
         dialogueIsPlaying = false;
     }

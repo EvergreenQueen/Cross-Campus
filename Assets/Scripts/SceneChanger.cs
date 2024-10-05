@@ -58,15 +58,19 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadSceneAndCallDialogue("NameSelect", null, nameJSON));
     }
 
+
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
     public IEnumerator LoadSceneAndCallDialogue(string whichScene, StoryContext storyContext = null, TextAsset dialogue = null){
         if (storyContext != null) {
             dialogue = storyContext.inkStoryJson;
         }
 
+        sceneToLoad = whichScene;
+
         switch(whichScene){
             case "Orientation":
-                yield return LoadScene("Orientation");
+
+                yield return StartCoroutine("LoadScene");
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
@@ -75,7 +79,7 @@ public class SceneChanger : MonoBehaviour
                 break;
             
             case "Registration":
-                yield return LoadScene("ClassSelection");
+                yield return StartCoroutine("LoadScene");
 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
@@ -92,7 +96,7 @@ public class SceneChanger : MonoBehaviour
                 //GameObject mainCam1 = GameObject.Find("Main Camera");
                 //mainCam1.SetActive(false);
 
-                yield return LoadScene("StoryScene");
+                yield return StartCoroutine("LoadScene");
 
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
@@ -110,7 +114,7 @@ public class SceneChanger : MonoBehaviour
                 //GameObject mainCam2 = GameObject.Find("Main Camera");
                 //mainCam2.SetActive(false);
 
-                yield return LoadScene("CampusMap");
+                yield return StartCoroutine("LoadScene");
                 
                 // progress time :> and do state restoration :>
                 LocationManager.GetInstance().RetrieveState();
@@ -124,11 +128,12 @@ public class SceneChanger : MonoBehaviour
                 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
+                Debug.Log("unloaded old scene");
 
 
                 break;
             case "NameSelect":
-                yield return LoadScene("NameSelect");
+                yield return StartCoroutine("LoadScene");
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
@@ -142,11 +147,12 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadScene(string sceneName)
+    public IEnumerator LoadScene()
     {
         // start fading to black
         fadeToBlackAnimator.SetTrigger("FadeOut");
         animationFinished = false;
+
         // wait until animation is finished
         while (!animationFinished)
         {
@@ -154,7 +160,7 @@ public class SceneChanger : MonoBehaviour
         }
 
         currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
         // stay on black screen while loading scene
         while (!asyncLoad.isDone)
         {
@@ -163,6 +169,7 @@ public class SceneChanger : MonoBehaviour
 
         fadeToBlackAnimator.SetTrigger("FadeIn");
     }
+
 
     public void OnAnimationComplete()
     {

@@ -322,6 +322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ink
       objectReference: {fileID: 0}
+    - target: {fileID: 7786044787024667652, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
 --- !u!1 &511463148 stripped
