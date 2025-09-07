@@ -41,7 +41,7 @@ public class SceneChanger : MonoBehaviour
     public void loadOrientation(){
         // UnityEngine.SceneManagement.SceneManager.LoadScene("OrientationInk");
         // DialogueManager.GetInstance().EnterDialogueMode(orientationJSON);
-        StartCoroutine(LoadSceneAndCallDialogue("Orientation", null, orientationJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("OrientationInk", null, orientationJSON));
     }
 
     public void loadRegistration(){
@@ -55,7 +55,7 @@ public class SceneChanger : MonoBehaviour
 
     public void loadName()
     {
-        StartCoroutine(LoadSceneAndCallDialogue("NameSelect", null, nameJSON));
+        //StartCoroutine(LoadSceneAndCallDialogue("NameSelect", null, nameJSON));
     }
 
 
@@ -68,7 +68,7 @@ public class SceneChanger : MonoBehaviour
         sceneToLoad = whichScene;
 
         switch(whichScene){
-            case "Orientation":
+            case "OrientationInk":
 
                 yield return StartCoroutine("LoadScene");
 
