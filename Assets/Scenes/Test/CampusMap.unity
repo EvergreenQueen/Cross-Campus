@@ -1094,7 +1094,7 @@ MonoBehaviour:
   timeAndDayPlaceHolder: {fileID: 616741674}
   eventPopUpPrefab: {fileID: 1101423493248803087, guid: 4f33b08b9d7187848ac69b46d13960d3, type: 3}
   uiCanvas: {fileID: 2042922681}
-  basicClassStoryContext: {fileID: 0}
+  basicClassStoryContext: {fileID: 11400000, guid: e4470130e130c3347a3ec36876f7b3a8, type: 2}
   basicClassStory: {fileID: 4900000, guid: dda54a3b2351bab46b325fb6a0e56a89, type: 3}
   placeholderCourse: {fileID: 11400000, guid: 64abc620e6cce264a8350a6084a1ad00, type: 2}
   currentTimeSlot: 0

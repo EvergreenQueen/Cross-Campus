@@ -123,7 +123,10 @@ public class SceneChanger : MonoBehaviour
                 var ctx = DialogueManager.GetInstance().storyContext;
                 if (DialogueManager.GetInstance().successful)
                 {
-                    LocationManager.GetInstance().UpdateMascotLevel(ctx.mascotNames[0], ctx.heartExperienceGiven);
+                    if (ctx.mascotNames.Count > 0)
+                    {
+                        LocationManager.GetInstance().UpdateMascotLevel(ctx.mascotNames[0], ctx.heartExperienceGiven);
+                    }
                 }
                 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("StoryScene");

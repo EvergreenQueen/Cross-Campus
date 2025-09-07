@@ -51,7 +51,7 @@ public class MascotState : ScriptableObject
         }
         else
         {
-            Debug.LogError("trying to update a non-existent mascotData entry: " + mascotName + ", creating an entry for it!");
+            Debug.LogWarning("trying to update a non-existent mascotData entry: " + mascotName + ", creating an entry for it!");
             CreateData(mascotName, heartLevel, barValue, interactedWith);
         }
     }
