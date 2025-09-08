@@ -55,7 +55,7 @@ public class SceneChanger : MonoBehaviour
 
     public void loadName()
     {
-        //StartCoroutine(LoadSceneAndCallDialogue("NameSelect", null, nameJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("NameScene", null, nameJSON));
     }
 
     public void loadLifeEvent(TextAsset tx, Mascot m)
@@ -150,12 +150,18 @@ public class SceneChanger : MonoBehaviour
 
 
                 break;
-            case "NameSelect":
+            case "NameScene":
                 yield return StartCoroutine("LoadScene");
 
-                DialogueManager.GetInstance().EnterDialogueMode(dialogue);
+                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("NameScene", LoadSceneMode.Additive);
 
-                // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
+                // unload the map scene
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
+                DialogueManager.GetInstance().EnterDialogueMode(dialogue);
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             case "life":

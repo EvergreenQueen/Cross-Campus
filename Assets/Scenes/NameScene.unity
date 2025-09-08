@@ -1099,14 +1099,6 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 7786044785950661661, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -274
-      objectReference: {fileID: 0}
-    - target: {fileID: 7786044785950661661, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 7786044786277089531, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: timeBtwChars
       value: 0.01
@@ -1118,14 +1110,6 @@ PrefabInstance:
     - target: {fileID: 7786044786277089532, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_fontSizeMax
       value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 7786044786277089534, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -129
-      objectReference: {fileID: 0}
-    - target: {fileID: 7786044786277089534, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 7786044787024667651, guid: 6921af615b1ccf344b3ee37d90ee0823, type: 3}
       propertyPath: m_Pivot.x
