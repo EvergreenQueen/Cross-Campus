@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Typewriter")]
     [SerializeField] private TypewriterEffect typa;
     private TextMeshProUGUI[] choicesText;
-    [SerializeField] private Story currentStory;
+    public Story currentStory;
 
 
     public StoryContext storyContext;

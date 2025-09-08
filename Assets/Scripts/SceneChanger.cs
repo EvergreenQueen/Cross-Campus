@@ -60,12 +60,12 @@ public class SceneChanger : MonoBehaviour
 
     public void loadLifeEvent(TextAsset tx, Mascot m)
     {
-        StartCoroutine(LoadSceneAndCallDialogue("life", tx, m));
+        StartCoroutine(LoadSceneAndCallDialogue("life", null, tx));
     }
 
     public void loadDateEvent(TextAsset tx, Mascot m)
     {
-        StartCoroutine(LoadSceneAndCallDialogue("life", tx, m));
+        StartCoroutine(LoadSceneAndCallDialogue("life", null, tx));
     }
 
     public void loadPhone()
@@ -73,12 +73,6 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadSceneAndCallDialogue("phone"));
     }
 
-    // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
-    public IEnumerator LoadSceneAndCallDialogue(string whichScene, TextAsset dialogue = null, Mascot m = null){
-        switch(whichScene){
-            case "orientation":
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("OrientationInk", LoadSceneMode.Additive);
 
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
     public IEnumerator LoadSceneAndCallDialogue(string whichScene, StoryContext storyContext = null, TextAsset dialogue = null){
@@ -179,7 +173,7 @@ public class SceneChanger : MonoBehaviour
                 {
                     yield return null;
                 }
-                DialogueManager.GetInstance().EnterDialogueMode(dialogue, "", m);
+                DialogueManager.GetInstance().EnterDialogueMode(dialogue);
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             case "phone":
