@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f035b3e7778517f4381b1c34ef1c10a8, type: 3}
-  m_Name: Woah
+  m_Name: Scotty_2
   m_EditorClassIdentifier: 
   location: 3
   mascots:
   - scotty
   requiredHeartLevel: 0
   firstTimeInteraction: 1
-  heartExperienceGiven: 2
-  inkStoryJson: {fileID: 4900000, guid: 167ffb66826446e448ac011f44330d69, type: 3}
+  heartExperienceGiven: 0
+  inkStoryJson: {fileID: 4900000, guid: 23417b0f3879d1644a1032806ecc7f36, type: 3}

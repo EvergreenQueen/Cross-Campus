@@ -136,9 +136,9 @@ public class SceneChanger : MonoBehaviour
                 var ctx = DialogueManager.GetInstance().storyContext;
                 if (DialogueManager.GetInstance().successful)
                 {
-                    if (ctx.mascotNames.Count > 0)
+                    if (ctx.mascots.Count > 0)
                     {
-                        LocationManager.GetInstance().UpdateMascotLevel(ctx.mascotNames[0], ctx.heartExperienceGiven);
+                        LocationManager.GetInstance().UpdateMascotLevel(ctx.mascots[0], ctx.heartExperienceGiven);
                     }
                 }
                 

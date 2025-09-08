@@ -62,29 +62,19 @@ public class StoryManager : MonoBehaviour
     /// <param name="heartLevel"></param>
     /// <param name="isFirstTime"></param>
     /// <returns>list of JSON files of the possible Ink stories to load, list is empty if no story exists for the context</returns>
-    public List<StoryContext> GetContexts(TimeSlot time, Day day, Location location, string mascotName,
+    public List<StoryContext> GetContexts(Location location, string mascotName,
         int heartLevel, bool isFirstTime = false)
     {
         List<StoryContext> contextList = new List<StoryContext>();
         // highly efficient searching for the context given parameters 😁👍
         foreach (var storyContext in storyContextList)
         {
-            if (!storyContext.times.Contains(time))
-            {
-                Debug.Log($"time {time.ToString()} does not match for storyContext object {storyContext}");
-                continue;
-            }
-            if (!storyContext.days.Contains(day))
-            {
-                Debug.Log($"day {day.ToString()} does not match for storyContext object {storyContext}");
-                continue;
-            }
             if (storyContext.location != location)
             {
                 Debug.Log($"location {location.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
-            if (!storyContext.mascotNames.Contains(mascotName.ToLower()))
+            if (!storyContext.mascots.Contains(mascotName.ToLower()))
             {
                 Debug.Log($"mascotName {mascotName} does not match for storyContext object {storyContext} (make sure the name(s) on the scriptable object are lowercase)");
                 continue;
@@ -99,7 +89,7 @@ public class StoryManager : MonoBehaviour
                 continue;
             }
             
-            Debug.Log($"added story {storyContext} to call with parameters: {time.ToString()}, {day.ToString()}, {location.ToString()}, {mascotName}, {heartLevel}");
+            Debug.Log($"added story {storyContext} to call with parameters: {location.ToString()}, {mascotName}, {heartLevel}");
             contextList.Add(storyContext);
         }
         

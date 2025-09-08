@@ -106,11 +106,11 @@ public class LocationManager : MonoBehaviour
             var mascotName = mascotComponent.mascotName;
             var location = LocationStringToLocation(locationName);
             var isFirstTimeInteraction = !mascotComponent.interactedWith;
-            var ctxList = StoryManager.Instance.GetContexts(gameManager.currentTimeSlot, gameManager.currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel(), isFirstTimeInteraction);
+            var ctxList = StoryManager.Instance.GetContexts(location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel(), isFirstTimeInteraction);
 
             if (ctxList.Count == 0)
             {
-                Debug.Log($"no stories with current context: time = {gameManager.currentTimeSlot.ToString()}, day = {gameManager.currentDay.ToString()}, location = {location.ToString()}, mascot = {mascotName}, heart level = {mascot.GetComponent<Mascot>().GetHeartLevel()}, first time interaction = {isFirstTimeInteraction.ToString()}");
+                Debug.Log($"no stories with current context: location = {location.ToString()}, mascot = {mascotName}, heart level = {mascot.GetComponent<Mascot>().GetHeartLevel()}, first time interaction = {isFirstTimeInteraction.ToString()}");
                 return;
             }
             
@@ -123,7 +123,12 @@ public class LocationManager : MonoBehaviour
             
             if (isFirstTimeInteraction)
             {
-                var storyContext = ctxList[0];
+                var storyContext = ctxList[0]; // default to the first initial interaction (BECAUSE THERE SHOULD ONLY BE ONE)
+                // raise error message if there are multiple
+                if (ctxList.Count > 1)
+                {
+                    Debug.LogError($"mascot {mascotName} has more than one first time interaction: {debugOutput}. defaulting to the first, aka {storyContext.name}, but there should only be one first time interaction for each mascot.");
+                }
                 mascotComponent.interactedWith = true;
 
                 gameManager.SaveStateAndJumpToStory(storyContext);

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("found more than one game manager, but it's a singleton and there should only be one in the scene.");
         }
+
         instance = this;
 
         player = GameObject.Find("Player")?.GetComponent<Player>();

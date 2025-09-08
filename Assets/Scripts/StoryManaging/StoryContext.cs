@@ -19,9 +19,7 @@ public class StoryContext : ScriptableObject
     
     // list in case there are multiple mascots in the story and we wish to communicate that info to the player
     // ALSO MAKE SURE THE NAMES ARE LOWERCASE!
-    public List<string> mascotNames; 
-    public List<TimeSlot> times;
-    public List<Day> days;
+    public List<string> mascots; 
     
     // minimum heart level to access the interaction
     public int requiredHeartLevel; 
