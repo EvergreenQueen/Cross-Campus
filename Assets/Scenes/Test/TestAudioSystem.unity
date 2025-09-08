@@ -296,5 +296,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 768332911299792335, guid: 0e62c3f7073616d4b90b938b82480acd, type: 3}
+      propertyPath: clickSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: f9398e6ed019fdd4f9daa8492bcabd6b, type: 3}
+    - target: {fileID: 768332911299792335, guid: 0e62c3f7073616d4b90b938b82480acd, type: 3}
+      propertyPath: hoverOverSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: b1923896697b1e74fae4d73d769fe151, type: 3}
+    - target: {fileID: 768332911299792335, guid: 0e62c3f7073616d4b90b938b82480acd, type: 3}
+      propertyPath: dialogueNextSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: f0e3d4c2715a6754ba2e0ce4642b5927, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e62c3f7073616d4b90b938b82480acd, type: 3}
