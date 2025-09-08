@@ -15,7 +15,9 @@ MonoBehaviour:
   location: 3
   mascotNames:
   - scotty
-  times: 00000000
+  times: 02000000
   days: 01000000
-  heartLevel: 0
+  requiredHeartLevel: 0
+  firstTimeInteraction: 1
+  heartExperienceGiven: 2
   inkStoryJson: {fileID: 4900000, guid: 167ffb66826446e448ac011f44330d69, type: 3}

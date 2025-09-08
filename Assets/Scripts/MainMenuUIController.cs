@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour {
+public class MainMenuUIController : MonoBehaviour {
     public GameObject Square;
     bool change = false;
     bool change2 = false;

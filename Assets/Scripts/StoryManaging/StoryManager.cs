@@ -13,6 +13,14 @@
 // supports multiple mascots for a given story, just in case we want stories to feature multiple mascots primarily.
 // however, you can't specify a list of mascots when searching for the context, just know that contexts support multiple mascots. 
 
+/* UPDATE: 08/26/2024
+ * added an extra parameter for stories: whether this is The first time interaction story or not
+ * could MAYBE instead just look at the required heart level and see that it's level 0 and just default to that as the first time story,
+    but doing it like this is more flexible for a VERY Small amount more effort
+ * 
+*/
+
+
 // loosely follows singleton pattern (lol)
 
 using System.Collections;
@@ -52,42 +60,47 @@ public class StoryManager : MonoBehaviour
     /// <param name="location"></param>
     /// <param name="mascotName">must be a string value</param>
     /// <param name="heartLevel"></param>
+    /// <param name="isFirstTime"></param>
     /// <returns>list of JSON files of the possible Ink stories to load, list is empty if no story exists for the context</returns>
-    public List<TextAsset> GetContexts(TimeSlot time, Day day, Location location, string mascotName,
-        int heartLevel)
+    public List<StoryContext> GetContexts(TimeSlot time, Day day, Location location, string mascotName,
+        int heartLevel, bool isFirstTime = false)
     {
-        List<TextAsset> contextList = new List<TextAsset>();
+        List<StoryContext> contextList = new List<StoryContext>();
         // highly efficient searching for the context given parameters 😁👍
         foreach (var storyContext in storyContextList)
         {
             if (!storyContext.times.Contains(time))
             {
-                //Debug.Log($"time {time.ToString()} does not match for storyContext object {storyContext}");
+                Debug.Log($"time {time.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
             if (!storyContext.days.Contains(day))
             {
-                //Debug.Log($"day {day.ToString()} does not match for storyContext object {storyContext}");
+                Debug.Log($"day {day.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
             if (storyContext.location != location)
             {
-                //Debug.Log($"location {location.ToString()} does not match for storyContext object {storyContext}");
+                Debug.Log($"location {location.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
             if (!storyContext.mascotNames.Contains(mascotName.ToLower()))
             {
-                //Debug.Log($"mascotName {mascotName} does not match for storyContext object {storyContext} (make sure the name(s) on the scriptable object are lowercase)");
+                Debug.Log($"mascotName {mascotName} does not match for storyContext object {storyContext} (make sure the name(s) on the scriptable object are lowercase)");
                 continue;
             }
-            if (storyContext.heartLevel > heartLevel)
+            if (storyContext.requiredHeartLevel > heartLevel)
             {
-                // Debug.Log($"heart level {heartLevel} is too low for storyContext object {storyContext}");
+                 Debug.Log($"heart level {heartLevel} is too low for storyContext object {storyContext}");
+                continue;
+            }
+            if (storyContext.firstTimeInteraction != isFirstTime)
+            {
                 continue;
             }
             
             Debug.Log($"added story {storyContext} to call with parameters: {time.ToString()}, {day.ToString()}, {location.ToString()}, {mascotName}, {heartLevel}");
-            contextList.Add(storyContext.inkStoryJson);
+            contextList.Add(storyContext);
         }
         
         return contextList;

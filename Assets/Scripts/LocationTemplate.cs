@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class LocationTemplate : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,6 +16,8 @@ public class LocationTemplate : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject tempTooltip;
     private GameObject hoverSpriteObject;
     private Camera uiCam;
+    public Collider boundingPolygon;
+    public Image sprite;
     
     private bool tooltipActive = false;
     
@@ -58,6 +61,16 @@ public class LocationTemplate : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Destroy(tempTooltip);
         
         // hoverSpriteObject.SetActive(false);
+    }
+
+    public void OnMouseEnter()
+    {
+        GetComponent<Image>().enabled = true;
+    }
+
+    public void OnMouseExit()
+    {
+        GetComponent<Image>().enabled = false;
     }
 
     void Update()

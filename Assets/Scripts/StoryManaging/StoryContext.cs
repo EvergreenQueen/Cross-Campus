@@ -24,7 +24,14 @@ public class StoryContext : ScriptableObject
     public List<Day> days;
     
     // minimum heart level to access the interaction
-    public int heartLevel; 
+    public int requiredHeartLevel; 
+    
+    // is this the story that introduces the character? aka their first time story?
+    // because we have a special story for when it is the first time
+    // and if it isn't then we choose a random one from the contexts we have
+    public bool firstTimeInteraction;
+
+    public int heartExperienceGiven; // amount of "reputation" that you get from completing this story correctly
     
     public TextAsset inkStoryJson; // json file of the ink story for the interaction
 }

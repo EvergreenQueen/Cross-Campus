@@ -25,6 +25,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TypewriterEffect typa;
     private TextMeshProUGUI[] choicesText;
     [SerializeField] private Story currentStory;
+
+
+    public StoryContext storyContext;
+    public bool successful = true; // if the story should give reputation for the mascot when it finishes, set to false when Bad Choices are selected
+
+
     public bool dialogueIsPlaying { get; private set; }
     public bool dialogueCurrentlyPlaying { get; private set; }
     private bool noContinue = false;
@@ -47,6 +53,7 @@ public class DialogueManager : MonoBehaviour
         instance = this;
         dialogueCurrentlyPlaying = false;
         player = GameObject.Find("Player");
+        successful = true;
     }
 
     public static DialogueManager GetInstance(){
@@ -83,16 +90,22 @@ public class DialogueManager : MonoBehaviour
     private void Update(){
         //return right away if dialogue isn't playing
         if(!dialogueIsPlaying){
-            DialogueTrigger playerDialogue = player.GetComponent<DialogueTrigger>();
-            playerDialogue.enabled = true;
+            // COMMENT BY GARETT ON 08/26/24: the dialogue trigger component seems like it's deprecated/doesn't do anything so i made this class find the player object that has the player component on it
+            // and thus i commented these out bc they were causing error messages and null reference exceptions and such
+            // sorry hao if you had Big Plans for the dialoguetrigger class
+            
+            // DialogueTrigger playerDialogue = player.GetComponent<DialogueTrigger>();
+            // playerDialogue.enabled = true;
             return;
         }else{
-            DialogueTrigger playerDialogue = player.GetComponent<DialogueTrigger>();
-            playerDialogue.enabled = false;
+            // COMMENT BY GARETT ON 08/26/24: above ^^^^
+            
+            // DialogueTrigger playerDialogue = player.GetComponent<DialogueTrigger>();
+            // playerDialogue.enabled = false;
         }
 
         //handle continuing to next line in dialogue when submit pressed
-        if(Input.GetKeyDown(KeyCode.Space) && !noContinue){
+        if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !noContinue){
             ContinueStory();
         }
 
@@ -293,7 +306,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator waiter(){
         yield return new WaitForSeconds(0.2f);
-        dialoguePanel.SetActive(false);
+        //dialoguePanel.SetActive(false);
         dialogueText.text = "";
         dialogueIsPlaying = false;
     }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f035b3e7778517f4381b1c34ef1c10a8, type: 3}
+  m_Name: osklies
+  m_EditorClassIdentifier: 
+  location: 4
+  mascotNames:
+  - oski
+  times: 02000000
+  days: 020000000300000004000000
+  requiredHeartLevel: 0
+  firstTimeInteraction: 1
+  heartExperienceGiven: 0
+  inkStoryJson: {fileID: 4900000, guid: 153c7f82a5c0a814caa224bbd1b42a76, type: 3}

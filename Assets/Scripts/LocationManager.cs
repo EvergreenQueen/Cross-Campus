@@ -8,6 +8,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using System.IO;
+using Random = System.Random;
 
 public class LocationManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class LocationManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
     [SerializeField] private GameObject eventPopUpPrefab;
     public Canvas uiCanvas; // might wanna do this thru a ui manager tbh
-    
+
+    [SerializeField] private StoryContext basicClassStoryContext; // default context for classes, all params are ignored except it's textasset field
     [SerializeField] private TextAsset basicClassStory;
     [SerializeField] private CourseScriptableObject placeholderCourse;
     
@@ -30,7 +32,10 @@ public class LocationManager : MonoBehaviour
     private Location currentLocation;
     
     private EventPopUp eventPopUp;
+
+    // game state stuff
     public SavedTimeAndDay savedTimeAndDay; // SET IN INSPECTOR
+    public MascotState mascotState; // set in inspectore (Assets/GameStates/MascotState
     
     public Player player;
     public Calendar playerCalendar;
@@ -121,25 +126,41 @@ public class LocationManager : MonoBehaviour
     // also the story that is picked WILL be a random one from the m
     public void GoToLocation(string locationName)
     {
-        foreach (GameObject mascot in GetMascotsAtLocation(locationName)) // probably have a button for each mascot currently at the location, and each button calls gotolocation for that mascot
+        foreach (GameObject mascot in GetMascotsAtLocation(locationName)) // probably have a SEPARATE button for each mascot currently at the location, and each button calls gotolocation for THAT mascot
         {
-            var mascotName = mascot.GetComponent<Mascot>().mascotName;
+            var mascotComponent = mascot.GetComponent<Mascot>();
+            var mascotName = mascotComponent.mascotName;
             var location = LocationStringToLocation(locationName);
-            var ctxList = StoryManager.Instance.GetContexts(currentTimeSlot, currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel());
-            
-            // TODO pick a random context from the list of contexts
+            var isFirstTimeInteraction = !mascotComponent.interactedWith;
+            var ctxList = StoryManager.Instance.GetContexts(currentTimeSlot, currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel(), isFirstTimeInteraction);
 
+            if (ctxList.Count == 0)
+            {
+                Debug.Log($"no stories with current context: time = {currentTimeSlot.ToString()}, day = {currentDay.ToString()}, location = {location.ToString()}, mascot = {mascotName}, heart level = {mascot.GetComponent<Mascot>().GetHeartLevel()}, first time interaction = {isFirstTimeInteraction.ToString()}");
+                return;
+            }
+            
             string debugOutput = "";
             foreach (var item in ctxList)
             {
                 debugOutput += item.name + " ";
             }
             Debug.Log("location stories: " + debugOutput);
-
-            if (ctxList.Count == 1)
+            
+            if (isFirstTimeInteraction)
             {
                 var storyContext = ctxList[0];
+                mascotComponent.interactedWith = true;
+
                 SaveStateAndJumpToStory(storyContext);
+            }
+            else
+            {
+                // pick a random context from the list of contexts
+                var storyIdx = UnityEngine.Random.Range(0, ctxList.Count);
+                Debug.Log("jumping to random story: " + ctxList[storyIdx]);
+                mascotComponent.interactedWith = true;
+                SaveStateAndJumpToStory(ctxList[storyIdx]);
             }
         }
     }
@@ -169,7 +190,7 @@ public class LocationManager : MonoBehaviour
             eventPopUp.AssignButtonEvents(() =>
             {
                 // accept callback
-                SaveStateAndJumpToStory(basicClassStory);
+                SaveStateAndJumpToStory(basicClassStoryContext);
             }, () =>
             {
                 // deny callback...
@@ -260,6 +281,7 @@ public class LocationManager : MonoBehaviour
         return false;
     }
 
+
     #region HELPER FUNCTIONS 
     
     // update the text that displays the time and day. eventually probably want this to update icons in the ui through some kind of ui manager
@@ -308,19 +330,51 @@ public class LocationManager : MonoBehaviour
         };
     }
 
-    public void RetrieveTimeAndDayState()
+
+
+    public void RetrieveState()
     {
         currentDay = savedTimeAndDay.day;
         currentTimeSlot = savedTimeAndDay.time;
+
+        foreach (var mascot in mascotList)
+        {
+            var component = mascot.GetComponent<Mascot>();
+            var data = mascotState.GetData(component.name);
+            component.heartLevel = data.heartLevel;
+            component.barValue = data.barValue;
+            component.interactedWith = data.interactedWith;
+        }
     }
 
-    private void SaveStateAndJumpToStory(TextAsset story)
+    public void UpdateMascotLevel(string mascotName, int amountIncrease)
     {
-        Debug.Log("jumping to story " + story.name);
+        foreach (var mascot in mascotList)
+        {
+            var component = mascot.GetComponent<Mascot>();
+            if (component.mascotName.ToLower().Equals(mascotName.ToLower()))
+            {
+                Debug.Log($"updating mascot level of {mascotName}");
+                component.IncreaseBarValue(amountIncrease); // clamping and increasing heart level is handled by mascot script
+                // also note that this will not overfill the heart meter if it goes 
+            }
+        }
+    }
+
+    private void SaveStateAndJumpToStory(StoryContext context)
+    {
+        Debug.Log("jumping to story " + context.name);
         // save time and day state
         savedTimeAndDay.time = currentTimeSlot;
         savedTimeAndDay.day = currentDay;
-        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("story", story));
+
+        foreach (var mascot in mascotList)
+        {
+            var component = mascot.GetComponent<Mascot>(); 
+            mascotState.UpdateData(component.name, component.heartLevel, component.barValue, component.interactedWith);
+        }
+
+        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("StoryScene", context));
     }
 
     #endregion 

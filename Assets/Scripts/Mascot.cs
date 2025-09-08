@@ -15,6 +15,7 @@ public class Mascot : MonoBehaviour
     public int barValue;
     public int heartLevel;
     public Calendar calendar; 
+    public bool interactedWith;
     private Location currentLocation;
     private List<CourseScriptableObject> courses; // course list should be stored in the calendar
     private Club club;
