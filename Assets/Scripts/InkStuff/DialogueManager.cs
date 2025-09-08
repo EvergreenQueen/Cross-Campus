@@ -330,9 +330,11 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case HEART_TAG:
                     if(tagValue == "1"){
-                        dating.IncreaseBarValue(1);
+                        // dating.IncreaseBarValue(1);
+                        GameManager.GetInstance().FinishInteraction(true, dating);
                     }else{
-                        dating.DecreaseBarValue(1);
+                        // dating.DecreaseBarValue(1);
+                        GameManager.GetInstance().FinishInteraction(false, dating);
                     }
                     break;
                 default:
