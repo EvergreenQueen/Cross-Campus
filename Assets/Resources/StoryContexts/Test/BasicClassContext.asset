@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f035b3e7778517f4381b1c34ef1c10a8, type: 3}
-  m_Name: Woah
+  m_Name: BasicClassContext
   m_EditorClassIdentifier: 
-  location: 3
-  mascotNames:
-  - scotty
-  times: 02000000
-  days: 01000000
+  location: 6
+  mascotNames: []
+  times: 
+  days: 
   requiredHeartLevel: 0
-  firstTimeInteraction: 1
-  heartExperienceGiven: 2
-  inkStoryJson: {fileID: 4900000, guid: 167ffb66826446e448ac011f44330d69, type: 3}
+  firstTimeInteraction: 0
+  heartExperienceGiven: 0
+  inkStoryJson: {fileID: 4900000, guid: dda54a3b2351bab46b325fb6a0e56a89, type: 3}

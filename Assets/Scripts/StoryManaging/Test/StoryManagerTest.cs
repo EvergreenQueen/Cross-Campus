@@ -15,7 +15,7 @@ public class StoryManagerTest : MonoBehaviour
     // TODO assertions
     public void Start()
     {
-        List<TextAsset> returnedValue;
+        List<StoryContext> returnedValue;
         
         returnedValue = StoryManager.Instance.GetContexts(TimeSlot.afternoon, Day.Monday, Location.botanical_gardens, "scotty", 0);
         Debug.Log($"test GetContext with afternoon, monday, botanical gardens, scotty, 0\nexpected: a, results: {FormatContextList(returnedValue)}");
@@ -57,7 +57,7 @@ public class StoryManagerTest : MonoBehaviour
         Debug.Log($"test GetContext with morning, wednesday, classroom, scotty, 0\nexpected: Woah, results: {FormatContextList(returnedValue)}");
     }
 
-    public string FormatContextList(List<TextAsset> inputList)
+    public string FormatContextList(List<StoryContext> inputList)
     {
         string output = "";
         foreach (var item in inputList)
