@@ -175,6 +175,7 @@ MonoBehaviour:
   calendar:
     courses: []
     clubs: []
+  interactedWith: 0
 --- !u!1 &387005292
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +244,9 @@ MonoBehaviour:
   nameJSON: {fileID: 4900000, guid: b3c87c1b3fb7d3646a14990c77363d48, type: 3}
   currScene: 
   savedTimeAndDay: {fileID: 0}
+  fadeToBlackAnimator: {fileID: 0}
+  animationFinished: 0
+  loadedStoryContext: {fileID: 0}
 --- !u!4 &493427758
 Transform:
   m_ObjectHideFlags: 0
@@ -421,6 +425,17 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &1002735923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4507786299645259160, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
+  m_PrefabInstance: {fileID: 4507786301073524402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1172630335
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +488,7 @@ MonoBehaviour:
   calendar:
     courses: []
     clubs: []
+  interactedWith: 0
 --- !u!1 &1529897652
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +541,7 @@ MonoBehaviour:
   calendar:
     courses: []
     clubs: []
+  interactedWith: 0
 --- !u!1 &1883157331 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4507786299579186160, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
@@ -582,6 +599,7 @@ MonoBehaviour:
   calendar:
     courses: []
     clubs: []
+  interactedWith: 0
 --- !u!114 &1947135197 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4507786301289821863, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
@@ -806,6 +824,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4507786299645259162, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4507786299717496724, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -886,6 +908,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6145512993996951440, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
+      propertyPath: displayImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145512993996951440, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
+      propertyPath: backgroundImage
+      value: 
+      objectReference: {fileID: 1002735923}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37a43450f4a1e784899e8c57ebaa3bf5, type: 3}
 --- !u!1 &4507786301073524403 stripped

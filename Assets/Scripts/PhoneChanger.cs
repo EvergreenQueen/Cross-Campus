@@ -16,7 +16,7 @@ public class PhoneChanger : MonoBehaviour
     void Update()
     {
         Story dm = DialogueManager.GetInstance().currentStory;
-        if (!dm.canContinue && !isChanging){
+        if (dm && !dm.canContinue && !isChanging){
             isChanging = true;
             StartCoroutine(changeScene());
         }

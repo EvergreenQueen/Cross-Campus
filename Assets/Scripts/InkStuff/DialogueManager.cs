@@ -76,19 +76,23 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
-        Color tempC = displayImage.GetComponent<Image>().color;
-        tempC.a = 0f;
-        displayImage.GetComponent<Image>().color = tempC;
+        if (displayImage != null)
+        {
+            Color tempC = displayImage.GetComponent<Image>().color;
+            tempC.a = 0f;
+            displayImage.GetComponent<Image>().color = tempC;
 
-        displayImage = threePositions[1];
-        tempC = displayImage.GetComponent<Image>().color;
-        tempC.a = 0f;
-        displayImage.GetComponent<Image>().color = tempC;
 
-        displayImage = threePositions[2];
-        tempC = displayImage.GetComponent<Image>().color;
-        tempC.a = 0f;
-        displayImage.GetComponent<Image>().color = tempC;
+            displayImage = threePositions[1];
+            tempC = displayImage.GetComponent<Image>().color;
+            tempC.a = 0f;
+            displayImage.GetComponent<Image>().color = tempC;
+
+            displayImage = threePositions[2];
+            tempC = displayImage.GetComponent<Image>().color;
+            tempC.a = 0f;
+            displayImage.GetComponent<Image>().color = tempC;
+        }
     }
 
     private void Update(){
@@ -340,7 +344,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator waiter(){
         yield return new WaitForSeconds(0.2f);
-        //dialoguePanel.SetActive(false);
+        dialoguePanel.SetActive(false);
         dialogueText.text = "";
         dialogueIsPlaying = false;
     }
