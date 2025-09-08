@@ -7,6 +7,8 @@ using GlobalVars;
 
 public class PhoneManager : MonoBehaviour
 {
+    public GameManager gameManager;
+
     public GameObject scrollviewContent;
     public GameObject phone;
     public GameObject mascotFinderTemplate;
@@ -86,7 +88,7 @@ public class PhoneManager : MonoBehaviour
         if(LocationManager.GetInstance() == null){
             whatDay = Day.Saturday; // HAO FIX THIS LATER
         }else{
-            whatDay = LocationManager.GetInstance().currentDay;
+            whatDay = gameManager.currentDay;
         }
         if(Input.GetKeyDown(KeyCode.P) && (whatDay == Day.Saturday)){
             // life event phone screen
