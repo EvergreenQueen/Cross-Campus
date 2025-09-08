@@ -45,7 +45,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void loadRegistration(){
-        StartCoroutine(LoadSceneAndCallDialogue("Registration"));
+        StartCoroutine(LoadSceneAndCallDialogue("ClassSelection"));
     }
 
     public void loadCampusMap() //TODO: CHANGE THIS BACK
@@ -55,7 +55,7 @@ public class SceneChanger : MonoBehaviour
 
     public void loadName()
     {
-        //StartCoroutine(LoadSceneAndCallDialogue("NameSelect", null, nameJSON));
+        StartCoroutine(LoadSceneAndCallDialogue("NameScene", null, nameJSON));
     }
 
     public void loadLifeEvent(TextAsset tx, Mascot m)
@@ -92,7 +92,7 @@ public class SceneChanger : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             
-            case "Registration":
+            case "ClassSelection":
                 yield return StartCoroutine("LoadScene");
 
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
@@ -148,13 +148,13 @@ public class SceneChanger : MonoBehaviour
 
 
                 break;
-            case "NameSelect":
+            case "NameScene":
                 yield return StartCoroutine("LoadScene");
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
-                // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
+                
                 break;
             case "life":
                 currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;

@@ -44,17 +44,17 @@ What? No, that can't be the answer. I've done this at least five times over to f
 Silly, Peter! It's so easy, look! #speaker: ??? #position: left #portrait: Sammy/Neutral
 I begin to walk towards two other students mulling over a workbook in their hands. The blonde one has a glittery pen and is scribbling all over the book. #speaker: ---
 You're kidding me, Sammy. How the hell did you do that so fast? It took me hours! #speaker: Peter A. Eater 
-I learned it a few years ago. You just have to follow a little trick- #speaker: Sammy
+I learned it a few years ago. You just have to follow a little trick- #speaker: Sammy Slug
 Before I could even interject and say anything, they started reading off confusing mathematical terms I had never heard in my life. #speaker: ---
 Don't worry, I don't get it either! #speaker: ??? #position: middle #portrait: Ru/Neutral
 I jump when someone's arm slings over my shoulder with a joyful laugh. #speaker: ---
 Oh, thank goodness. I thought I was the only one. #speaker: You
-Trust me, no one knows what those two are talking about, like, ever. It's all letters this! Numbers this! Give me a number and I'll run that many laps around those dorks. Oh! I'm Ru, by the way. Great to meet you! #speaker: Ru 
+Trust me, no one knows what those two are talking about, like, ever. It's all letters this! Numbers this! Give me a number and I'll run that many laps around those dorks. Oh! I'm Ru, by the way. Great to meet you! #speaker: Ru Bobcat
 H-Hey, it's great to meet you. Uh, how are you liking- #speaker: You
-Oops! Gotta go! HEY! TRITON! WAIT UP, I DON'T WANT TO GET LOST ON MY WAY TO THE GYM AGAIN! #speaker:Ru 
+Oops! Gotta go! HEY! TRITON! WAIT UP, I DON'T WANT TO GET LOST ON MY WAY TO THE GYM AGAIN! #speaker:Ru Bobcat
 Ru sprints off in a cloud of dust towards a looming, silent man who is walking away. He doesn't turn when his name is called, just continues to walk away. #speaker: --- #noportrait: yes
-... #speaker: Triton #position: right #portrait: Triton/Neutral #position: left #portrait: Ru/Neutral
-GEEZ! HOLD ON A SEC!! #speaker: Ru 
+... #speaker: Triton King #position: right #portrait: Triton/Neutral #position: left #portrait: Ru/Neutral
+GEEZ! HOLD ON A SEC!! #speaker: Ru Bobcat
 I really thought everyone would be going back to their dorms after orientation, guess not. #speaker: You #noportrait: yes
 You look lost, or perhaps that was simply my getting lost in your eyes. #speaker: ??? #position: right #portrait: Oleander/oleander_placeholder
 Huh?? Oh- uh- hi?? Th-thank you? #speaker: You
@@ -64,7 +64,7 @@ Absolutely not, Gunrock! These are for the gems that catch my eye, and what a lo
 You don't even know my name. #speaker: You
 I don't need to know your name to know ours are written in the stars to- ow! Ow! Ow! #speaker: Oleander
 Gunrock is holding Oleander's ear between their fingers, grinning at me. #speaker: ---
-Can't wait to see you on campus! I'll make sure this love sick fool gets his wits about him. #speaker: Gunrock
+Can't wait to see you on campus! I'll make sure this love sick fool gets his wits about him. #speaker: Gunrock Mustang
 I have no wits when your beauty has stolen them away from me! #speaker: Oleander
 I was then left alone finally, most of the students going back to their dorms or wherever they found themselves enjoying most. #speaker: --- #noportrait: yes
 Maybe with all the excitement of the day, I should head back too. 
