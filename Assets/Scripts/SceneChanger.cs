@@ -45,7 +45,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void loadRegistration(){
-        StartCoroutine(LoadSceneAndCallDialogue("Registration"));
+        StartCoroutine(LoadSceneAndCallDialogue("ClassSelection"));
     }
 
     public void loadCampusMap()
@@ -93,7 +93,7 @@ public class SceneChanger : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             
-            case "Registration":
+            case "ClassSelection":
                 yield return StartCoroutine("LoadScene");
 
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
@@ -153,16 +153,10 @@ public class SceneChanger : MonoBehaviour
             case "NameScene":
                 yield return StartCoroutine("LoadScene");
 
-                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("NameScene", LoadSceneMode.Additive);
-
-                // unload the map scene
-                while (!asyncLoad.isDone)
-                {
-                    yield return null;
-                }
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
+
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
+                
                 break;
             case "life":
                 currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;

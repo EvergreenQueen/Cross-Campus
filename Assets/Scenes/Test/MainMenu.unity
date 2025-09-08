@@ -2698,7 +2698,7 @@ PrefabInstance:
     - target: {fileID: 2716363346837228847, guid: e42009637ea419b4c8fa34851f839ed6, type: 3}
       propertyPath: nameJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 610a0b3eab672cb4d846c8e5fdf57374, type: 3}
+      objectReference: {fileID: 4900000, guid: b3c87c1b3fb7d3646a14990c77363d48, type: 3}
     - target: {fileID: 2716363346837228847, guid: e42009637ea419b4c8fa34851f839ed6, type: 3}
       propertyPath: orientationJSON
       value: 
