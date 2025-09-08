@@ -57,7 +57,12 @@ public class SceneChanger : MonoBehaviour
 
     public void loadDateEvent(TextAsset tx, Mascot m)
     {
-        StartCoroutine(LoadSceneAndCallDialogue("date", tx, m));
+        StartCoroutine(LoadSceneAndCallDialogue("life", tx, m));
+    }
+
+    public void loadPhone()
+    {
+        StartCoroutine(LoadSceneAndCallDialogue("phone"));
     }
 
     // ADDED ARGUMENT TO THIS FUNCTION TO SPECIFY THE DIALOGUE YOU WANT TO PLAY
@@ -157,10 +162,34 @@ public class SceneChanger : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             case "life":
+                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                if (dialogue is null)
+                {
+                    Debug.LogError("trying to switch to a story with a null dialogue!!! wuh oh! abandoning ship!!");
+                    break;
+                }
+                
+                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LifeAndDateScene", LoadSceneMode.Additive);
+
+                // unload the map scene
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue, "", m);
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
-            case "date":
-                DialogueManager.GetInstance().EnterDialogueMode(dialogue, "", m);
+            case "phone":
+                currScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("PhoneTestScene", LoadSceneMode.Additive);
+
+                // Wait until the scene is fully loaded
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
+
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             case null:
                 break;

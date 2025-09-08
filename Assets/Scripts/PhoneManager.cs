@@ -83,7 +83,11 @@ public class PhoneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        whatDay = LocationManager.GetInstance().currentDay;
+        if(LocationManager.GetInstance() == null){
+            whatDay = Day.Saturday; // HAO FIX THIS LATER
+        }else{
+            whatDay = LocationManager.GetInstance().currentDay;
+        }
         if(Input.GetKeyDown(KeyCode.P) && (whatDay == Day.Saturday)){
             // life event phone screen
             dateDay = false;

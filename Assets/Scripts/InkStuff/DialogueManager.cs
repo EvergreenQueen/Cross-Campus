@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Typewriter")]
     [SerializeField] private TypewriterEffect typa;
     private TextMeshProUGUI[] choicesText;
-    [SerializeField] private Story currentStory;
+    [SerializeField] public Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
     public bool dialogueCurrentlyPlaying { get; private set; }
     public bool yesno { get; private set;}
