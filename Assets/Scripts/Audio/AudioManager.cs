@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Purchasing;
 
 public class AudioManager : MonoBehaviour
 {
@@ -94,23 +93,28 @@ public class AudioManager : MonoBehaviour
     private IEnumerator Test()
     {
         StartCoroutine(SwitchTracks(titleScreenTrack));
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         StartCoroutine(SwitchTracks(dateTrack));
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         StartCoroutine(SwitchTracks(orientationTrack));
-        yield return new WaitForSeconds(3);
-        StartCoroutine(StopMusic());
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
+        StartCoroutine(SwitchTracks(lifeEventTrack));
+        yield return new WaitForSeconds(5);
+        StartCoroutine(StopTracks());
+        yield return new WaitForSeconds(5);
         PlaySFX(dialogueNextSFX);
+        PlaySFX(clickSFX);
+        PlaySFX(hoverOverSFX);
         StartCoroutine(SwitchTracks(timeOfDayMusicTracks[0]));
 
         for (int i = 0; i < timeOfDayMusicTracks.Count - 1; i++)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
             SwitchTimeOfDayTrack();
         }
         
     }
     */
+    
 
 }
