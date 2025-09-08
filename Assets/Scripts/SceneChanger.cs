@@ -48,7 +48,7 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadSceneAndCallDialogue("Registration"));
     }
 
-    public void loadCampusMap()
+    public void loadCampusMap() //TODO: CHANGE THIS BACK
     {
         StartCoroutine(LoadSceneAndCallDialogue("CampusMap"));
     }
@@ -89,14 +89,12 @@ public class SceneChanger : MonoBehaviour
 
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
 
-                // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MatthewScene");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             
             case "Registration":
                 yield return StartCoroutine("LoadScene");
 
-                // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("OrientationInk");
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currScene);
                 break;
             
@@ -132,8 +130,8 @@ public class SceneChanger : MonoBehaviour
                 yield return StartCoroutine("LoadScene");
                 
                 // progress time :> and do state restoration :>
-                LocationManager.GetInstance().RetrieveState();
-                LocationManager.GetInstance().ProgressTime();
+                GameManager.GetInstance().RetrieveState();
+                GameManager.GetInstance().ProgressTime();
 
                 var ctx = DialogueManager.GetInstance().storyContext;
                 if (DialogueManager.GetInstance().successful)

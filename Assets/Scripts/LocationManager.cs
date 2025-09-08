@@ -14,6 +14,7 @@ public class LocationManager : MonoBehaviour
 {
 
     //Serialized variables
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private List<GameObject> mascotList = new List<GameObject>();
     [SerializeField] private TextMeshProUGUI timeAndDayPlaceHolder;
     [SerializeField] private TextMeshProUGUI phoneReminder;
@@ -28,8 +29,6 @@ public class LocationManager : MonoBehaviour
     
     //Runtime variables
     private static LocationManager instance;
-    public TimeSlot currentTimeSlot = TimeSlot.morning;
-    public Day currentDay = Day.Monday;
     private Location currentLocation;
     
     private EventPopUp eventPopUp;
@@ -38,7 +37,6 @@ public class LocationManager : MonoBehaviour
     public SavedTimeAndDay savedTimeAndDay; // SET IN INSPECTOR
     public MascotState mascotState; // set in inspectore (Assets/GameStates/MascotState
     
-    public Player player;
     public Calendar playerCalendar;
 
     private void Awake()
@@ -49,14 +47,12 @@ public class LocationManager : MonoBehaviour
         }
         instance = this;
         
-        // player should in theory be dontdestroyonloaded
-        player = GameObject.Find("Player")?.GetComponent<Player>();
-        
         // create new calendar if it's not defined for some reason
         // FIXME move this to the player object itself, because this functionality is not the location manager's responsibility
-        if (player)
+        if (gameManager.player)
         {
-            playerCalendar = player.GetCalendar();
+            playerCalendar = gameManager.player.GetCalendar();
+            //Rememebr to comment out later
             if (playerCalendar == null)
             {
                 playerCalendar = new Calendar();
@@ -68,7 +64,7 @@ public class LocationManager : MonoBehaviour
                 // playerCalendar = gameObject.AddComponent<Calendar>();
                 playerCalendar.AddCourse(placeholderCourse);
 
-                player.SetCalendar(playerCalendar);
+                gameManager.player.SetCalendar(playerCalendar);
             }
         }
     }
@@ -87,32 +83,9 @@ public class LocationManager : MonoBehaviour
     
     public void ProgressTime()
     {
-        Debug.Log($"progressing time, old time slot is {currentTimeSlot}, old day is {currentDay}");
-        if (currentTimeSlot == TimeSlot.evening)
-        {
-            currentTimeSlot = TimeSlot.morning;
-            if (currentDay == Day.Saturday) currentDay = Day.Sunday;
-            else currentDay++;
-        }
-        else currentTimeSlot++;
-        Debug.Log($"done progressing time, new time slot is {currentTimeSlot}, new day is {currentDay}");
-
         if (eventPopUp)
         {
             Destroy(eventPopUp.gameObject);
-        }
-        
-        // SATURDAY LIFE EVENTS
-        if (currentDay == Day.Saturday)
-        {
-            foreach (var mascotObj in mascotList)
-            {
-                var mascot = mascotObj.GetComponent<Mascot>();
-                if (mascot.GetHeartLevel() >= 5)
-                {
-                    // load and play date story probably
-                }
-            }
         }
         
         UpdateTimeAndDayGUI();
@@ -133,11 +106,11 @@ public class LocationManager : MonoBehaviour
             var mascotName = mascotComponent.mascotName;
             var location = LocationStringToLocation(locationName);
             var isFirstTimeInteraction = !mascotComponent.interactedWith;
-            var ctxList = StoryManager.Instance.GetContexts(currentTimeSlot, currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel(), isFirstTimeInteraction);
+            var ctxList = StoryManager.Instance.GetContexts(gameManager.currentTimeSlot, gameManager.currentDay, location, mascotName, mascot.GetComponent<Mascot>().GetHeartLevel(), isFirstTimeInteraction);
 
             if (ctxList.Count == 0)
             {
-                Debug.Log($"no stories with current context: time = {currentTimeSlot.ToString()}, day = {currentDay.ToString()}, location = {location.ToString()}, mascot = {mascotName}, heart level = {mascot.GetComponent<Mascot>().GetHeartLevel()}, first time interaction = {isFirstTimeInteraction.ToString()}");
+                Debug.Log($"no stories with current context: time = {gameManager.currentTimeSlot.ToString()}, day = {gameManager.currentDay.ToString()}, location = {location.ToString()}, mascot = {mascotName}, heart level = {mascot.GetComponent<Mascot>().GetHeartLevel()}, first time interaction = {isFirstTimeInteraction.ToString()}");
                 return;
             }
             
@@ -153,7 +126,7 @@ public class LocationManager : MonoBehaviour
                 var storyContext = ctxList[0];
                 mascotComponent.interactedWith = true;
 
-                SaveStateAndJumpToStory(storyContext);
+                gameManager.SaveStateAndJumpToStory(storyContext);
             }
             else
             {
@@ -161,7 +134,7 @@ public class LocationManager : MonoBehaviour
                 var storyIdx = UnityEngine.Random.Range(0, ctxList.Count);
                 Debug.Log("jumping to random story: " + ctxList[storyIdx]);
                 mascotComponent.interactedWith = true;
-                SaveStateAndJumpToStory(ctxList[storyIdx]);
+                gameManager.SaveStateAndJumpToStory(ctxList[storyIdx]);
             }
         }
     }
@@ -174,13 +147,17 @@ public class LocationManager : MonoBehaviour
     // unless we're like not doing clubs
     private void CheckPlayerScheduleAndNotify()
     {
-        if (player is null)
+
+        //Remember to comment out ideally 
+        if (gameManager.player is null)
         {
-            player = GameObject.Find("Player").GetComponent<Player>();
+            gameManager.player = GameObject.Find("Player").GetComponent<Player>();
         }
-        var calendar = player.GetCalendar();
+
+
+        //var calendar = gameManager.player.GetCalendar();
         // check courbses
-        var course = calendar.GetCourseAtTime(currentTimeSlot, currentDay);
+        var course = playerCalendar.GetCourseAtTime(gameManager.currentTimeSlot, gameManager.currentDay);
         Debug.Log($"course right now is {course}");
         if (course != null)
         {
@@ -191,7 +168,7 @@ public class LocationManager : MonoBehaviour
             eventPopUp.AssignButtonEvents(() =>
             {
                 // accept callback
-                SaveStateAndJumpToStory(basicClassStoryContext);
+                gameManager.SaveStateAndJumpToStory(basicClassStoryContext);
             }, () =>
             {
                 // deny callback...
@@ -223,8 +200,8 @@ public class LocationManager : MonoBehaviour
         StreamWriter sw = new StreamWriter(fcreate);
         
         // this writes the enum value as a string which we will parse when reading it
-        sw.WriteLine(currentDay);
-        sw.WriteLine(currentTimeSlot);
+        sw.WriteLine(gameManager.currentDay);
+        sw.WriteLine(gameManager.currentTimeSlot);
         sw.Close();
         
         Debug.Log("saved location data (current time and day aka the state to path: " + filePath);
@@ -254,9 +231,9 @@ public class LocationManager : MonoBehaviour
             
             Debug.Log("parsed day: " + day);
             Debug.Log("current time: " + timeSlot);
-            
-            currentDay = day;
-            currentTimeSlot = timeSlot;
+
+            gameManager.currentDay = day;
+            gameManager.currentTimeSlot = timeSlot;
             
             // restore state basically
             UpdateTimeAndDayGUI(); 
@@ -291,12 +268,12 @@ public class LocationManager : MonoBehaviour
         if (timeAndDayPlaceHolder)
         {
             timeAndDayPlaceHolder.text =
-                Calendar.TimeToString(currentTimeSlot) + ", " + Calendar.DayToString(currentDay);
+                Calendar.TimeToString(gameManager.currentTimeSlot) + ", " + Calendar.DayToString(gameManager.currentDay);
         }
 
         if (phoneReminder)
         {
-            if (currentDay == Day.Saturday || currentDay == Day.Sunday)
+            if (gameManager.currentDay == Day.Saturday || gameManager.currentDay == Day.Sunday)
             {
                 phoneReminder.gameObject.SetActive(true);
             }else
@@ -319,7 +296,7 @@ public class LocationManager : MonoBehaviour
     private void UpdateAllMascotLocations()
     {
         foreach (GameObject mascot in mascotList)
-            mascot.GetComponent<Mascot>().UpdateLocation(currentTimeSlot, currentDay);
+            mascot.GetComponent<Mascot>().UpdateLocation(gameManager.currentTimeSlot, gameManager.currentDay);
     }
 
     // given a location (string) convert it to a Location (enum)
@@ -342,23 +319,6 @@ public class LocationManager : MonoBehaviour
         };
     }
 
-
-
-    public void RetrieveState()
-    {
-        currentDay = savedTimeAndDay.day;
-        currentTimeSlot = savedTimeAndDay.time;
-
-        foreach (var mascot in mascotList)
-        {
-            var component = mascot.GetComponent<Mascot>();
-            var data = mascotState.GetData(component.name);
-            component.heartLevel = data.heartLevel;
-            component.barValue = data.barValue;
-            component.interactedWith = data.interactedWith;
-        }
-    }
-
     public void UpdateMascotLevel(string mascotName, int amountIncrease)
     {
         foreach (var mascot in mascotList)
@@ -373,12 +333,13 @@ public class LocationManager : MonoBehaviour
         }
     }
 
+
     private void SaveStateAndJumpToStory(StoryContext context)
     {
         Debug.Log("jumping to story " + context.name);
         // save time and day state
-        savedTimeAndDay.time = currentTimeSlot;
-        savedTimeAndDay.day = currentDay;
+        savedTimeAndDay.time = gameManager.currentTimeSlot;
+        savedTimeAndDay.day = gameManager.currentDay;
 
         foreach (var mascot in mascotList)
         {

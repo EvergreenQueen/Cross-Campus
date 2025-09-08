@@ -10,11 +10,23 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    //All references:
+    [SerializeField] LocationManager locationManager;
+    //LocationManager
+
+    // All Serialized Vars:
+    [SerializeField] public List<GameObject> mascotList = new List<GameObject>();
+
+    //Publically available vars
+    public static GameManager instance;
+    public Player player;
+    public Calendar playerCalendar;
     public TimeSlot currentTimeSlot;
     public Day currentDay;
 
-    private static GameManager instance;
-    private Player player;
+    //Saving Data:
+    public SavedTimeAndDay savedTimeAndDay; // SET IN INSPECTOR
+    public MascotState mascotState;
 
     void Awake()
     {
@@ -27,6 +39,22 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("Player")?.GetComponent<Player>();
     }
 
+
+    //Dates/Interactions
+
+    public void FinishInteraction(bool success, Mascot mascot)
+    {
+        if (success) mascot.IncreaseBarValue(2);
+        else mascot.DecreaseBarValue(1);
+    }
+
+    public void FinishDate(Mascot mascot)
+    {
+        mascot.IncreaseHeartValue();
+    }
+
+    //==
+    // Time/Date Updates:
     private void UpdateTimeAndDay()
     {
         if (currentTimeSlot == TimeSlot.evening)
@@ -36,14 +64,34 @@ public class GameManager : MonoBehaviour
             else currentDay++;
         }
         else currentTimeSlot++;
+
+        // SATURDAY LIFE EVENTS
+        //if (currentDay == Day.Saturday)
+        //{
+        //    foreach (var mascotObj in mascotList)
+        //    {
+        //        var mascot = mascotObj.GetComponent<Mascot>();
+        //        if (mascot.GetHeartLevel() >= 5)
+        //        {
+        //            // load and play date story probably
+        //        }
+        //    }
+        //}
+
     }
 
-    public void NextTime()
+    public void ProgressTime()
     {
         UpdateTimeAndDay();
         //Insert any code to update other areas
+        locationManager.ProgressTime();
     }
 
+
+
+
+    //== 
+    // Save/Load
     public void SaveGame()
     {
         LocationManager.GetInstance().SaveLocationData();
@@ -148,4 +196,43 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    //HERE
+    public void RetrieveState()
+    {
+        currentDay = savedTimeAndDay.day;
+        currentTimeSlot = savedTimeAndDay.time;
+
+        foreach (var mascot in mascotList)
+        {
+            var component = mascot.GetComponent<Mascot>();
+            var data = mascotState.GetData(component.name);
+            component.heartLevel = data.heartLevel;
+            component.barValue = data.barValue;
+            component.interactedWith = data.interactedWith;
+        }
+    }
+
+    public void SaveStateAndJumpToStory(StoryContext context)
+    {
+        Debug.Log("jumping to story " + context.name);
+        // save time and day state
+        savedTimeAndDay.time = currentTimeSlot;
+        savedTimeAndDay.day = currentDay;
+
+        foreach (var mascot in mascotList)
+        {
+            var component = mascot.GetComponent<Mascot>();
+            mascotState.UpdateData(component.name, component.heartLevel, component.barValue, component.interactedWith);
+        }
+
+        StartCoroutine(SceneChanger.GetInstance().LoadSceneAndCallDialogue("StoryScene", context));
+    }
+
+    //==
+    //Getters/Setters:
+
+    public static GameManager GetInstance()
+    {
+        return instance;
+    }
 }
