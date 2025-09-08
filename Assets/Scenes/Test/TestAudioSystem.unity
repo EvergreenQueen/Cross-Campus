@@ -411,7 +411,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8f5dd343ad9c7f546b0ec85c9bc1e93c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -543,10 +543,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecde3ef909bb0d468d13115d2ccb76f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicTracks:
+  timeOfDayMusicTracks:
+  - {fileID: 8300000, guid: 2144289a4d0b6ec4883314cba40db393, type: 3}
   - {fileID: 8300000, guid: cf0ff03ef53aa8a48937204bab2562d4, type: 3}
-  - {fileID: 8300000, guid: afa502171cf09d04ca2dfe046f60b094, type: 3}
-  - {fileID: 8300000, guid: 9d1806b9b173f6f4285395ba92c71672, type: 3}
-  soundEffects: []
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
+  - {fileID: 8300000, guid: 1842dcdbdd8c8d540825a63dd680a1a8, type: 3}
+  titleScreenTrack: {fileID: 8300000, guid: 19164e716e3d13841911a9a0971ea764, type: 3}
+  orientationTrack: {fileID: 8300000, guid: 9d1806b9b173f6f4285395ba92c71672, type: 3}
+  dateTrack: {fileID: 8300000, guid: 43f20ed1947965648ae71e31a30ce82a, type: 3}
+  lifeEventTrack: {fileID: 8300000, guid: 32afce8878afa794dae409940236b9c9, type: 3}
+  clickSFX: {fileID: 8300000, guid: 29ac2b27f85e30943b16e50d0003e399, type: 3}
+  dialogueNextSFX: {fileID: 8300000, guid: 1962f046af3afbd4da057726f8eff726, type: 3}
+  hoverOverSFX: {fileID: 8300000, guid: 18d1f5b082f3c764ca6095c4b10c5eed, type: 3}
+  trackFadeOutTime: 1.5
+  musicSource: {fileID: 933680817}
+  sfxSource: {fileID: 686126399}
