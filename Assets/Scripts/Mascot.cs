@@ -80,7 +80,11 @@ public class Mascot : MonoBehaviour
     {
         barValue = Math.Clamp(barValue + pips, 0, 5);
         Debug.Log($"bar value increased to {barValue}");
-        if (barValue == 5)
+    }
+
+    public void IncreaseHeartValue()
+    {
+        if (barValue >= 5)
         {
             heartLevel = Math.Clamp(heartLevel + 1, 0, 4);
             barValue = 0;
@@ -93,7 +97,6 @@ public class Mascot : MonoBehaviour
     {
         barValue = Math.Clamp(barValue - pips, 0, 5);
         Debug.Log($"bar value decreased to {barValue}");
-        // TODO reduce heart level when it's zero? maybe?
     }
 
     public void SaveMascot()

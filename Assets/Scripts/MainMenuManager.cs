@@ -8,7 +8,7 @@ public class MainMenuManager : MonoBehaviour {
     
     void Start() {
         start.onClick.AddListener(OnClickStart);
-        if (GameManagerSTUB.GetInstance().SaveDataExists())
+        if (GameManager.GetInstance().SaveDataExists())
         {
             load.onClick.AddListener(OnClickLoad);
         }
@@ -30,7 +30,7 @@ public class MainMenuManager : MonoBehaviour {
 
     void OnClickLoad()
     {
-        StartCoroutine(GameManagerSTUB.GetInstance().LoadGame());
+        StartCoroutine(GameManager.GetInstance().LoadGame());
     }
 
     void OnClickQuit() {
