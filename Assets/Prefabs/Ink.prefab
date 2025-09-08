@@ -445,8 +445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -209.2, y: -7}
-  m_SizeDelta: {x: 989.1934, y: 117.007}
+  m_AnchoredPosition: {x: -6.4047, y: -12.2834}
+  m_SizeDelta: {x: 1471.3816, y: 194.6006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7786044786277089533
 CanvasRenderer:
@@ -476,7 +476,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Josie Bruin.
+  m_text: "Cool, beautiful air conditioning. The pool is so perfect the closer it
+    gets to summer.  Even if it smells of sweat and chlorine. Triton is putting away
+    some of the equipment. I don\u2019t want to bother him, so I settle with my homework
+    until he's finished."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa8f1e74a74452a4ab47d5df61e188e2, type: 2}
   m_sharedMaterial: {fileID: -7022402185470877704, guid: fa8f1e74a74452a4ab47d5df61e188e2, type: 2}
@@ -485,8 +488,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280226055
+  m_fontColor: {r: 0.02853921, g: 0.066092506, b: 0.122641504, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -503,10 +506,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -539,7 +542,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 171.23244, y: 0, z: -511.37247, w: 0}
+  m_margin: {x: -2.1987457, y: 0, z: 1.2990417, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
