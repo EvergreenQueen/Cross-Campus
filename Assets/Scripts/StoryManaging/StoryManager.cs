@@ -71,27 +71,27 @@ public class StoryManager : MonoBehaviour
         {
             if (!storyContext.times.Contains(time))
             {
-                //Debug.Log($"time {time.ToString()} does not match for storyContext object {storyContext}");
+                Debug.Log($"time {time.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
             if (!storyContext.days.Contains(day))
             {
-                //Debug.Log($"day {day.ToString()} does not match for storyContext object {storyContext}");
+                Debug.Log($"day {day.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
             if (storyContext.location != location)
             {
-                //Debug.Log($"location {location.ToString()} does not match for storyContext object {storyContext}");
+                Debug.Log($"location {location.ToString()} does not match for storyContext object {storyContext}");
                 continue;
             }
             if (!storyContext.mascotNames.Contains(mascotName.ToLower()))
             {
-                //Debug.Log($"mascotName {mascotName} does not match for storyContext object {storyContext} (make sure the name(s) on the scriptable object are lowercase)");
+                Debug.Log($"mascotName {mascotName} does not match for storyContext object {storyContext} (make sure the name(s) on the scriptable object are lowercase)");
                 continue;
             }
             if (storyContext.requiredHeartLevel > heartLevel)
             {
-                // Debug.Log($"heart level {heartLevel} is too low for storyContext object {storyContext}");
+                 Debug.Log($"heart level {heartLevel} is too low for storyContext object {storyContext}");
                 continue;
             }
             if (storyContext.firstTimeInteraction != isFirstTime)

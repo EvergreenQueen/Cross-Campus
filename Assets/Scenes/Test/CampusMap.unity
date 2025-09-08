@@ -2439,6 +2439,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1890816557}
     m_Modifications:
+    - target: {fileID: 466564517496986114, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 466564517496986114, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 473283413}
+    - target: {fileID: 466564517496986114, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 466564517496986114, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LocationManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 466564517496986114, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: gym
+      objectReference: {fileID: 0}
+    - target: {fileID: 466564517496986114, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2488042523777211524, guid: 885b954756b2fe945935803c587e4c3d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
