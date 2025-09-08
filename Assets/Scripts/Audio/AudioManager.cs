@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator SwitchTracks(AudioClip newMusicTrack)
     {
-        yield return StartCoroutine(StopMusic());
+        yield return StartCoroutine(StopTracks());
         PlayTrack(newMusicTrack);
     }
 
